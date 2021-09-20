@@ -1,0 +1,130 @@
+#test_sch_ctr{
+    padding: 25px 0px;
+}
+mat-card-header{
+    background-color: #262D61;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;    
+}
+mat-card-title{
+    margin-top: 16px;
+}
+mat-card{
+    border-radius: 20px;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+mat-card-content{
+    padding-top: 15px;
+}
+.minifab .mat-mini-fab{
+    background-color: white !important;
+    color: #939393 !important;
+}
+.minifab .material-icons{
+    font-size: 18px;
+}
+.minifab .mat-icon{
+    height: 18px;
+    width: 18px;
+}
+
+.minifab .mat-mini-fab:not([class*=mat-elevation-z]) {
+    //box-shadow: 0 1px 0px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12) !important;
+    box-shadow: 0 0.25px 0px -1px rgba(0, 0, 0, 0.2), 0 1px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 4px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+th.mat-header-cell {
+    text-align: center !important;
+}
+td.mat-cell{
+    text-align: center !important;
+    padding: 15px 0px;
+}
+#cmmsub_ctr{
+    padding-bottom: 15px;
+}
+.bar-size{
+    width: 796px;
+}
+canvas{
+    width:800px !important;
+    height:400px !important;
+}
+.mat-list-icon {
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+
+  //ajith
+.c-grade
+{
+padding:10px;
+}
+.grade-content h4
+{
+font-weight:600;
+margin:0;
+padding:5px;
+color:#262D61;
+font-size: 15px;
+}
+.grade-color-top
+{
+background-color: #ff4d4d;
+height: 30px;
+}
+.grade-color-a
+{
+background-color: #cccfcf;
+height: 30px;
+}
+.grade-color-b
+{
+background-color: #2ea5aa;
+height: 30px;
+}
+.grade-color-c
+{
+background-color: #31dae1;
+height: 30px;
+}
+.part_cont
+{
+padding:20px 0px 70px 50px;
+}
+.faculty-namedetails
+{
+    color:#262D61;
+    font-size:14px;
+    padding:10px;
+}
+.test-result{
+    min-height:550px;
+}
+
+@media only screen and(max-width:600px){
+    canvas{
+        width: 270px !important;
+        height: 400px !important;
+    }
+    .faculty-name{
+        padding-bottom:30px;
+    }
+}
+@media only screen and(min-width:600px) and (max-width:959px){
+    canvas{
+        width: 540px !important;
+        height: 400px !important;
+    }
+}
+
+.report-btn{
+    margin-top:20px;
+}
+.active-link{
+    color:yellow !important;
+    padding-left: 20px !important;
+}

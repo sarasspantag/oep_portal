@@ -1,0 +1,306 @@
+<div fxLayout="row" >
+  <h3 class="breadCrumb-head">Training Course Management >> <span class="color-font">Course Registration</span></h3>
+</div>
+<div id="course_reg" fxLayoutAlign="center center">
+  <mat-card fxFlex="50" fxFlex.xs="90" fxFlex.sm="70"> 
+
+    <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+      
+      <mat-card-title fxLayoutAlign="center center">Course Registration </mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center">
+      
+      
+      <form *ngIf="! showdetails" id="couse_reg" fxLayout="column" fxFlex="80" fxFill 
+      [formGroup]="courseregForm" (ngSubmit)="regCourse()" >
+          <p class="course-name">{{coursenameshow}}</p>
+          <p class="error-msg">{{errorMsg}}</p> 
+        <mat-form-field> 
+          <mat-label>Participant Name</mat-label>
+          <input matInput name="participantname" [(ngModel)]="participantname" required
+          formControlName="PartName" [ngClass]="{'error': submitted && f.PartName.errors }" >
+        </mat-form-field>
+        <div *ngIf="submitted && f.PartName.errors" class="invalid-feedback">
+          <div *ngIf="f.PartName.errors.required">Participant name required</div>
+        </div>
+        <mat-form-field>
+          <mat-label>PS Number</mat-label>
+          <input type="number" matInput name="psnumber" [(ngModel)]="psnumber" required
+          formControlName="PSnumber" [ngClass]="{'error': submitted && f.PSnumber.errors }">
+        </mat-form-field>
+        <div *ngIf="submitted && f.PSnumber.errors" class="invalid-feedback">
+          <div *ngIf="f.PSnumber.errors.required">PS number required</div>
+        </div>
+        <mat-form-field>
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" name="email" [(ngModel)]="email" required
+          formControlName="Email" [ngClass]="{'error': submitted && f.Email.errors }">
+        </mat-form-field>
+        <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+          <div *ngIf="f.Email.errors.required">Email required</div>
+        </div>
+        <!-- <mat-form-field>
+          <mat-label>Applicable IC</mat-label>
+          <mat-select name="applicableic" [(ngModel)]="applicableic"
+          formControlName="ApplicableIC" [ngClass]="{'error': submitted && f.ApplicableIC.errors }">
+            <mat-option *ngFor="let Applicable of ApplicableIc" [value]="Applicable.value">
+              {{Applicable.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="submitted && f.ApplicableIC.errors" class="invalid-feedback">
+          <div *ngIf="f.ApplicableIC.errors.required">Applicable IC required</div>
+       </div> -->
+
+
+        <!-- <mat-form-field>
+          <mat-label>Department or Project Job Code</mat-label>
+          <input matInput type="number" name="jobcode" [(ngModel)]="jobcode" required
+          formControlName="Projectcode"  [ngClass]="{'error': submitted && f.Projectcode.errors }">
+        </mat-form-field> -->
+
+        <mat-form-field>
+            <mat-label>Department or Project Job Code</mat-label>
+            <mat-select name="jobcode" [(ngModel)]="jobcode"
+            formControlName="Projectcode" [ngClass]="{'error': submitted && f.Projectcode.errors }">
+              <mat-option *ngFor="let Applicable of deptList" [value]="Applicable.deptid">
+                {{Applicable.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+        <div *ngIf="submitted && f.Projectcode.errors" class="invalid-feedback">
+          <div *ngIf="f.Projectcode.errors.required">Project job code required</div>
+        </div>
+
+        <mat-card-actions fxFlex fxLayoutGap.xs="20px" fxLayout.xs="column" fxLayoutAlign.lt-md="center center" fxFill>
+          <div fxFlex="30">
+             <button  class="exm regbtn" mat-flat-button fxLayoutGap="25"  type="submit" [disabled]="isLoading">
+           <i class="fa fa-loadingsave" [ngClass]="{'fa-spin fa-spinner': isLoading, '': !isLoading}"></i>
+             Register</button>
+         </div>
+         <div fxFlex="30">
+             <button *ngIf="checkrole == true"  class="exm regbtn" fxLayoutGap="25" fxLayoutAlign="start" mat-flat-button [routerLink]="['/oeep/importparticipants']">Import </button>
+         </div> 
+         <div fxFlex="30">
+         <button class="exm regbtn" mat-flat-button (click)="clearfields()">Clear</button>
+        </div>
+       </mat-card-actions>
+
+      </form>
+
+      <form  *ngIf="showdetails" id="couse_reg" fxLayout="column" fxFlex="80" fxFill
+      [formGroup]="courseregForm" (ngSubmit)="regCourse()">
+        <p class="course-name">{{coursenameshow}}</p>
+        <mat-form-field>
+          <mat-label>Participant Name</mat-label>
+          <input matInput name="participantname" [(ngModel)]="participantname" required
+          formControlName="PartName" [ngClass]="{'error': submitted && f.PartName.errors }">
+        </mat-form-field>
+        <div *ngIf="submitted && f.PartName.errors" class="invalid-feedback">
+          <div *ngIf="f.PartName.errors.required">Participant name required</div>
+        </div>
+        <mat-form-field>
+          <mat-label>PS Number</mat-label>
+          <input matInput name="psnumber" [(ngModel)]="psnumber" required
+          formControlName="PSnumber" [ngClass]="{'error': submitted && f.PSnumber.errors }">
+        </mat-form-field>
+        <div *ngIf="submitted && f.PSnumber.errors" class="invalid-feedback">
+          <div *ngIf="f.PSnumber.errors.required">PS number required</div>
+        </div>
+        <mat-form-field >
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" name="email" [(ngModel)]="email" required
+          formControlName="Email" [ngClass]="{'error': submitted && f.Email.errors }">
+        </mat-form-field>
+        <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+          <div *ngIf="f.Email.errors.required">Email required</div>
+        </div>
+        <mat-form-field>
+          <mat-label>Applicable IC</mat-label>
+          <mat-select name="applicableic" [(ngModel)]="applicableic"
+          formControlName="ApplicableIC" [ngClass]="{'error': submitted && f.ApplicableIC.errors }">
+            <mat-option *ngFor="let Applicable of ApplicableIc" [value]="Applicable.value">
+              {{Applicable.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngIf="submitted && f.ApplicableIC.errors" class="invalid-feedback">
+          <div *ngIf="f.ApplicableIC.errors.required">Applicable IC required</div>
+       </div>
+        <mat-form-field>
+          <mat-label>Department or Project Job Code</mat-label>
+          <input matInput type="number" name="jobcode" [(ngModel)]="jobcode" required
+          required min="0" step="1" (keypress)="numberOnly($event)"
+          formControlName="Projectcode"  [ngClass]="{'error': submitted && f.Projectcode.errors }">
+        </mat-form-field>
+        <div *ngIf="submitted && f.Projectcode.errors" class="invalid-feedback">
+          <div *ngIf="f.Projectcode.errors.required">Project job code required</div>
+        </div>
+        <mat-card-actions fxFlex fxLayoutGap.xs="20px" fxLayout.xs="column" fxLayoutAlign.lt-md="center center" fxFill>
+          <div fxFlex="30">
+             <button  class="exm regbtn" mat-flat-button fxLayoutGap="25" type="submit" [disabled]="isLoading">
+           <i class="fa fa-loadingsave" [ngClass]="{'fa-spin fa-spinner': isLoading, '': !isLoading}"></i>
+             Register</button>
+         </div>
+         <div fxFlex="30">
+             <button *ngIf="checkrole == true"  class="exm regbtn" fxLayoutGap="25" fxLayoutAlign="start" mat-flat-button [routerLink]="['/oeep/importparticipants']">Import </button>
+         </div> 
+         <div fxFlex="30">
+         <button class="exm regbtn" mat-flat-button (click)="clearfields()">Clear</button>
+        </div>
+       </mat-card-actions>
+      </form>
+
+    </mat-card-content>
+    
+  </mat-card>
+</div>
+
+<!-- <div id="login_ctr" fxLayoutAlign="center center"  *ngIf="! showshowdetails"> -->
+<div id="login_ctr" fxLayoutAlign="center center"   >
+  <mat-card fxFlex="80" fxFlex.xs="90">
+    <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+      <mat-card-title>Participants Course List</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center">
+      
+      <div fxLayout="row" fxLayoutAlign="start center" class="content" fxFlex>
+        <div fxFlex = "100%" fxFill>
+
+            <table mat-table [dataSource]="dataSource" fxFill>
+               
+                <ng-container matColumnDef="profile" >
+                  <th mat-header-cell *matHeaderCellDef > # </th>
+                  <td mat-cell *matCellDef="let transaction"> {{transaction.index}} </td>
+               
+                 </ng-container>
+              
+             
+                <ng-container matColumnDef="fromdate">
+                  <th mat-header-cell *matHeaderCellDef> Participant name </th>
+                  <td mat-cell *matCellDef="let transaction"> {{transaction.username}} </td>
+                
+                </ng-container>
+                <ng-container matColumnDef="todate">
+                  <th class="tble-head" mat-header-cell *matHeaderCellDef> Registered course </th>
+                  <td mat-cell *matCellDef="let transaction"> <p class="tble-coursename">{{transaction.coursename}}</p> </td>
+                
+                </ng-container>
+
+                <ng-container matColumnDef="status" fxHide.lt-md>
+                  <th mat-header-cell *matHeaderCellDef fxHide.lt-md> Email  </th>
+                  <td mat-cell *matCellDef="let transaction" fxHide.lt-md> {{transaction.email_id}} </td>
+                
+                </ng-container>
+
+                
+             
+
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef> Action </th>
+                  <td class="minifab" mat-cell *matCellDef="let transaction" fxLayoutGap="10px">
+                    <div fxLayoutAlign="center center" fxLayoutGap="10px">
+                    <button mat-mini-fab (click)="showview(transaction.userid,transaction.courseid)">
+                      <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button mat-mini-fab (click)="getuserdetails(transaction.userid)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button *ngIf ="transaction.approvebutton" mat-mini-fab (click)="approvedparticipant(transaction.coursedetailid)">
+                      <mat-icon>done</mat-icon>
+                    </button>
+                    </div>
+                  </td>              
+                </ng-container> 
+             
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+               
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" ></mat-paginator>
+        </div>
+      
+       
+      </div>  
+    </mat-card-content>  
+  </mat-card>
+    </div> 
+
+
+    <ng-template #alertDialog >
+        <div class="infoModal" fxLayout="column">
+          <div class="header" fxLayoutAlign="start center">
+            <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+          </div>
+          <div fxLayoutAlign="center center">
+            <p>{{modalmsg}}</p>
+          </div>
+          <div fxLayoutAlign="center center">
+            <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+          </div>
+          </div>
+        </ng-template>
+    
+<ng-template #deleteDialog>
+  <div class="diag_ctr" fxLayout="column">
+    <div class="cls_btn" fxFill fxLayoutAlign="end center">
+      <button mat-icon-button (click)="closemodal()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <div class="heading" fxFill fxLayoutAlign="center center">
+      {{modalmsg}}
+    </div>
+    <div class="btn_div" fxLayout="row" fxFill fxLayoutAlign="center center" fxLayoutGap="10px">
+      <button mat-button class="verify-btn yes" (click)="savetestschedule()">YES</button>
+      <button mat-button class="verify-btn no" (click)="closemodal()">NO</button>
+    </div>
+  </div>
+</ng-template>
+
+
+
+<ng-template #viewDialog>
+  <div class="view_ctr" fxLayout="column">
+    <div fxLayout="row" class="cls_btn" fxFill >
+      <div fxFlex="80" fxFill fxLayoutAlign="start center" class="heading">Participant Details</div>
+      <div fxFlex fxLayoutAlign="end center" fxFill>
+          <button mat-icon-button (click)="closemodal()">
+              <mat-icon>close</mat-icon>
+            </button>
+      </div>
+     
+    </div>
+    <div fxLayout="column" fxLayoutGap="15px" class="heading" fxFill>
+        <ng-container *ngFor="let course of courseViewData" >
+            <div fxLayout="row">
+                <div fxFlex="30" fxFill>{{course.title}}</div>
+                <div>{{course.value}}</div>
+              </div>
+        </ng-container>
+      <table class="viwetablepopup">
+          <thead>
+          <th>Course</th>
+          <th>Details</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>User name</td>
+            <td>{{username}}</td>
+          </tr>
+          <tr>
+            <td>Selected course</td>
+            <td>{{coursename}}</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>{{email}}</td>
+          </tr>
+        </tbody>
+        </table>
+     
+    </div>
+  </div>
+</ng-template>

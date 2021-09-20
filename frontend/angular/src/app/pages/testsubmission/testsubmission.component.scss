@@ -1,0 +1,224 @@
+#tst_sub_ctr{
+    padding: 25px 0px;
+}
+mat-card-header{
+    background-color: #262D61;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;    
+}
+mat-card-title{
+    margin-top: 16px;
+}
+mat-card{
+    border-radius: 20px;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+mat-card-content{
+    padding-top: 15px;
+}
+#tst_sub_ctr .part_cont{
+    padding: 10px;
+    font-size:17px;
+}
+.part_cont{
+    color: #262D61;
+    border-bottom: 1px solid #a8b0ee;
+}
+.part_cont #timer{
+    background-color: rgb(0, 128, 0);
+    color: white;
+    font-weight: 500;
+    font-size: 12px;
+    width: 50px;
+    border-radius: 4px;
+    text-align: center;
+    padding: 5px;
+}
+#quiz_ctr,#quiz_ctr .mat-lable{
+    padding: 10px;
+}
+
+
+.infoModal .questionViewqn{
+    clear:both;
+    font-size:18px;
+    font-weight:400;
+    margin: 10px 20px;
+}
+.infoModal .questionViewqn .questionViewans{
+    font-weight:bold;
+}
+
+// ajith checkbox
+
+// overwrite the checkbox background
+::ng-deep .mat-checkbox-checked .mat-checkbox-background, .mat-checkbox-indeterminate .mat-checkbox-background {
+    background-color:#262D61 !important;
+  }
+  
+  // overwrite the ripple overlay on hover and click
+  ::ng-deep .mat-checkbox:not(.mat-checkbox-disabled) .mat-checkbox-ripple .mat-ripple-element {
+    background-color:#262d6185 !important;
+  }
+
+  [hidden] { display: none !important;}
+  .yourscore
+  {
+      border:1px solid black;
+      margin:0 auto;
+      width:50%;
+      margin-bottom:50px;
+      text-align:center;
+  }
+  
+  .ScrollStyle
+{
+    // height: 60px;
+    max-height:425px !important;
+    width: 100%;
+    overflow-y: auto;
+    padding:15px;
+}
+.testsub-popup{
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+.testsub-popup:last-child{
+border-bottom:1px solid black;
+}
+.testsub-ques{
+    border-right: 1px solid black;  
+}
+.head-ques:first-child{
+    border-left: 1px solid black;
+}
+.head-ques{
+    border-top: 1px solid black;  
+    padding: 10px;
+    font-weight: 600;
+}
+.head-action{
+    border-right: 1px solid black;
+    border-top: 1px solid black;  
+    padding: 10px;
+    font-weight: 600;
+}
+
+//saras style
+
+#quiz_ctr mat-label{
+    padding:18px 0;
+    font-size:17px;
+}
+#quiz_ctr mat-checkbox{
+    padding: 0 18px 18px 25px;
+}
+.resultStatus{
+    text-align:center;
+}
+.resultStatus p{
+    font-weight:600;
+    text-align:center;
+    margin: 0 0 10px 0 !important;
+    color : #262D61;
+    font-size: 25px;
+}
+.markP-style
+{
+    margin: 5px;
+    color: #cabb0d;
+}
+
+.mat-checkbox {
+    font-family: 'Raleway' !important;
+}
+.test-submission{
+    min-height:550px;
+}
+.question-img{
+    width:100px;
+}
+
+@media only screen and(max-width:600px){
+    .part_cont #timer{
+        height:15px;
+    } 
+    .part-name{
+        padding-bottom:10px;
+    }
+    .ScrollStyle
+    {
+        padding:5px;
+    }
+    .head-ques{
+        font-size:12px;
+    }
+    .head-action{
+        font-size:12px;
+    }
+    .testsub-btns{
+        margin-left:30px
+    }
+    .testsub-btns button{
+        margin-bottom:20px
+    }
+}
+@media only screen and(min-width:600px) and (max-width:959px){
+    .part_cont #timer{
+        height:15px;
+    } 
+    .ScrollStyle
+    {
+        padding:5px;
+    }
+    .head-ques{
+        font-size:12px;
+    }
+    .head-action{
+        font-size:12px;
+    }
+}
+
+
+
+
+.exm1:hover{
+    color:yellow !important;
+  }
+  .exm1{
+    background: linear-gradient(to right, yellow 7px, #262D61 5px) !important;
+      color: white !important;
+      border-radius: 0px !important;
+      padding: 2px 10px 2px 20px !important;
+      font-size: 16px !important;
+      width:auto !important;
+  }
+  
+  .exm1:before{
+    font-family: FontAwesome !important;
+    display: inline-block !important;
+    padding-right: 10px !important;
+    vertical-align: middle !important;
+  }
+  .exm1:before{
+    content: "\f177" !important;
+  }
+  .minifab .mat-mini-fab:not([class*=mat-elevation-z]) {
+    box-shadow: 0 .25px 0 -1px rgba(0,0,0,.2),0 1px 0 0 rgba(0,0,0,.14),0 1px 4px 0 rgba(0,0,0,.12)!important;
+}
+.minifab .mat-mini-fab{
+    background-color: white !important;
+    color: #939393 !important;
+}
+.minifab .material-icons{
+    font-size: 18px;
+}
+.minifab .mat-icon{
+    height: 18px;
+    width: 18px;
+}
+  

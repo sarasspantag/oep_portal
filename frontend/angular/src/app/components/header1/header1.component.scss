@@ -1,0 +1,41 @@
+
+.homectr .dash{
+    padding-left: 27px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    text-transform: uppercase;
+    font-size: 23px;
+    font-weight: 400;
+}
+.homectr{
+    padding:5px;
+}
+.homectr .search{
+    height: 35px !important;
+    border-radius: 20px;
+    border: 2px solid rgb(196, 192, 192);
+    padding-left: 15px;
+}
+input:focus{
+    outline:none;
+}
+// .ctrbrk{
+//     border-bottom: 1px solid #262D61;
+// }
+.changepass{
+    font-size: 12px;
+}
+@media only screen and (max-width:600px){
+    .changepass{
+        font-size: 12px;
+        padding-bottom: 20px;
+    }
+    .homectr .dash{
+        padding-bottom: 0px;
+    }
+}
+@media only screen and (max-width:900px){
+    .homectr .dash{        
+        font-size: 18px;
+    }
+}

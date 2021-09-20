@@ -1,0 +1,27 @@
+.attachimg-btn
+{
+border: none;
+background-color: #e5e5e570;
+height: 35px;
+border-radius: 5px;
+width:100%;
+padding-top: 5px;
+}
+.attachimg-btn span
+{
+text-align:center;
+font-family: 'Raleway'; 
+color: #6c6c6c;
+}
+::placeholder {
+color: #6c6c6c;
+padding-left:10px;
+font-family: 'Raleway'; 
+letter-spacing: 0.5px;
+}
+.attach-imgicon
+{
+color: #2fdee742;
+float: right;
+transform: rotate(40deg);
+}

@@ -1,0 +1,318 @@
+<div fxLayout="row" >
+  <h3 class="breadCrumb-head">Course Evaluation Module >> <span class="color-font"> Test Scheduling</span></h3>
+</div>
+<div id="test_sch_ctr" fxLayoutAlign="center center">
+  <mat-card fxFlex="70" fxFill fxFlex.xs="90">
+  <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+    <mat-card-title fxLayoutAlign="center center">Test Schedule</mat-card-title>
+  </mat-card-header> 
+  <mat-card-content fxLayoutAlign="center center" >
+    <form fxLayout="column"  fxLayoutGap="25px" fxFlex="80" fxFill>
+      <div fxLayout="row" fxLayoutGap="25px" fxLayout.lt-md="column" >
+        <div>    
+          <mat-form-field class="select-form">
+            <mat-label>Test Name</mat-label>
+            <mat-select  [(ngModel)]="id" [ngModelOptions]="{standalone: true}" required>
+              <mat-option *ngFor="let course of qbList;let i = index" [value]="course.id" 
+              (click)="getScheduleList(course.id)">
+                {{course.testname}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>        
+        </div> 
+        <div> 
+          
+              <mat-form-field class="select-form">
+                <mat-label>Batch</mat-label>
+                <mat-select  [(ngModel)]="batch" [ngModelOptions]="{standalone: true}"   required>
+                  <mat-option *ngFor="let course of csList;let i = index"  [value]="course.scheduleid"
+                  (click)="getScheduledetails(course.scheduleid)" >
+                    {{course.programname}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+        </div>
+        <div> 
+          <mat-form-field class="select-form">
+            <mat-label>Test Id</mat-label>
+
+            <input matInput  name="testid"  [(ngModel)]="testid"  required disabled >
+          </mat-form-field>        
+        </div>  
+      </div>
+
+      <div fxLayout="row" fxFlex fxFill fxLayoutGap="25px" fxLayout.lt-md="column">
+        <div fxFlex="50">
+          <div fxLayout="row" fxFlex fxFill fxLayoutGap.xs="10px">
+            <div fxFlex="28">
+              <p class="posthead-label">Start Time:</p>
+            </div>
+            <div fxFlex="20" class="starttimehour">
+              <input type="number" autocomplete="off" class="form-control headline-input"
+               name="starttimehour" placeholder="HH"  [(ngModel)]="starthour" required min="0" step="1" (keypress)="numberOnly($event)">
+            </div>
+            <div fxFlex="4" class="dot">
+              :
+            </div>
+            <div fxFlex="20" class="starttimeminutes">
+              <input type="number" autocomplete="off" class="form-control headline-input"
+               name="starttimeminutes" placeholder="MM" [(ngModel)]="startminute" required min="0" step="1" (keypress)="numberOnly($event)">
+            </div>
+            <div fxFlex="4" class="dot">
+              :
+            </div>
+            <div fxFlex="24">
+              <select class="ampmselect" [(ngModel)]="startformat"  name="startformat">
+                <option value="am">AM</option>
+                <option value="pm">PM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div fxFlex="50">
+          <div fxLayout="row" fxLayoutGap.xs="10px">
+            <div fxFlex="30">
+              <p class="posthead-label">Duration (HH:MM):</p>
+            </div>
+            <div fxFlex="20" class="starttimehour">
+              <input type="number" autocomplete="off" class="form-control headline-input" 
+              name="duration" placeholder="HH"  [(ngModel)]="durationhour"  required min="0" step="1" (keypress)="numberOnly($event)">
+            </div>
+            <div fxFlex="4" class="dot">
+              :
+            </div>
+            <div fxFlex="20" class="starttimeminutes">
+              <input type="number" autocomplete="off" class="form-control headline-input"
+               name="endtimeminutes" placeholder="MM"  [(ngModel)]="durationminute"  required min="0" step="1" (keypress)="numberOnly($event)">
+            </div>
+           
+          </div>
+        </div>
+      </div>
+  
+      <div fxLayout="row" fxLayoutGap="25px" fxLayout.lt-md="column" >
+       
+        <div fxFlex="50" fxFill>
+     
+
+          <mat-form-field fxFlex fxFill (click)="pickedDate.open()" class="select-form">
+            <input [min]="minFromDate" [max]="maxToDate" matInput [matDatepicker]="pickedDate" (dateChange)="startDatePicked($event)"
+             placeholder="Test Date" id="matSelectedDate" [formControl]="serializedDate">
+            <mat-datepicker-toggle matSuffix [for]="pickedDate"></mat-datepicker-toggle>
+            <mat-datepicker disabled="false" #pickedDate [startAt]="someDate"></mat-datepicker>
+          </mat-form-field>
+  
+        </div>
+        <div> 
+          <mat-form-field class="select-form">
+            <mat-label>Faculty InCharge </mat-label>
+
+            <input matInput  name="facultyname"  [(ngModel)]="incharge"  required disabled >
+          </mat-form-field>        
+        </div> 
+        <div fxFlex="50" fxLayoutAlign="start center" fxFill>
+          <mat-card-actions fxLayoutAlign="start center" fxFill>
+            <div fxLayoutAlign="start center">Schedule Active Status 
+              <mat-slide-toggle [(ngModel)]="checked"  name="checked1" [color]="color" (change)="changed()"></mat-slide-toggle>
+            </div>
+          </mat-card-actions>
+        </div>
+        
+       
+      </div>
+
+
+      
+
+</form> 
+
+<div fxLayout="column" fxLayoutGap="15px">  
+</div>
+  </mat-card-content>
+
+ 
+
+  <mat-card-actions fxLayoutAlign="center center" fxFill fxLayoutGap="10px">
+    <button class="exm" mat-flat-button (click)="savetestschedule()" [disabled]="isLoading">
+      <i class="fa fa-loadingsave" [ngClass]="{'fa-spin fa-spinner': isLoading, '': !isLoading}"></i>
+      Save</button>
+    <button class="exm" mat-flat-button (click)="cleardata()">Clear</button>
+  </mat-card-actions>
+</mat-card>
+</div>
+ 
+
+
+
+<div id="login_ctr" fxLayoutAlign="center center">
+  <mat-card fxFlex="80" fxFlex.xs="90" >
+    <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+      <mat-card-title>Test Details</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center">
+      
+      <div fxLayout="row" fxLayoutAlign="start center" class="content" fxFlex>
+        <div fxFlex = "100%" fxFill>
+
+            <table mat-table [dataSource]="dataSource"  fxFill>
+                
+                <ng-container matColumnDef="profile" >
+                  <th mat-header-cell *matHeaderCellDef > # </th>
+                  <td mat-cell *matCellDef="let transaction"> {{transaction.index}} </td>
+               
+                </ng-container> 
+              
+             
+                <ng-container matColumnDef="fromdate">
+                  <th class="tble-head" mat-header-cell *matHeaderCellDef> Test name </th>
+                  <td mat-cell *matCellDef="let transaction"> <p class="tble-coursename">{{transaction.testname}}</p> </td>
+                 
+                </ng-container>
+                <ng-container matColumnDef="todate" fxHide.lt-md>
+                  <th mat-header-cell *matHeaderCellDef fxHide.lt-md> Test date </th>
+                  <td mat-cell *matCellDef="let transaction" fxHide.lt-md> {{transaction.testdate}} </td>
+                
+                </ng-container>
+
+                <ng-container matColumnDef="status" fxHide.lt-md>
+                  <th mat-header-cell *matHeaderCellDef fxHide.lt-md> Status </th>
+                  <td mat-cell *matCellDef="let transaction" fxHide.lt-md> {{transaction.status}} </td>
+                
+                </ng-container>
+
+                <ng-container matColumnDef="teststatus" fxHide.lt-md>
+                  <th mat-header-cell *matHeaderCellDef fxHide.lt-md>Test status </th>
+                  <td mat-cell *matCellDef="let transaction" fxHide.lt-md> {{transaction.teststarted}} </td> 
+                </ng-container>
+              
+              <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                  <td class="minifab" mat-cell *matCellDef="let transaction" fxLayoutGap="10px">
+                    <div fxLayoutAlign="center center" fxLayoutGap="10px">
+                      <button   mat-mini-fab (click)="showview(transaction.id)">
+                      <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button *ngIf="transaction.teststarted == 'Not started'" mat-mini-fab (click)="gettestscheduledtls(transaction.id)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button *ngIf="transaction.teststarted == 'Not started'" mat-mini-fab (click)="delete(transaction.id)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                    </div>
+                </td>              
+              </ng-container>
+
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+               
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" ></mat-paginator>
+        </div>
+      
+       
+      </div> 
+    </mat-card-content>
+  </mat-card>
+    </div> 
+
+    <ng-template #alertDialog >
+        <div class="infoModal" fxLayout="column">
+          <div class="header" fxLayoutAlign="start center">
+            <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+          </div>
+          <div fxLayoutAlign="center center">
+            <p>{{modalmsg}}  </p>
+          </div>
+          <div fxLayoutAlign="center center">
+            <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+          </div>
+          </div>
+        </ng-template>
+
+
+    
+        <ng-template #deleteDialog>
+          <div class="diag_ctr" fxLayout="column">
+            <div class="cls_btn" fxFill fxLayoutAlign="end center">
+              <button mat-icon-button (click)="closemodal()">
+                <mat-icon>close</mat-icon>
+              </button>
+            </div>
+            <div class="heading" fxFill fxLayoutAlign="center center">
+              {{modalmsg}}
+            </div>
+            <div class="btn_div" fxLayout="row" fxFill fxLayoutAlign="center center" fxLayoutGap="10px">
+              <button mat-button class="verify-btn yes" (click)="savetestschedule()">YES</button>
+              <button mat-button class="verify-btn no" (click)="closemodal()">NO</button>
+            </div>
+          </div>
+        </ng-template>
+        
+        
+        
+        <ng-template #viewDialog>
+          <div class="view_ctr" fxLayout="column">
+            <div fxLayout="row" class="cls_btn" fxFill >
+              <div fxFlex="80" fxFill fxLayoutAlign="start center" class="heading">Test Schedule Details</div>
+              <div fxFlex fxLayoutAlign="end center" fxFill>
+                  <button mat-icon-button (click)="closemodal()">
+                      <mat-icon>close</mat-icon>
+                    </button> 
+              </div>
+             
+            </div>
+            <div fxLayout="column" fxLayoutGap="15px" class="heading viewpopup-content" fxFill>
+                <ng-container *ngFor="let course of courseViewData" >
+                    <div fxLayout="row">
+                        <div fxFlex="30" fxFill>{{course.title}}</div>
+                        <div>{{course.value}}</div>
+                      </div>
+                </ng-container>
+              <table class="viwetablepopup">
+                  <thead>
+                  <th>Course</th>
+                  <th>Details</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Test name</td>
+                    <td>{{testname}}</td>
+                  </tr>
+                
+                  <tr>
+                    <td>Test date</td>
+                    <td>{{testdate}}</td>
+                  </tr>
+                  <tr>
+                    <td>Start time</td>
+                    <td>{{starttime}}</td>
+                  </tr>
+                  <tr>
+                      <td>duration </td>
+                      <td>{{duration}}</td>
+                    </tr>
+                    <tr>
+                        <td class="tble-part">Test participants</td>
+                        <!-- <td class="tble-partcontent">{{participantname}}</td> -->
+                      </tr>  
+                </tbody>
+                </table>
+                <table class="viwetablepopup-down">
+                    <thead>
+                    <th>Name</th>
+                    <th>Mail deliver status</th>
+                    <th>Test status</th>
+                  </thead>
+                  <tbody *ngFor="let course of participantstatusList;let i=index">
+                      <tr>
+                        <td>{{course.username}}</td>
+                        <td>{{course.mailstatus}}</td>
+                        <td>{{course.teststatus}}</td>
+                      </tr>
+                    </tbody>
+                </table>
+  
+            </div>
+          </div>
+        </ng-template>

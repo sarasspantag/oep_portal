@@ -1,0 +1,118 @@
+#login_ctr{
+    padding: 75px 0px ;
+}
+mat-card-header{
+    background-color: #262D61;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;         
+}
+mat-card-title{
+    margin-top: 16px;
+    
+}
+mat-card{
+    border-radius: 20px;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+mat-card-content{
+    padding-top: 25px;
+}
+mat-card-actions a{
+    text-decoration: none;
+    padding-top: 15px;
+    font-size: 12px;
+    color: #9C9C9C;
+}
+.exm{
+    margin-top:20px;
+}
+
+//saras
+.forgot-inputs mat-form-field {
+    width: 100%;
+  }
+
+   .verify-btn{
+    margin: 5px !important;
+    float: right !important;
+    background: #eff0ff  !important;
+  }
+  
+  .user-icon
+  {
+  color: #939393;
+  padding-left: 15px;
+  padding-right: 10px;
+  border-top-left-radius:5px;
+  border-bottom-left-radius:5px;
+  border-right:1px solid #939393;
+  }
+  .label-form mat-label{
+      padding-left:10px !important;
+  }
+  .label-form input{
+    padding-left:10px !important;
+}
+.fa-lock{
+    font-size:20px !important;
+}
+
+
+
+.your-name
+{
+border:none;
+background-color: #f3f3f3;
+width: 80%;
+height: 50px;
+border-top-right-radius:5px;
+border-bottom-right-radius:5px;
+padding-left: 10px;
+font-size:15px;
+}
+.user-icon
+{
+background-color: #f3f3f3;
+color: #939393;
+padding-top: 18px;
+padding-bottom: 18px;
+padding-left:15px;
+border-top-left-radius:5px;
+border-bottom-left-radius:5px;
+border-right:1px solid #939393;
+}
+.name-label
+{
+padding-top:30px;
+}
+
+@media only screen and (max-width:599px){
+    .your-name
+    {
+    border:none;
+    background-color: #f3f3f3;
+    width: 70%;
+    height: 50px;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+    padding-left: 10px;
+    font-size:15px;
+    }
+}
+
+@media only screen and (min-width:600px) and (max-width:969px){
+    .your-name
+    {
+    border:none;
+    background-color: #f3f3f3;
+    width: 70%;
+    height: 50px;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+    padding-left: 10px;
+    font-size:15px;
+    }
+}

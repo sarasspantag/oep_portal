@@ -1,0 +1,118 @@
+<div class="test-result">
+  <div fxLayout="row" >
+    <h3 class="breadCrumb-head">Course Evaluation Module >> <span class="color-font"> Test Results</span></h3>
+  </div>
+  <div id="test_sch_ctr" fxLayoutAlign="center center">
+    <mat-card fxFlex="90" fxFill>
+      <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+        <mat-card-title fxLayoutAlign="center center">Reports</mat-card-title>
+      </mat-card-header>
+      <div class="report-btn" fxLayoutGap="20px" fxLayoutAlign = "center center" *ngIf="viewroleid == '1'"  >
+        <button routerLinkActive="active-link" class="exm" mat-flat-button [routerLink]='["/oeep/result"]' style="color:yellow"  >
+        Batch Report</button>
+        <button routerLinkActive="active-link" class="exm" mat-flat-button [routerLink]='["/oeep/result-faculty"]'  >
+        Faculty Report</button>
+      </div>
+      <mat-card-content fxLayoutAlign="center center">
+        <form fxLayout="column" fxLayoutGap="25px" fxFlex="100" >
+          <div fxLayout="row" fxLayoutGap="25px"  fxLayoutAlign="center center" fxLayout.xs="column">
+            
+            <div>
+              <mat-form-field>
+                <mat-label>Course</mat-label>
+                <mat-select [(ngModel)]="batch" [ngModelOptions]="{standalone: true}" required >
+                  <mat-option  *ngFor="let course of courselist;let i = index" [value]="course.courseid" 
+                   (click)="gettestdetails(course.courseid)" >
+                    {{course.coursename}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+  
+            <div>
+              <mat-form-field>
+                <mat-label>Test</mat-label>
+                <mat-select [(ngModel)]="testid" [ngModelOptions]="{standalone: true}" required >
+                  <mat-option  *ngFor="let test of testlist;let i = index" [value]="test.testid"
+                  (click)="myreset()" >
+                    {{test.testname}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        
+          <div fxLayout="row wrap" fxLayoutGap="25px" *ngIf="showchart"  fxLayoutAlign="center center">
+            <div *ngIf="chartavailable">
+             
+            <div>
+              <div style="display: block" fxLayoutAlign.xs="center center" >
+                <canvas baseChart class="bar-size" [datasets]="barChartData" [labels]="barChartLabels"
+                  [options]="barChartOptions" [plugins]="barChartPlugins" [legend]="barChartLegend"
+                  [chartType]="barChartType" [colors]="barChartColors">
+                </canvas>
+              </div>
+              
+              <div fxLayout="column">
+                <div fxLayout="row" class="c-grade" fxLayoutGap="20px">
+                  <div fxLAyout="row" fxFlex="4" class="grade-color-c">
+  
+                  </div>
+                  <div fxLAyout="row" fxFlex="96" class="grade-content">
+                    <h4> “ C ” GRADE</h4>
+                  </div>
+                </div>
+                <div fxLayout="row" class="c-grade" fxLayoutGap="20px">
+                  <div fxLAyout="row" fxFlex="4" class="grade-color-b">
+  
+                  </div>
+                  <div fxLAyout="row" fxFlex="96" class="grade-content">
+                    <h4> “ B ” GRADE</h4>
+                  </div>
+                </div>
+                <div fxLayout="row" class="c-grade" fxLayoutGap="20px">
+                  <div fxLAyout="row" fxFlex="4" class="grade-color-a">
+  
+                  </div>
+                  <div fxLAyout="row" fxFlex="96" class="grade-content">
+                    <h4> “ A ” GRADE</h4>
+                  </div>
+                </div>
+                <div fxLayout="row" class="c-grade" fxLayoutGap="20px">
+                  <div fxLAyout="row" fxFlex="4" class="grade-color-top">
+  
+                  </div>
+                  <div fxLAyout="row" fxFlex="96" class="grade-content">
+                    <h4> “ TOP ” GRADE</h4>
+                  </div>
+                </div>
+              </div>
+  
+            </div>
+            </div>
+            <div *ngIf="!chartavailable">
+              <p>No reports available</p>
+          </div>
+          </div>
+         
+  
+        </form>
+  
+  
+      </mat-card-content>
+  
+      <mat-card-actions fxLayoutAlign="center center" fxFill fxLayoutGap="10px">
+                       
+        <button class="exm" mat-flat-button  *ngIf="showreport"
+          (click)="generatefacultyreport()" [disabled]="isLoading">
+          <i class="fa fa-loadingsave" [ngClass]="{'fa-spin fa-spinner': isLoading, '': !isLoading}"></i>
+          Generate Report</button>
+  
+          <button class="exm" mat-flat-button  *ngIf="showreset"
+          (click)="reset()">Reset </button>
+  
+     </mat-card-actions>
+  
+    </mat-card>
+  </div>
+  </div>

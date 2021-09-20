@@ -1,0 +1,372 @@
+.dashboardctr{
+    font-size: 16px;
+}
+.col1{
+    background-color: #09A64D;
+    color: white;
+    padding: 10px;
+}
+.col2{
+    background-color: #2C3591;
+    color: white;
+    padding: 10px;
+}
+.col3{
+    background-color: #EE1F26;
+    color: white;
+    padding: 10px;
+}
+.col4{
+    background-color: #F9951F;
+    color: white;
+    padding: 10px;
+}
+.col5{
+    background-color: #0CA79D;
+    color: white;
+    padding: 10px;
+}
+.col6{
+    background-color: #1575BB;
+    color: white;
+    padding: 10px;
+}
+
+.dashboardctr .dashdiv .divpad{
+    padding: 10px;
+}
+.divpad .ctndiv{
+    height: 80px;
+    max-height:80px;
+    box-shadow: 0 6px 11px 0 rgba(0,0,0,.2);
+}
+.ctndiv .higltr mat-icon{
+    height: 60px;
+    width: 60px;
+}
+.ctndiv .higltr .material-icons{
+    font-size: 60px;
+}
+.ctndiv .higltrctn mat-icon{
+    height: 15px;
+    width: 15px;
+}
+.ctndiv .higltrctn .material-icons{
+    font-size: 15px;
+}
+.higltrctn .ctn{
+    font-size: 26px;
+}
+.header{
+    background-color:#262D61;
+    color:white;
+    
+    padding:11px;
+    margin-bottom:10px;
+}
+.regstr-btn{
+   height:60px;
+}
+.course-details-space{
+    padding-left:10px;
+}
+// .verify-btn{
+//     margin: 5px !important;
+//     float: right !important;
+//     background: #eff0ff  !important;
+//   }
+  
+@media only screen and (max-width:900px){
+    .dashboardctr{
+        font-size: 12px;
+    }
+    .col1 ,.col2,.col3,.col4,.col5,.col6,.dashboardctr .dashdiv .divpad{
+        padding: 4px;
+    }
+    .divpad .ctndiv{
+        height: 60px;
+        max-height:60px;       
+    }
+    .ctndiv .higltr mat-icon{
+        height: 40px;
+        width: 40px;
+    }
+    .ctndiv .higltr .material-icons{
+        font-size: 40px;
+    }
+    .higltrctn .ctn{
+        font-size: 18px;
+    }
+}
+
+
+//to-do list style start
+ .todo-listcard
+ {
+    border:1px solid #262d61;   
+    padding:0px 20px !important;
+ }
+ .calender-todolist
+ {
+     padding:20px;
+ }
+ .todo-list
+ {
+     border:1px solid #262d61;
+     padding:0px;
+     background-color: white;
+ }
+.input-container {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  .icon {
+    padding: 10px;
+    background: #262d61;
+    color: white;
+    min-width: 50px;
+    text-align: center;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    outline: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  } 
+  .todo-checkbox
+  {
+      padding-bottom:10px;
+  }
+  .save-btn
+  {
+    border: none;
+    background-color: #262d61;
+    color: white;
+    width: 35%;
+    padding: 5px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .delete-icon
+  {
+    background-color: #262d61;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .todo-topicons 
+  {
+      font-size:16px;
+    color: #bcbcbc;
+    cursor: pointer;
+  } 
+  .todolist-heading h2
+  {
+    color: #919191;
+    letter-spacing: 2px;
+  }
+  .todocheckbox-full
+  {
+      padding:0px !important;
+  }
+.cmd-img img
+{
+    border-radius: 50%;
+    width: 50px;
+    max-width: 50px;
+    height: 50px;
+    max-height: 50px;
+}
+.comments-para p
+{
+    margin: 0;
+    text-align: justify;
+    line-height: 23px;
+    word-spacing: 4px;
+    letter-spacing: 1px;
+    padding: 8px;
+}
+.cmd-rowsection
+{
+    padding:10px 10px;
+    border-bottom: 1px solid #262d6180;
+}
+.cmd-doneicon
+{
+    color:green;
+    cursor: pointer;
+}
+.cmd-closeicon
+{
+    color:red;
+    cursor: pointer;
+}
+.cmd-tab
+{
+    border:1px solid #262d61;
+}
+
+
+//ajith style
+
+//to-do list style start
+.todo-listcard
+{
+   border:1px solid #262d61;   
+   padding:10px 20px !important;
+}
+.calender-todolist
+{
+    padding:20px;
+}
+.todo-list
+{
+    border:1px solid #262d61;
+    padding:20px;
+    background-color: white;
+}
+.input-container {
+   display: -ms-flexbox; /* IE10 */
+   display: flex;
+   width: 100%;
+   margin-bottom: 15px;
+ }
+ 
+ .icon {
+   padding: 10px;
+   background: #262d61;
+   color: white;
+   min-width: 50px;
+   text-align: center;
+   border-top-right-radius: 5px;
+   border-bottom-right-radius: 5px;
+ }
+ 
+ .input-field {
+   width: 100%;
+   padding: 10px;
+   outline: none;
+   border-top-left-radius: 5px;
+   border-bottom-left-radius: 5px;
+ } 
+ .todo-checkbox
+ {
+     padding-bottom:10px;
+ }
+ .save-btn
+ {
+   border: none;
+   background-color: #262d61;
+   color: white;
+   width: 35%;
+   padding: 5px;
+   font-size: 18px;
+   border-radius: 5px;
+   cursor: pointer;
+ }
+ .delete-icon
+ {
+   background-color: #262d61;
+   color: white;
+   padding: 10px;
+   border-radius: 5px;
+   cursor: pointer;
+ }
+ .todo-topicons 
+ {
+     font-size:16px;
+   color: #bcbcbc;
+   cursor: pointer;
+ } 
+ .todolist-heading h2
+ {
+   color: #919191;
+   letter-spacing: 2px;
+ }
+ .todocheckbox-full
+ {
+     padding:30px 0px;
+ }
+.cmd-img img
+{
+   border-radius: 50%;
+   width: 50px;
+   max-width: 50px;
+   height: 50px;
+   max-height: 50px;
+}
+.comments-para p
+{
+   margin: 0;
+   text-align: justify;
+   line-height: 23px;
+   word-spacing: 2px;
+   letter-spacing: 1px;
+}
+.cmd-rowsection
+{
+   padding:10px 10px;
+   border-bottom: 1px solid #262d6180;
+}
+.cmd-doneicon
+{
+   color:green;
+   cursor: pointer;
+}
+.cmd-closeicon
+{
+   color:red;
+   cursor: pointer;
+}
+.cmd-tab
+{
+   border:1px solid #262d61;
+}
+.read-more { 
+    text-align: right; 
+    cursor: pointer;
+  }
+  .showParticalDiv
+  {
+    max-height:77px;
+    overflow:hidden;    
+  }
+  .showFullDiv
+  {
+      height:auto ;
+  }
+  .header mat-icon{
+    cursor: pointer;
+}
+.view-popup{
+    max-height:360px;
+}.dashboard-activitytab{
+    padding:20px;
+}
+
+
+@media only screen and(max-width:600px){
+    .dashdiv{
+        padding:15px;
+    }
+    .cmd-img img {
+        border-radius: 50%;
+        width: 25px;
+        max-width: 25px;
+        height: 25px;
+        max-height: 50px;
+        margin-top: 10px;
+    }
+}
+.errormsg{
+    color:red;
+}

@@ -1,0 +1,51 @@
+#course_reg{
+    padding: 75px 0px;
+}
+mat-card-header{
+    background-color: #262D61;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;    
+}
+mat-card-title{
+    margin-top: 16px;
+}
+mat-card{
+    border-radius: 20px;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+.exm{
+    background: linear-gradient(to right,  yellow 3%, #262D61 4%);
+    color: white;
+    border-radius: 0px;
+}
+.exm:hover{
+    color: yellow;
+}
+.sample{
+    margin-top:20px;
+    margin-right:20px;
+    margin-bottom:40px;
+}
+
+table.success-table{
+    width:100%;
+}
+table.success-table, th, td {
+    border: 1px solid #262D61;;
+    border-collapse: collapse;
+    color: #818181;
+  }
+  table.success-table th {
+    background-color: #262D61;;
+    color: white;
+  }
+  table.success-table th, td {
+    padding: 15px;
+    text-align: left;
+  }
+  .pad{
+    padding-top: 30px;
+}

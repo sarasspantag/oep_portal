@@ -1,0 +1,328 @@
+.aboutus-heading121 {
+    position: absolute;
+    top: 125px;
+    left: 34%;
+    right: 34%;
+    color:white;
+    font-size:50px;
+    font-weight:600 !important;
+    letter-spacing: 2px;
+    }
+    .head
+    {
+    height:300px !important;
+    }
+    .head img
+    {
+    height:250px !important;
+    }
+    .about-sis
+    {
+    padding:30px 0px;
+    }
+    .aboutsis-head
+    {
+    color: #262d61;
+    font-size: 29px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    }
+    .aboutsis-subhead
+    {
+    color: #262d61;
+    font-size: 14px;
+    padding-top: 10px;
+    }
+    .aboutsis-headingfull
+    {
+    border-left:5px solid yellow;
+    }
+    .aboutsis-heading
+    {
+    border-left:8px solid yellow;
+    padding-left:30px;
+    margin: 0 auto;
+    width: 20%;
+    }
+    .aboutsis-heading h4
+    {
+    color:#262d61 !important;
+    font-size: 30px;
+    font-weight:600 !important;
+    margin-bottom:15px !important;
+    margin-top:25px !important;
+    }
+    .aboutsis-heading h6
+    {
+    color:#262d61 !important;
+    margin:0 !important;
+    padding-left:20px;
+    padding-bottom:15px;
+    font-weight:normal !important;
+    font-size: 15px;
+    }
+    .contentabout
+    {
+    margin:0 auto;
+    width:80%;
+    }
+    .contentabout p
+    {
+    font-size:16px;
+    text-align:justify;
+    color:black !important;
+    line-height: 1.8;
+    }
+    .ourmission-content
+    {
+    background-color: #262d61;
+    }
+    .ourmission-heading
+    {
+    color: white;
+    font-size: 26px;
+    font-weight: 600;
+    }
+    .ourmission-hr
+    {
+    width:10%;
+    border:2px solid yellow;
+    border-radius:25px;
+    }
+    .ourmission-para p
+    {
+    color: white;
+    text-align: justify;
+    line-height: 1.8;
+    }
+    .ourmission-content
+    {
+    padding:20px 50px;
+    }
+    .ourhistory h2
+    {
+    color:#262d60 !important;
+    text-align:center;
+    margin-bottom:0;
+    font-weight:450;
+    font-size:27px;
+    font-weight:600 !important;
+    }
+    .ourhistory p
+    {
+    // padding-left: 130px;
+    // padding-right: 135px;
+    text-align: justify;
+    color: #2e2727!important;
+    font-size: 16px;
+    line-height: 1.8;
+    padding-top:15px;
+    }
+    .ourhistory hr
+    {
+    width:5%;
+    border-top: 2px solid yellow !important;
+    border-radius:25px;
+    }
+    .mission-vission
+    {
+    margin:0 auto;
+    width:80%;
+    }
+    /*Testimonial slider style*/
+    .testimonialslide-img img
+    {
+    width:80px;
+    display:block;
+    float:left;
+    margin:0;
+    padding:0;
+    height:80px;
+    border-radius:50%;
+    border:1px solid #262d60;
+    }
+    .testimonial-heading
+    {
+    text-align:center;
+    color:#262d60;
+    }
+    .testimonial-slider
+    {
+    margin:0 auto;
+    width:75%;
+    }
+    .testimonial-fullsection
+    {
+    background-color: #F0F1F1;
+    height:350px;
+    }
+    .testiomialprofile-name
+    {
+    padding-left:10px;
+    }
+    .testiomialprofile-name h2,p
+    {
+    color:#262d60; 
+    }
+    .ex1
+    {
+    background-color: #D1D2D3;
+    height:auto;
+    width:90%;
+    }
+    .ex1 p
+    {
+    text-align:justify;
+    padding: 0px 25px 0px 30px;
+    color:black;
+    font-size:12px;
+    line-height:1.6;
+    }
+    .arrow-down {
+    width: 0; 
+    height: 0; 
+    border-left: 20px solid transparent;
+    border-right: 5px solid transparent;
+    // margin-left:40px;
+    border-top: 40px solid #D1D2D3;
+    }
+    @media only screen and (max-width:600px){
+    .head
+    {
+    height:170px !important;
+    }
+    .head img
+    {
+    height:170px !important;
+    }
+    .aboutsis-heading
+    {
+    border-left:8px solid yellow;
+    padding-left:30px;
+    margin: 0 auto;
+    width: 90%;
+    }
+    .aboutus-heading121 {
+    position: absolute;
+    top: 75px;
+    left: 34%;
+    right: 34%;
+    color:white;
+    font-size:10px;
+    font-weight:600;
+    letter-spacing: 2px;
+    }
+    .about-sis
+    {
+    padding:20px 0px;
+    }
+    .ourhistory p
+    {
+    // padding-left: 55px;
+    // padding-right: 55px;
+    text-align: justify;
+    color: #2e2727!important;
+    font-size: 16px;
+    line-height: 1.8;
+    padding-top:15px;
+    }
+    .aboutus-heading121{
+    font-size: 20px;
+    left: 25%;
+    right: 25%;
+    }
+    .vission-image
+    {
+    margin-top:-4px;
+    }
+    .ourmission-content
+    {
+    margin-top:-4px;   
+    }
+    /*Testimonial slider style*/
+    .testimonialslide-img img
+    {
+    width:50px;
+    display:block;
+    float:left;
+    margin:0;
+    padding:0;
+    height:50px;
+    border-radius:50%;
+    border:1px solid #262d60;
+    }
+    .testimonial-heading
+    {
+    text-align:center;
+    color:#262d60;
+    }
+    .testimonial-slider
+    {
+    margin:0 auto;
+    width:75%;
+    }
+    .testimonial-fullsection
+    {
+    background-color: #e7e7e7;
+    height:auto;
+    }
+    .testiomialprofile-name
+    {
+    padding-left:10px;
+    }
+    .testiomialprofile-name h2,p
+    {
+    color:#262d60; 
+    font-size:16px;
+    }
+    .testiomialprofile-name p
+    {
+    color:#262d60; 
+    font-size:14px;
+    }
+    .ourmission-content {
+        padding: 20px 20px;
+    }
+    .ourhistory{
+        margin:0 auto;
+        width:100%;
+    }
+    }
+    @media only screen and (min-width:600px) and (max-width:959px){
+    .vission-image
+    {
+    margin-top:-4px;
+    }
+    .ourmission-content
+    {
+    margin-top:-4px;   
+    }  
+    .aboutsis-heading h4 {
+        color: #262d61 !important;
+        font-size: 22px;
+        font-weight: 600 !important;
+        margin-bottom: 15px !important;
+        margin-top: 25px !important;
+    }
+    .aboutsis-heading h6 {
+        color: #262d61 !important;
+        margin: 0 !important;
+        padding-left: 13px;
+        padding-bottom: 15px;
+        font-weight: normal !important;
+        font-size: 15px;
+    }
+    }
+
+    .ourhistory{
+        margin:0 auto;
+        width:80%;
+    }   
+
+    @media only screen and (min-width:959px) and (max-width:1200px){
+    .ourmission-content
+    {
+    padding:0px 20px;
+    font-size: 14px !important;
+    }
+}

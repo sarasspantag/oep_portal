@@ -1,0 +1,50 @@
+<div fxFlex="82" class="loader-height" *ngIf="divshow">
+   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" 
+   [template]="customLoadingTemplate"></ngx-loading>
+ </div>
+<div fxLayout="column" *ngIf="!divshow">
+   <div class="head" fxFlex fxFill>
+      <img fxFill src="assets/img/faculty-headerimg.png" alt="" /> 
+      <div class="aboutus-heading121" fxLayoutAlign="center center">Faculty Profile</div>
+   </div>
+   <!--facuty profile list section-->
+   <h2 class="facultyprofileheading">Our Team</h2>
+   <div class="facultyprofilelist-fullsection" fxLayout="column">
+      <div fxLayout="row" class="content-global-notreEquipe" fxLayout.xs="column">
+         <ng-container *ngFor="let dataobject of data">
+            <div class="profilelist-full" fxFlex="30" fxflex-lt-xs="100" fxFill>
+               <div class="content-people">
+                  <a (click)="navigatefacultydetails(dataobject.facultyid)">
+                     <img src="{{configimageurl}}{{dataobject.image_url}}" alt="">
+                  </a>
+                  <div class="down-content-text ">
+                     <div class="arrow-contentup">
+                        <mat-icon class="up-arrow">keyboard_arrow_up</mat-icon>
+                     </div>
+                     <div class="textes-up">
+                        <h3>{{dataobject.facultyname}}</h3>
+                      <p>{{dataobject.occupation}}</p> 
+                     </div>
+                     <div class="content-text ">
+                        <div class="arrow-contentdown">
+                           <mat-icon class="up-arrow">keyboard_arrow_down</mat-icon>
+                        </div>
+                        <div class="textes">
+                           <a (click)="navigatefacultydetails(dataobject.facultyid)">
+                              <h3 class="arrowuphead">{{dataobject.facultyname}}</h3>
+                           </a>
+                           <p class="arrowuppara">{{dataobject.occupation}}</p>
+                         </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </ng-container>
+      </div>
+   </div>
+
+
+   <mat-paginator fxLayoutAlign="center" [length]="multipleproductList.length" [pageSize]="size" [pageIndex]="page"
+      [pageSizeOptions]="[3]" (page)="getData($event)">
+   </mat-paginator>
+</div>

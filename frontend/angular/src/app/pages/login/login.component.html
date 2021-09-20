@@ -1,0 +1,75 @@
+<div id="login_ctr" fxLayoutAlign="center center">
+  <mat-card fxFlex="40" fxFlex.xs="80" fxFlex.sm="60">
+    <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center">
+        <p class="error-msg">{{errorMsg}}</p>
+      <form id="login" fxLayout="column" fxFlex="65" fxFill fxLayoutAlign.xs="center center" fxFlex.xs="80">
+              <div class="form-group name-label">
+                <span class="input-group-text user-icon"><i class="fa fa-user"></i></span>
+                <input type="text" class="form-control your-name" name="email" autocomplete="off" required [(ngModel)]="username" placeholder="Enter mail id">
+              </div>
+              <div class="form-group name-label">
+                <span class="input-group-text user-icon"><i class="fa fa-lock"></i></span>
+                <input type="password" class="form-control your-name" name="password" [(ngModel)]="password" required placeholder="password">
+              </div>
+            <div fxLayoutAlign="center center">
+              <button class="exm" mat-flat-button  (keyup.enter)="onSubmitLogin()" (click)="onSubmitLogin()">Login</button>
+            </div>
+            
+      </form>
+    </mat-card-content>
+    <mat-card-actions fxLayout="column" fxLayoutAlign="center center" fxFill>
+       
+        <a class="sis-a-link" (click)="openmodaldialog()" matDialogClose >Forgot Password</a> 
+      </mat-card-actions>
+  </mat-card>
+</div>
+
+<ng-template #secondDialog>
+  <div class="view_ctr" fxLayout="column">
+    <div fxLayout="row" class="cls_btn" fxFill >
+      <div fxFlex="80" fxFill fxLayoutAlign="start center" class="heading">Forgot Password ?</div>
+      <div fxFlex fxLayoutAlign="end center" fxFill>
+          <button mat-icon-button (click)="closemodal()">
+              <mat-icon>close</mat-icon>
+            </button> 
+      </div>
+     
+    </div>
+    <div fxLayout="column" fxLayoutGap="15px" class="heading" fxFill>
+      <div fxLayout="row wrap" class="forgot-inputs"  fxLayoutAlign="center center"  fxFlex="85" fxFill>
+          <div fxFlex="100">
+              <p class="error-msg">{{errorMsg}}</p>
+            </div>
+          <div fxFlex="100">
+            <mat-form-field >
+              <input matInput placeholder="Enter Mail-Id" id="emailid" [(ngModel)]="email">         
+            </mat-form-field>
+          </div>
+          <div fxFlex="100" fxLayoutAlign="end center">
+            <button class="exm"   mat-button   (keyup.enter)="forgotpassword()"  (click)="forgotpassword()" [disabled]="isLoading">
+              <i class="fa fa-loadingsave" [ngClass]="{'fa-spin fa-spinner': isLoading, '': !isLoading}"></i>
+              Enter</button> 
+          </div> 
+      </div>
+      
+      </div> 
+    </div>
+ 
+</ng-template>
+
+<ng-template #alertDialog >
+    <div class="infoModal" fxLayout="column">
+      <div class="header" fxLayoutAlign="start center">
+        <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+      </div>
+      <div fxLayoutAlign="center center">
+        <p>{{modalmsg}}</p>
+      </div>
+      <div fxLayoutAlign="center center">
+        <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+      </div>
+      </div>
+    </ng-template>

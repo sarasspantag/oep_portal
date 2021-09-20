@@ -1,0 +1,208 @@
+#qbm_ctr{
+    padding: 25px 0px;
+}
+.questiontd-action
+{
+    width: 75px !important;
+    word-wrap: break-word;
+    text-align: center;
+}
+// .download-btn
+// {
+//     margin-right:5px;
+// }
+.visibility-icon
+{
+    color: #939393 !important;
+}
+.download-icon
+{
+    color: #939393 !important;
+}
+.mail-icon
+{
+    color: #939393 !important;
+}
+.minifab .mat-mini-fab{
+    background-color: white !important;
+    color: #939393 !important;
+}
+.minifab .material-icons{
+    font-size: 18px;
+}
+.minifab .mat-icon{
+    height: 18px;
+    width: 18px;
+}
+.minifab .mat-mini-fab:not([class*=mat-elevation-z]) {
+    box-shadow: 0 1px 1px -1px rgba(0,0,0,.2), 0 6px 6px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+.mat-fab.mat-accent, .mat-flat-button.mat-accent, .mat-mini-fab.mat-accent, .mat-raised-button.mat-accent {
+    background-color: #fafafa !important;
+    margin-right:7px;
+    margin-bottom: 5px;
+    width: 35px;
+    height: 35px;
+}
+mat-card-header{
+    background-color: #262D61;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;         
+}
+mat-card-title{
+    margin-top: 16px;
+    
+}
+table.update-tbl {
+    width : 100% ;
+    table-layout: fixed !important; 
+    background: #f8f8f885;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;    
+    border: 1px solid #e9e9e9;
+}
+
+mat-card{
+    border-radius: 20px;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+mat-card-content{
+    padding: 25px;
+   
+}
+.minifab .mat-mini-fab{
+    background-color: white !important;
+    color: #939393 !important;
+
+}
+.minifab .material-icons{
+    font-size: 18px;
+}
+.minifab .mat-icon{
+    height: 18px;
+    width: 18px;
+}
+
+.minifab .mat-mini-fab:not([class*=mat-elevation-z]) {
+    //box-shadow: 0 1px 0px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12) !important;
+    box-shadow: 0 0.25px 0px -1px rgba(0, 0, 0, 0.2), 0 1px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 4px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+// th.mat-header-cell {
+//     text-align: center !important;
+// }
+// td.mat-cell{
+//     text-align: center !important;
+//     padding: 15px 0px;
+// }
+#cmmsub_ctr{
+    padding-bottom: 15px;
+}
+.table-header{
+    // background-color: #262d61;
+    color: rgba(0,0,0,.54);
+    // color: white;
+    // text-align:center;
+}
+td.wd-sno{
+    width: 40px !important;  
+    // text-align:center;
+    padding: 10px 0px 10px 10px;
+}
+td.wd1{
+    width: 40px !important;  
+}
+td.wd {
+    width: 90px !important;
+    word-wrap: break-word;
+}
+td.questiontd{
+    width: 55px !important;
+    word-wrap: break-word;
+}
+
+// table.update-tbl {
+//     // width : 90px !important;
+//     width:100% !important;
+//     table-layout: fixed !important; 
+// }
+.akexm{
+    background: linear-gradient(to right,  yellow 4%, #262D61 4%);
+    color: white;
+    border-radius: 0px;
+}
+//ajith style
+.table-heading
+{
+    margin:0 !important;
+    background-color:#262D61;
+    font-size: 14px;
+    border-top-right-radius: 25px;
+    border-top-left-radius: 25px;
+    color:white;
+    padding:15px;
+}
+// .table-content
+// {
+//     text-align: center;
+// }
+.content-sno
+{
+    padding: 10px 0px 10px 10px;
+}
+// .icon-download
+// {
+//     text-align:center;
+// }
+.mat-icon
+{
+    cursor: pointer;
+    font-size: 18px;
+    color: #b0b0b0f7;
+    padding: 0px 5px;
+}
+
+.certificate{
+    min-height:550px;
+}
+
+
+
+@media only screen and(max-width:600px){
+    .mat-fab.mat-accent, .mat-flat-button.mat-accent, .mat-mini-fab.mat-accent, .mat-raised-button.mat-accent {
+        height: 22px !important;
+        width: 22px !important;
+      }
+      .mat-mini-fab .mat-button-wrapper {
+        padding:0px !important;
+      }
+      .mat-icon {
+        cursor: pointer;
+        font-size: 10px !important;
+        color: #b0b0b0f7;
+        padding: 0px 0px !important;
+    }
+    td.wd{
+        width: 60px !important;
+        word-wrap: break-word;
+    }
+
+}
+@media only screen and(min-width:600px) and (max-width:959px){
+    .mat-fab.mat-accent, .mat-flat-button.mat-accent, .mat-mini-fab.mat-accent, .mat-raised-button.mat-accent {
+        height: 28px !important;
+        width: 28px !important;
+      }
+      .mat-mini-fab .mat-button-wrapper {
+        padding:0px !important;
+      }
+      .mat-icon {
+        cursor: pointer;
+        font-size: 16px !important;
+        color: #b0b0b0f7;
+        padding: 0px 0px !important;
+    }
+}

@@ -1,0 +1,36 @@
+<div fxLayout="row">
+    <p *ngIf="show">{{filename}}</p>
+  </div>
+  <div fxLayout="row" fxLayout.xs="column" fxFlex Fxfill fxLayoutGap="20px">
+    
+    <div fxFlex="45" fxFill>
+      <button class="attachimg-btn" (click)="file.click()"> 
+        <span>Browse</span>
+        <mat-icon class="attach-imgicon">attach_file</mat-icon>
+        
+        <input type="file" name="file" #file (change)="handleFileInput($event.target.files)" 
+         style="display:none;" />
+      </button>
+    </div>
+    <div fxFlex="45" fxFill>
+      <button class="exm" mat-flat-button  (click)="upload()">Upload</button>
+      <!-- <img *ngIf="imgshow" [src]="imgSrc" height="50"> -->
+    </div>
+    <div fxFlex="10" fxFill>
+      <img *ngIf="imgshow" [src]="imgSrc" height="50">
+    </div>
+    </div>
+
+<ng-template #alertDialog >
+  <div class="infoModal" fxLayout="column">
+    <div class="header" fxLayoutAlign="start center">
+      <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+    </div>
+    <div fxLayoutAlign="center center">
+      <p>{{modalmsg}}</p>
+    </div>
+    <div fxLayoutAlign="center center">
+      <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+    </div>
+    </div>
+  </ng-template>

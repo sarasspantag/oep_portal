@@ -1,0 +1,191 @@
+<div fxLayout="row" >
+  <h3 class="breadCrumb-head">Configuration >> Mail Templates </h3>
+</div>
+<div  id="course_sche_ctr" fxLayoutAlign="center center">
+  <mat-card fxFlex="80" fxFlex.xs="90">
+    <mat-card-header fxLayoutAlign="center center" fxFill>
+      <mat-card-title>Email Template</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center">
+      <form id="course_schedule" fxLayout="column" fxFlex="65" fxFill 
+      [formGroup]="templateForm" (ngSubmit)="savemailtemplate()"> 
+            
+        <mat-form-field>
+          <mat-label>Template Name</mat-label>
+          <input matInput type="text" name="name" [(ngModel)]="name" required formControlName="TemplateName">
+        </mat-form-field>
+        <div *ngIf="submitted && f.TemplateName.errors" class="invalid-feedback">
+          <div *ngIf="f.TemplateName.errors.required">Template name required</div>
+        </div>
+
+        <mat-form-field>
+          <mat-label>Template subject</mat-label>
+          <input matInput type="text" name="subject" [(ngModel)]="subject" required formControlName="TemplateSubject">
+        </mat-form-field>
+        <div *ngIf="submitted && f.TemplateSubject.errors" class="invalid-feedback">
+          <div *ngIf="f.TemplateSubject.errors.required">Template subject required</div>
+        </div>
+
+        <mat-form-field>
+          <mat-label>Content</mat-label>
+          <input matInput type="text" name="content" [(ngModel)]="content" required formControlName="TemplateContent">
+        </mat-form-field>
+        <div *ngIf="submitted && f.TemplateContent.errors" class="invalid-feedback">
+          <div *ngIf="f.TemplateContent.errors.required">Template content required</div>
+        </div>
+
+        <mat-card-actions fxLayoutAlign="center center" fxLayoutGap= "10px" fxFill>
+          <button  *ngIf="OnEdit" class="exm" mat-flat-button type="submit" [disabled]="isLoading" >
+            <i class="fa fa-loadingsave" [ngClass]="{'fa-spin fa-spinner': isLoading, '': !isLoading}"></i>
+            Save</button>
+          <button class="exm" mat-flat-button (click)="cleardata()">Clear</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+     
+  </mat-card>
+</div>
+ 
+
+
+<div id="login_ctr" fxLayoutAlign="center center">
+  <mat-card fxFlex="80" fxFlex.xs="90">
+    <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+      <mat-card-title>Course Schedule</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center">
+      
+      <div fxLayout="row" fxLayoutAlign="start center" class="content" fxFlex>
+        <div fxFlex = "100%" fxFill>
+
+          <table mat-table [dataSource]="dataSource"  fxFill> 
+                
+                <ng-container matColumnDef="profile" >
+                  <th mat-header-cell *matHeaderCellDef > # </th>
+                  <td mat-cell *matCellDef="let transaction"> {{transaction.index}} </td>
+               
+                </ng-container>
+              
+               
+                <ng-container matColumnDef="fromdate">
+                  <th mat-header-cell *matHeaderCellDef class="tble-head">  Template name </th>
+                  <td mat-cell *matCellDef="let transaction"> {{transaction.name}} </td>
+                
+                </ng-container>
+                <ng-container matColumnDef="todate">
+                  <th class="tble-head" mat-header-cell *matHeaderCellDef> Template subject </th>
+                  <td mat-cell *matCellDef="let transaction"><p class="tble-coursename"> {{transaction.subject}}</p> </td>
+                
+                </ng-container>         
+               
+
+
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef> Action </th>
+                  <td class="minifab" mat-cell *matCellDef="let transaction" fxLayoutGap="10px" fxLayoutGap.xs="5px" >
+                    <div fxLayoutAlign="center center" fxLayoutGap="10px">
+                      <button mat-mini-fab (click)="showview(transaction.id)">
+                        <mat-icon>visibility</mat-icon>
+                      </button>
+                      <button mat-mini-fab (click)="getdetails(transaction.id)">
+                        <mat-icon>edit</mat-icon>
+                      </button>
+                      </div>
+                  </td>              
+                </ng-container>
+             
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+               
+              </table>
+              <mat-paginator [length]="10" 
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]">
+</mat-paginator>
+        </div>
+      
+      
+      </div> 
+    </mat-card-content>
+    
+  </mat-card>
+    </div> 
+
+ 
+
+    <ng-template #alertDialog >
+        <div class="infoModal" fxLayout="column">
+          <div class="header" fxLayoutAlign="start center">
+            <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+          </div>
+          <div fxLayoutAlign="center center">
+            <p>{{modalmsg}}</p>
+          </div>
+          <div fxLayoutAlign="center center">
+            <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+          </div>
+          </div>
+        </ng-template>
+
+
+
+    <ng-template #deleteDialog>
+      <div class="diag_ctr" fxLayout="column">
+        <div class="cls_btn" fxFill fxLayoutAlign="end center">
+          <button mat-icon-button (click)="closemodal()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <div class="heading" fxFill fxLayoutAlign="center center">
+          {{modalmsg}}
+        </div>
+        <div class="btn_div" fxLayout="row" fxFill fxLayoutAlign="center center" fxLayoutGap="10px">
+          <button mat-button class="verify-btn yes" (click)="savemailtemplate()">YES</button>
+          <button mat-button class="verify-btn no" (click)="closemodal()">NO</button>
+        </div>
+      </div>
+    </ng-template>
+    
+    
+    
+    <ng-template #viewDialog>
+      <div class="view_ctr" fxLayout="column">
+        <div fxLayout="row" class="cls_btn" fxFill >
+          <div fxFlex="80" fxFill fxLayoutAlign="start center" class="heading">Template Details</div>
+          <div fxFlex fxLayoutAlign="end center" fxFill>
+              <button mat-icon-button (click)="closemodal()">
+                  <mat-icon>close</mat-icon>
+                </button> 
+          </div>
+         
+        </div>
+        <div fxLayout="column" fxLayoutGap="15px" class="heading viewpopup-content" fxFill>
+            <ng-container *ngFor="let course of courseViewData" >
+                <div fxLayout="row">
+                    <div fxFlex="30" fxFill>{{course.title}}</div>
+                    <div>{{course.value}}</div>
+                  </div>
+            </ng-container>
+          <table class="viwetablepopup">
+              <thead>
+              <th>Course</th>
+              <th>Details</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Template name</td>
+                <td>{{name}}</td>
+              </tr>
+              <tr>
+                  <td>Template subject</td>
+                  <td>{{subject}}</td>
+                </tr>
+                <tr>
+                    <td>Template content</td>
+                    <td>{{content}}</td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </ng-template> 

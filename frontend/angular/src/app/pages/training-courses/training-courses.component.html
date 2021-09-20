@@ -1,0 +1,53 @@
+<div fxLayout="column" class="" fxFlex fxFill>
+
+  <div class="head" fxFlex fxFill>
+    <img fxFill src="assets/img/faculty-headerimg.png" alt="" />
+   <div class="aboutus-heading121" fxLayoutAlign="center center"> Training Courses</div>
+  </div> 
+
+  
+  <div fxLayout="column" class="tac-div" fxFlex fxFill>
+
+   <mat-accordion class="tac-accordian trainingandcourse">
+     <div *ngFor="let course of List;let i = index">
+   <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+  
+   <mat-expansion-panel-header>
+   <mat-panel-title>
+    {{course.index}}.  {{course.coursename}}  
+   </mat-panel-title>
+   </mat-expansion-panel-header> 
+
+   <table class="tac-table">
+    <thead>
+      <th>Batch</th>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Faculty incharge</th>
+      <th>Available seats</th>
+      <th>Action</th>
+    </thead>
+  <tbody *ngFor="let schedule of scheduleList;let j = index">
+    <tr *ngIf="course.courseid == schedule.programname">
+      <td>{{schedule.schedulename}}</td>
+  
+      <td>{{schedule.startdate}}     to     {{schedule.enddate}}</td>
+  
+      <td>{{schedule.starttime}}    to     {{schedule.endtime}}</td>
+    
+      <td> {{schedule.username}}</td>
+   
+      <td>{{schedule.totalparticipants}}</td>
+  
+      <td>  <button mat-button color="primary" class="reg-btn" (click)="courseregister(schedule.scheduleid,schedule.coursename)"
+        >Register here</button></td>
+    </tr>
+    </tbody>
+  </table>
+  
+ </mat-expansion-panel>
+ </div>
+
+ </mat-accordion>
+</div>
+</div>

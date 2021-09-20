@@ -1,0 +1,38 @@
+#tl_ctr{
+    padding: 75px 0px;
+}
+mat-card-header{
+    background-color: #262D61;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;    
+}
+mat-card-title{
+    margin-top: 16px;
+}
+mat-card{
+    border-radius: 20px;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+.exm{
+    background: linear-gradient(to right,  yellow 8%, #262D61 8%);
+    color: white;
+    border-radius: 0px;
+}
+.exm:hover{
+    color: yellow;
+}
+.test_start{
+    background-color: #056406;
+    color: whitesmoke;
+    padding:  5px 10px;
+    font-weight: 600;
+    font-size: 12px;
+    border-image: none;
+    border-color: #056406;
+    border-radius: 4px;
+    box-shadow: none;
+    
+}

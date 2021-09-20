@@ -1,0 +1,173 @@
+<div class="test-submission">
+<div fxLayout="row" >
+  <h3 class="breadCrumb-head">Course Evaluation Module >> <span class="color-font"> Test Submission</span></h3>
+</div>
+<div id="tst_sub_ctr" fxLayoutAlign="center center">
+    <mat-card fxFlex="90" fxFill>
+        <mat-card-header fxLayoutAlign="center center">
+            <mat-card-title>Test Submission by Participants</mat-card-title>
+        </mat-card-header>
+        <mat-card-content >
+
+          <div *ngIf="isexamnotstarted" fxLayoutAlign="center center">
+              <p class="error-msg">{{errormsg}}</p>
+          </div>
+
+          <div *ngIf="isexamstarted" >
+            <div class="part_cont" fxLayout="column" fxFill fxLayoutGap="10px">
+                <div fxLayout="row" fxFill fxLayout.xs="column">
+                        <div  class="part-name" fxFlex="60" fxFill>Participant Name: {{participantname}}</div>
+                        <div >Date: {{participanttestdate}}</div>
+                </div>
+                <div fxLayout="row" fxFill fxLayout.xs="column">
+                    <div class="part-name" fxFlex="60" fxFill>Batch: {{batch_1}}</div>
+                    <div>Duration: {{testduration}} HRS</div>
+                </div>
+                <div fxLayout="row" fxFill fxLayout.xs="column">
+                    <div class="part-name" fxFlex="60" fxFill>TestID: {{coursebatch}}</div>
+                    <div id="timer" class="timer"> {{exm_tke_hrs}}:{{exm_tke_mins}}:{{counter}}</div>
+                </div> 
+            </div>
+
+                <div id="quiz_ctr" fxLayoutAlign="center center"> 
+                    <form id="quiz" fxLayout="column" fxFill >
+                          <mat-label class="spc-label">{{index+1}}. {{questiondetails.question}}  </mat-label>
+                          <div class="question-img">
+                          <img fxFill src="{{image_URL}}{{questiondetails.image}}" alt="" />
+                          </div>
+                          <ng-container *ngIf = "questiondetails.questiontype == 'Multi-Select'">
+                            <ng-container *ngFor="let ans of myans; let i = index;">    
+                                 <mat-checkbox class="spc-checkbox" (change)="setanswer()" name="answer{{i}}" [(ngModel)]="myans[i].checked" > {{ans.option}}</mat-checkbox> 
+                            </ng-container>
+                          </ng-container>
+                          <ng-container *ngIf = "questiondetails.questiontype == 'Single-Select'">
+                            <ng-container *ngFor="let ans of myans; let i = index;">    
+                                 <mat-checkbox class="spc-checkbox" (change)="setradio(i);setanswer()" name="answer{{i}}" [(ngModel)]="myans[i].checked" > {{ans.option}}</mat-checkbox> 
+                            </ng-container>
+                          </ng-container>
+                  </form>
+                    <!-- <form id="quiz" fxLayout="column" fxFill fxHide>
+                      
+                      <mat-label class="spc-label">{{index+1}}. {{questiondetails.question}} {{questiondetails.questiontype}}</mat-label>
+                      <ng-container *ngFor="let ans of myans; let i = index;">    
+                        <mat-checkbox class="spc-checkbox" (change)="setanswer();setradio(i)" name="answer{{i}}"  [(ngModel)]="myans[i].checked" > {{ans.option}}</mat-checkbox> 
+                      </ng-container>
+                      </form> -->
+
+              </div> 
+            </div>
+        </mat-card-content>
+        <mat-card-actions *ngIf="isexamstarted" fxLayout.xs="column" fxLayout="row"  fxLayoutGap="10px" fxLayoutAlign="center center" fxFill>
+          <div class="testsub-btns" fxLayoutGap="10px">
+            <button class="exm1" mat-flat-button (click)="previousquestion()">Previous</button>
+            <button *ngIf="showSubmit" (click)="reviewquestion()" class="exm" mat-flat-button >Review </button>
+            <button *ngIf="showSubmit" (click)="confirmSubmitquestion()" class="exm" mat-flat-button >Submit </button>
+            <button class="exm" mat-flat-button (click)="nextquestion()">Next </button>
+          </div>
+        </mat-card-actions>
+    </mat-card>
+
+</div>
+</div>
+
+<ng-template #reviewDialog>
+  <div class="infoModal" fxLayout="column">
+    <div fxLayout="row" class="cls_btn" fxFill >
+      <div fxFlex="80" class="header" fxLayoutAlign="start center">
+        <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+    </div>
+      <div fxFlex="20" class="header" fxLayoutAlign="end center" fxFill>
+          <button mat-icon-button (click)="closemodal()">
+              <mat-icon>close</mat-icon>
+            </button> 
+      </div>
+     
+    </div>
+
+  <!-- <div fxFlex="100" class="header" fxLayoutAlign="start center">
+      <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+  </div> -->
+  <div fxFlex="100" class="ScrollStyle">
+    <div fxLayout="row" fxFlex fxFill>
+      <div fxFlex="10" fxFlex.xs="20" class="head-ques">
+        S.no
+      </div>
+      <div fxFlex="80" fxFlex.xs="60" class="head-ques">
+        Question details
+      </div>
+      <div fxFlex="10" fxFlex.xs="20" class="head-action">
+        Action
+      </div>
+    </div>
+              <ng-container *ngFor="let reviewDetail of reivewList; let i = index;"> 
+                  <div fxLayout="row" fxFlex fxFill class="testsub-popup" fxLayoutAlign="start left">   
+                    <div fxFlex="10" fxFlex.xs="20" class="testsub-ques">
+                      <h6 class="questionViewqn">{{i+1}}</h6>
+                    </div>
+                      <div fxFlex="80" fxFlex.xs="60" class="testsub-ques">
+                          <h6 class="questionViewqn">{{reviewDetail.questioname}}</h6>
+                          <h6 class="questionViewqn"> Answer<span class="questionViewans"> : {{reviewDetail.answer}}   </span>  </h6>      
+                      </div>
+                      <div fxFlex="10" fxFlex.xs="20" class="testsub-edit">             
+                          <!-- <mat-icon class="questionViewqn cursor-pointer"  (click)="reviewEdit(reviewDetail.index)" >edit</mat-icon> -->
+                          <button mat-mini-fab (click)="reviewEdit(reviewDetail.index)" >
+                            <mat-icon>edit</mat-icon>
+                          </button>  
+                        </div>
+                  </div>
+              </ng-container>
+  </div>
+  
+  <div fxFlex="100" fxLayoutAlign="center center">
+      <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+  </div>
+  </div>
+</ng-template>
+
+        <ng-template #confirmDialog>
+                <div class="diag_ctr" fxLayout="column">
+                  <div class="cls_btn" fxFill fxLayoutAlign="end center">
+                    <button mat-icon-button (click)="closemodal()">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </div>
+                  <div class="heading" fxFill fxLayoutAlign="center center">
+                    {{modalmsg}}
+                  </div>
+                  <div class="btn_div" fxLayout="row" fxFill fxLayoutAlign="center center" fxLayoutGap="10px">
+                    <button mat-button class="verify-btn yes" (click)="submitquestion()">YES</button>
+                    <button mat-button class="verify-btn no" (click)="closemodal()">NO</button>
+                  </div>
+                </div>
+        </ng-template>
+
+        <ng-template #viewDialog>
+            <div class="view_ctr" fxLayout="column">
+              <div fxLayout="row" class="cls_btn" fxFill >
+                <div fxFlex="80" fxFill fxLayoutAlign="start center" class="heading">Success</div>
+                <div fxFlex fxLayoutAlign="end center" fxFill>
+                    <button mat-icon-button (click)="closemymodal()">
+                        <mat-icon>close</mat-icon>
+                      </button> 
+                </div>
+               
+              </div>
+              <div fxLayout="column" fxLayoutGap="15px" class="heading" fxFill> 
+                <div fxLayout="row" fxLayoutAlign="center center" >
+                  <p>{{modalmsg}}  </p>
+                </div>
+
+                <div fxLayout="row" class="yourscore" fxLayoutAlign="center center">
+                    <!-- <h2 fxFlex="100"  *ngIf="showmark">Your Score: {{part_mark}} / {{total_mark}}</h2> -->
+                    <h2 fxFlex="100"  *ngIf="showmark">Your Score: {{part_mark}} / {{total_mark}}<p class="markP-style">({{mark}})</p></h2>
+                </div>
+                <div fxLayout="row" class="resultStatus" fxLayoutAlign="center center">
+                  <p fxFlex="100" *ngIf="ispass == 1">PASS</p>
+                  <p  fxFlex="100" *ngIf="ispass == 0">FAIL</p>
+                </div>
+                
+                
+              </div> 
+            </div>
+          </ng-template>
+    

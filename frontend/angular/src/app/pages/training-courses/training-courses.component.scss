@@ -1,0 +1,135 @@
+.trainingandcourse
+{
+padding:15px;
+}
+.training
+{
+  font-size:17px;
+ font-weight:400;
+// padding-left:45px;
+ margin: 50px;
+}
+.head
+{
+height:300px !important;
+}
+
+.head img
+{
+height:250px !important;
+}
+
+.aboutus-heading121 {
+position: absolute;
+top: 125px;
+left: 34%;
+right: 28%;
+color:white;
+font-size:50px;
+font-weight:600;
+letter-spacing: 2px;
+}
+// .paddleft
+// {
+// padding-left:30px;
+// }
+
+@media only screen and(max-width:600px){
+  .head
+  {
+  height:170px !important;
+  }
+  .head img
+  {
+  height:170px !important;
+  }
+  .aboutus-heading121 {
+  position: absolute;
+  top: 75px;
+  left: 34%;
+  right: 30%;
+  color:white;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing: 2px;
+  }
+}
+
+@media only screen and (min-width:600px) and (max-width:959px){
+  .aboutus-heading121 {
+  position: absolute;
+  top: 125px;
+  left: 34%;
+  right: 34%;
+  color:white;
+  font-size:26px;
+  font-weight:600;
+  letter-spacing: 2px;
+  }
+}
+
+@media only screen and (min-width:960px) and (max-width:1111px){
+  .aboutus-heading121 {
+    position: absolute;
+    top: 125px;
+    left: 34%;
+    right: 34%;
+    color:white;
+    font-size:30px;
+    font-weight:600;
+    letter-spacing: 2px;
+    }
+  
+}
+
+.mobileview-tc{
+  display:none;
+}
+
+@media only screen and(max-width:600px){
+  .mobileview-tc{
+    display:block;
+  }
+  .tac-table thead th{
+font-size:10px !important
+  }
+  .tac-table tbody tr td{
+font-size:9px !important
+  }
+  .reg-btn{
+    font-size:9px !important 
+  }
+}
+
+.tac-table{
+  width:100% !important;
+  overflow:scroll;
+  border-left: 1px solid #b6b6b6;  
+  border-top: 1px solid #b6b6b6;  
+  border-right: 1px solid #b6b6b6;  
+}
+.tac-table thead th{
+  border-bottom:1px solid #b6b6b6 !important;
+  border-right:1px solid #b6b6b6 !important;
+  font-size: 13px;
+  padding: 5px;
+  font-weight: 500;
+}
+.tac-table thead th:last-child{
+  border-right:0px solid #b6b6b6 !important;
+}
+.tac-table tbody tr td{
+  text-align:center !important;
+  border-bottom:1px solid #b6b6b6 !important;
+  border-right:1px solid #b6b6b6 !important;
+}
+.tac-table tbody tr td:last-child{
+  border-right:0px solid #b6b6b6 !important;
+}
+mat-expansion-panel{
+  overflow:auto !important;
+}
+.tac-div{
+  min-height:450px !important;
+  max-height:auto !important;
+}

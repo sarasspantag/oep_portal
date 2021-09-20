@@ -1,0 +1,230 @@
+<div id="cmm_ctr" fxLayoutAlign="center center">
+  <mat-card fxFlex="90">
+    <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+      <mat-card-title fxLayoutAlign="center center">Participant Profile Adding Page</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center"> 
+      <form id="course" fxLayout="column" fxFlex="90" fxFill [formGroup]="participantForm">
+        <span class="invalid-feedback">{{errormsg}}</span>
+        <div fxLayout="row" fxflex="60" class="uploadfile-btn" fxLayoutAlign="end">
+            <div  class="faculty-img">
+                <img fxFill src="{{image_URL}}{{profileview.imagepath}}" alt="header-img" /></div>
+          <app-uploadfile fxFlex="40"></app-uploadfile> 
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px" fxLayoutGap.sm="8px">
+         
+          <div class="facultyprof-input" fxFlex="33" fxFill>
+            <span>First Name</span>
+            <input formControlName="firstName" placeholder="Text" name="firstname" [(ngModel)]="profileview.firstname" required>
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+              <div *ngIf="f.firstName.errors.required">First name required</div>
+          </div>
+          </div>
+
+          <div class="facultyprof-input" fxFlex="33" fxFill>
+            <span>Middle Name</span>
+            <input formControlName="middleName" placeholder="Text" name="middlename" [(ngModel)]="profileview.middlename" >
+          </div>
+
+          <div class="facultyprof-input" fxFlex="33" fxFill>
+            <span>Last Name</span>
+            <input formControlName="lastName" placeholder="Text" name="lastname" [(ngModel)]="profileview.lastname" >
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px" fxLayoutGap.sm="8px">
+          <div class="facultyprof-slect" fxFlex="33" fxFill>
+            <span>gender</span>
+            <select name="gender" [(ngModel)]="profileview.gender" required formControlName="Gender">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <div *ngIf="submitted && f.Gender.errors" class="invalid-feedback">
+              <div *ngIf="f.Gender.errors.required">Gender required</div>
+          </div>
+          </div>
+
+          <div class="facultyprof-date" fxFlex="33" fxFill (click)="dobpicker.open()">
+            <span>DOB</span>
+            <input [matDatepicker]="dobpicker" placeholder="Date" (dateChange)="dobPicked($event)" formControlName="DOB" >
+            <!-- <mat-datepicker-toggle matSuffix [for]="dobpicker"></mat-datepicker-toggle> -->
+            <div *ngIf="submitted && f.DOB.errors" class="invalid-feedback">
+              <div *ngIf="f.DOB.errors.required">DOB required</div>
+          </div>
+            <mat-datepicker #dobpicker></mat-datepicker>
+          </div>
+          <div class="facultyprof-date" fxFlex="33" fxFill>
+            <span>Student ID</span>
+            <input placeholder="Text" name="employeeid" [(ngModel)]="profileview.employeeid" required formControlName="StudentId">
+            <div *ngIf="submitted && f.StudentId.errors" class="invalid-feedback">
+              <div *ngIf="f.StudentId.errors.required">Student id required</div>
+          </div>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px" fxLayoutGap.sm="8px">
+         
+          <div class="facultyprof-input" fxFlex="33" fxFill>
+            <span>Email</span>
+            <input placeholder="Email" name="email" [(ngModel)]="profileview.emailid" required formControlName="Email">
+            <div *ngIf="submitted && f.Email.errors" class="invalid-feedback">
+              <div *ngIf="f.Email.errors.required">Email required</div>
+              <div *ngIf="f.Email.errors.pattern">Email not valid</div>
+          </div>
+          </div>
+
+          <div class="facultyprof-input" fxFlex="33" fxFill>
+            <span>Course</span>
+            <input placeholder="Varchar" name="coursename" [(ngModel)]="profileview.coursename"  formControlName="CourseName">
+          </div>
+
+          <div class="facultyprof-input" fxFlex="33" fxFill>
+            <span>Contact No:</span>
+            <input placeholder="Number" name="contactno" [(ngModel)]="profileview.contactno" required formControlName="ContacctNo">
+            <div *ngIf="submitted && f.ContacctNo.errors" class="invalid-feedback">
+              <div *ngIf="f.ContacctNo.errors.required">Contact required</div>
+              <div *ngIf="f.ContacctNo.errors.pattern">Contact not valid</div>
+          </div>
+          </div>
+        </div>
+
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px">
+          <div fxLayout="column" fxFlex="32" fxLayoutGap="10px">
+
+            <div class="facultyprof-input" fxFlex fxFill>
+              <span>Department</span>
+              <input placeholder="Text" name="department" [(ngModel)]="profileview.department"  formControlName="Department">
+            </div>
+
+            <div class="facultyprof-slect" fxFlex fxFill>
+              <span>Applicable IC</span>
+              <!-- <input placeholder="Text" name="applicableic" [(ngModel)]="profileview.applicableic" required> -->
+              <select placeholer="Number" name="applicableic" [(ngModel)]="profileview.applicableic" formControlName="ApplicableIC">
+                <option *ngFor="let Applicable of ApplicableIc" [value]="Applicable.value">
+                  {{Applicable.viewValue}}
+                </option>
+              </select>
+              <div *ngIf="submitted && f.ApplicableIC.errors" class="invalid-feedback">
+                <div *ngIf="f.ApplicableIC.errors.required">ApplicableIC required</div>
+            </div>
+            </div>
+          </div>
+
+          <div class="facultyprof-input" fxFlex="67" fxFill>
+            <span>About Description</span>
+            <textarea class="facultyprofile-textarea" placeholder="Text"
+            name="description" [(ngModel)]="profileview.description"  formControlName="dESC"></textarea>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+
+ 
+    <!--education-->
+    <mat-card-content fxLayoutAlign="center center">
+      <!-- <button type="button" (click)="addNeweducationRow()" class="btn btn-primary">Add new Row</button><br> -->
+    <form [formGroup]="educationForm" fxLayout="column" fxFlex="90" fxFill>
+      <div fxLayout="row">
+        <p>Education:</p>
+      </div>
+      <div formArrayName="educationitemRows">
+          <div *ngFor="let educationitemrow of educationForm.controls.educationitemRows['controls']; let i=index"  [formGroupName]="i">
+      <div fxLayout="row" fxLayoutGap="20px">
+
+        <div class="facultyprof-input" fxFlex="33" fxFill>
+          <span>Educational Qualification</span>
+          <input formControlName="qualification"  placeholder="Text" name="qualification" required>
+        </div>
+
+        <div class="facultyprof-input" fxFlex="33" fxFill>
+          <span>Course</span>
+          <input formControlName="course" placeholder="Text" name="course"  required>
+        </div>
+
+        <div class="facultyprof-input" fxFlex="33" fxFill>
+          <span>Specification</span>
+          <input  formControlName="specification" placeholder="Text" name="specification" required>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutGap="20px">
+
+        <div class="facultyprof-input" fxFlex="33" fxFill>
+          <span>University</span>
+          <input formControlName="university" placeholder="Text" name="university" required>
+        </div>
+
+        <div class="facultyprof-date" fxFlex="33" fxFill (click)="edupicker.open()">
+          <span>From Date </span>
+          <input formControlName="educationstartdate"  [(ngModel)]="educationstartdate" type="hidden" >
+          <input [matDatepicker]="edupicker" placeholder="Date" (dateChange)="educationstartdatePicked($event)" formControlName="educationfieldstartdate">
+          <!-- <mat-datepicker-toggle matSuffix [for]="edupicker"></mat-datepicker-toggle> -->
+          <mat-datepicker #edupicker></mat-datepicker>
+        </div>
+
+        <div class="facultyprof-date" fxFlex="33" fxFill (click)="eduendpicker.open()">
+          <span>To Date</span>
+          <input formControlName="educationtodate"  [(ngModel)]="educationtodate" type="hidden" >
+          <input [matDatepicker]="eduendpicker" placeholder="Date" (dateChange)="educationtodatePicked($event)" formControlName="educationtofielddate"> 
+          <!-- <mat-datepicker-toggle matSuffix [for]="eduendpicker"></mat-datepicker-toggle> -->
+          <mat-datepicker #eduendpicker></mat-datepicker>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <div fxLayout="row" class="add-experience addplus-icon">
+    <mat-icon (click)="addNeweducationRow()">add
+      </mat-icon><p class="add-span">Add Previous Experience</p>
+    </div>
+    </form>
+  </mat-card-content>
+    <!--skills section-->
+    <mat-card-content fxLayoutAlign="center center">
+      <!-- <button type="button" (click)="addNewskillsRow()" class="btn btn-primary">Add new Row</button><br> -->
+    <form [formGroup]="skillsForm" fxLayout="column" fxFlex="90" fxFill>
+      <div fxLayout="row">
+        <p>Skills:</p>
+      </div>
+      <div formArrayName="skillsitemRows">
+          <div *ngFor="let skillsitemrow of skillsForm.controls.skillsitemRows['controls']; let i=index"  [formGroupName]="i">
+      <div fxLayout="row" fxLayoutGap="20px">
+       
+        <div class="facultyprof-input" fxFlex="33" fxFill>
+          <span>Your Skill</span>
+          <input formControlName="skill" placeholder="Text" name="skill" required>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  <!-- <div fxLayout="row">
+    <mat-icon addplus-icon (click)="addNewskillsRow()">add
+      </mat-icon><p class="add-span">Add Skills</p>
+    </div> -->
+    <div fxLayout="row" class="addplus-icon">
+      <mat-icon (click)="addNewskillsRow()">add
+        </mat-icon><p class="add-span">Add Skills</p>
+      </div>
+    </form>
+  </mat-card-content>
+    <!-- <img  src="{{image_URL}}{{imagepath}}">  -->
+    <mat-card-actions fxLayoutAlign="center center" fxFill>
+      <button class="exm" mat-flat-button (click)="updateprofile()">Save</button>
+
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<ng-template #alertDialog>
+  <div class="infoModal" fxLayout="column">
+    <div class="header" fxLayoutAlign="start center">
+      <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+    </div>
+    <div fxLayoutAlign="center center">
+      <p>{{modalmsg}}</p>
+    </div>
+    <div fxLayoutAlign="center center">
+      <button fxLayoutAlign="center center" mat-button class="verify-btn" (click)="closemodal()">Close</button>
+    </div>
+  </div>
+</ng-template>

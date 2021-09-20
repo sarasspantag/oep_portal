@@ -1,0 +1,224 @@
+<div fxLayout="row" >
+  <h3 class="breadCrumb-head">User Management Module</h3>
+</div>
+<div  id="user_ctr" fxLayoutAlign="center center"> 
+  <mat-card fxFlex="40" fxFlex.xs="90" fxFlex.sm="70"> 
+    <mat-card-header fxLayoutAlign="center center" fxFill>
+      <mat-card-title>Add User</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center">
+      <form id="add_user" fxLayout="column" fxFlex="65" fxFill>
+        <p class="error-msg">{{errorMsg}}</p> 
+        <mat-form-field>
+          <mat-label>User Name</mat-label>
+          <input matInput type="text" name="username" [(ngModel)]="username" required>
+        </mat-form-field>
+        <mat-form-field>  
+          <mat-label>E-Mail</mat-label>
+          <input matInput type="email" name="email" [(ngModel)]="email" required>
+        </mat-form-field>
+        <mat-form-field  *ngIf="checktest == false " >
+          <mat-label>Role</mat-label>
+          <mat-select [(ngModel)]="roleid" [ngModelOptions]="{standalone: true}" (blur)="changerole()" required>
+          <mat-option *ngFor="let role of roleList;let i = index" [value]="role.roleid" >
+            {{role.rolename}}
+          </mat-option>
+          </mat-select>
+        </mat-form-field> 
+        <mat-form-field  *ngIf="checktest == true " >
+          <mat-label>Role</mat-label>
+          <mat-select [(ngModel)]="roleid" [ngModelOptions]="{standalone: true}" (blur)="changerole()" required disabled>
+          <mat-option *ngFor="let role of roleList;let i = index" [value]="role.roleid" >
+            {{role.rolename}}
+          </mat-option>
+          </mat-select>
+        </mat-form-field>     
+        <mat-form-field>
+          <mat-label>PS Number</mat-label>
+          <input matInput type="number" name="par_allow" [(ngModel)]="totalparticipants" required>
+        </mat-form-field>
+        <mat-form-field *ngIf="hideappic" >
+          <mat-label>Applicable IC</mat-label>
+          <!-- <input matInput type="number" name="applicableic" [(ngModel)]="applicableic" required> -->
+          <mat-select name="applicableic" [(ngModel)]="applicableic">
+            <mat-option  *ngFor="let Applicable of ApplicableIc" [value]="Applicable.value">
+              {{Applicable.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>       
+      </form>
+    </mat-card-content>
+    <!-- <mat-card-actions fxFlex="60"  fxLayoutAlign="end center" fxFill>
+      <div fxLayoutAlign="end center">User Active Status
+        <mat-slide-toggle [(ngModel)]="checked"  [color]="color" (change)="changed()"></mat-slide-toggle>
+      </div>
+  </mat-card-actions> -->
+  <mat-card-actions fxFlex fxLayoutAlign="start center" fxFill>
+    <div fxLayoutAlign="start center" class="course-toggle">User Active Status
+      <mat-slide-toggle [(ngModel)]="checked"  [color]="color" (change)="changed()"></mat-slide-toggle>
+    </div>
+</mat-card-actions>
+    <mat-card-actions fxLayoutAlign="center center"  fxLayoutGap= "10px"  fxFill>
+      <button class="exm" mat-flat-button (click)="saveuser()" [disabled]="isLoading">
+        <i class="fa fa-loadingsave" [ngClass]="{'fa-spin fa-spinner': isLoading, '': !isLoading}"></i>
+        Save</button>
+      <button class="exm" mat-flat-button (click)="clearfields()">Clear</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+
+<div id="login_ctr" fxLayoutAlign="center center">
+  <mat-card fxFlex="80" fxFlex.xs="90">
+    <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+      <mat-card-title>User Module</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center">
+      
+      <div fxLayout="row" fxLayoutAlign="start center" class="content" fxFlex>
+        <div fxFlex = "100%" fxFill>
+
+            <table mat-table [dataSource]="dataSource" fxFill>
+               
+                <ng-container matColumnDef="profile" >
+                  <th mat-header-cell *matHeaderCellDef > # </th>
+                  <td mat-cell *matCellDef="let transaction"> {{transaction.index}} </td>
+               
+                </ng-container>
+              
+             
+                <ng-container matColumnDef="fromdate">
+                  <th class="tble-head" mat-header-cell *matHeaderCellDef> User name </th>
+                  <td mat-cell *matCellDef="let transaction"> <p class="tble-coursename">{{transaction.username}}</p> </td>
+                
+                </ng-container>
+                <ng-container matColumnDef="todate" fxHide.lt-md>
+                  <th fxHide.lt-md class="tble-head" mat-header-cell *matHeaderCellDef> User mail </th>
+                  <td fxHide.lt-md mat-cell *matCellDef="let transaction"><p class="tble-coursename"> {{transaction.email}}</p> </td>
+                
+                </ng-container>
+
+                <ng-container matColumnDef="role">
+                    <th mat-header-cell *matHeaderCellDef> Role </th>
+                    <td mat-cell *matCellDef="let transaction"> {{transaction.rolename}} </td>
+                  
+                  </ng-container>
+
+                <ng-container matColumnDef="status" fxHide.lt-md>
+                  <th mat-header-cell *matHeaderCellDef fxHide.lt-md> Status </th>
+                  <td mat-cell *matCellDef="let transaction" fxHide.lt-md> {{transaction.status}} </td>
+                
+                </ng-container>
+                
+              
+
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef> Action </th>
+                    <td class="minifab" mat-cell *matCellDef="let transaction" fxLayoutGap="10px" fxLayoutGap.xs="5px">
+                      <div fxLayoutAlign="center center" fxLayoutGap="10px">
+                        <button mat-mini-fab (click)="showview(transaction.userid)">
+                          <mat-icon>visibility</mat-icon>
+                        </button>
+                        <button mat-mini-fab (click)="getuserdetails(transaction.userid)">
+                          <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-mini-fab (click)="delete(transaction.userid)">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                  </td>              
+                </ng-container> 
+             
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+               
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" ></mat-paginator>
+        </div>
+      
+       
+      </div> 
+    </mat-card-content> 
+  </mat-card>
+    </div> 
+
+
+    <ng-template #alertDialog >
+        <div class="infoModal" fxLayout="column">
+          <div class="header" fxLayoutAlign="start center">
+            <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+          </div>
+          <div fxLayoutAlign="center center">
+            <p>{{modalmsg}}  </p>
+          </div>
+          <div fxLayoutAlign="center center">
+            <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+          </div>
+          </div>
+        </ng-template>
+
+    <ng-template #deleteDialog>
+      <div class="diag_ctr" fxLayout="column">
+        <div class="cls_btn" fxFill fxLayoutAlign="end center">
+          <button mat-icon-button (click)="closemodal()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <div class="heading" fxFill fxLayoutAlign="center center">
+          {{modalmsg}}
+        </div>
+        <div class="btn_div" fxLayout="row" fxFill fxLayoutAlign="center center" fxLayoutGap="10px">
+          <button mat-button class="verify-btn yes" (click)="saveuser()">YES</button>
+          <button mat-button class="verify-btn no" (click)="closemodal()">NO</button>
+        </div>
+      </div>
+    </ng-template>
+    
+    
+    
+    <ng-template #viewDialog>
+      <div class="view_ctr" fxLayout="column">
+        <div fxLayout="row" class="cls_btn" fxFill >
+          <div fxFlex="80" fxFill fxLayoutAlign="start center" class="heading">User Details</div>
+          <div fxFlex fxLayoutAlign="end center" fxFill>
+              <button mat-icon-button (click)="closemodal()">
+                  <mat-icon>close</mat-icon>
+                </button> 
+          </div>
+         
+        </div>
+        <div fxLayout="column" fxLayoutGap="15px" class="heading" fxFill>
+            <ng-container *ngFor="let course of courseViewData" >
+                <div fxLayout="row">
+                    <div fxFlex="30" fxFill>{{course.title}}</div>
+                    <div>{{course.value}}</div>
+                  </div>
+            </ng-container>
+          
+          <table class="viwetablepopup">
+              <thead>
+              <th>Course</th>
+              <th>Details</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>User name</td>
+                <td>{{username}}</td>
+              </tr>
+              <tr>
+                  <td>Email</td>
+                  <td>{{email}}</td>
+                </tr>
+                <tr>
+                    <td>Role</td>
+                    <td>{{rolename}}</td>
+                  </tr>
+                  <tr>
+                      <td>Selected course</td>
+                      <td>{{coursename}}</td>
+                    </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </ng-template>

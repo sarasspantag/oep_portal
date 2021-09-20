@@ -1,0 +1,60 @@
+<div fxFlex="82" class="loader-height" *ngIf="divshow">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" 
+  [template]="customLoadingTemplate"></ngx-loading>
+</div>
+
+<div fxLayout="column" *ngIf="!divshow">
+  <div class="head" fxFlex fxFill>
+    <img fxFill src="assets/img/gallery-headerimg.png" alt="" />
+    <div class="aboutus-heading121" fxLayoutAlign="center center">Gallery</div>
+  </div>
+  <div class="our-projects" fxLayout="column" fxLayoutAlign="space-around center">
+    <div class="gallery-heading">Our Projects</div>
+    <div class="ourpbut" fxFlex fxFill fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center"
+      fxLayoutGap="10px">
+      <button mat-button [style.color]="color['1']" (click)="getallimage()">All projects <mat-icon>arrow_right_alt</mat-icon></button>
+      <button mat-button [style.color]="color['2']" (click)="getimagecategory(2)">Buildings<mat-icon>arrow_right_alt</mat-icon></button>
+      <button mat-button [style.color]="color['3']" (click)="getimagecategory(3)">Bridges <mat-icon>arrow_right_alt</mat-icon></button>
+      <button mat-button [style.color]="color['4']" (click)="getimagecategory(4)">Roads<mat-icon>arrow_right_alt</mat-icon></button>    </div>
+  </div>
+  <div fxFlex class="gal-img" fxLayout="column" fxLayoutGap="5px" fxFill>
+
+    <div fxFlex fxLayout="row" fxLayout.lt-md="column" fxFill fxLayoutGap="5px">
+      <div fxLayout="column" fxFill fxLayoutGap="5px">
+        <div fxLayout="row wrap" fxFlex fxFill fxLayoutGap="5px">
+          <div fxFlex="15" fxFlex.xs="100" fxLayout="column" fxFill fxLayoutGap="5px"
+          *ngFor="let image of imagegalleryarray;let i = index" >
+            <div class="img5-1" >
+              <img fxFlex fxFill src="{{configurl}}{{image.imagepath}}" alt=""
+                (click)="showview(image.imagepath,image.imagedesc)">
+            </div>
+            
+          </div>
+        </div>    
+      </div>
+    </div>
+  </div>
+
+  
+
+  <ng-template #viewDialog>
+    <div class="cls_btn" fxFill fxLayoutAlign="end center">
+      <div class="cls_btn" fxFill fxLayoutAlign="end center">
+        <div fxLayout="row" class="cls_btn" fxFill >
+          <div fxFlex="80" fxFill fxLayoutAlign="start center" class="heading">View project details</div>
+          <div fxFlex fxLayoutAlign="end center" fxFill>
+              <button mat-icon-button (click)="closemodal()">
+                  <mat-icon>close</mat-icon>
+                </button> 
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="popup-image" fxLayout="column" >
+      <img src="{{showimage}}" alt="">
+      <div class="desc">
+        <p>{{desc}}</p>
+      </div>
+    </div>
+  </ng-template>
+</div>

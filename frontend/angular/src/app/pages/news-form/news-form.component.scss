@@ -1,0 +1,166 @@
+#login_ctr{
+    padding: 25px 0px ;
+    }
+    #login
+    {
+        padding-right:20px;
+    }
+    mat-card-header{ 
+    background-color: #262D61;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;         
+    }
+    mat-card-title{
+    margin-top: 16px;
+    }
+    mat-card{
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    font-family: 'Raleway';
+    }
+    mat-card-content{
+    padding-top: 25px;
+    }
+    mat-card-actions a{
+    text-decoration: none;
+    padding-top: 15px;
+    font-size: 12px;
+    color: #9C9C9C;
+    }
+    
+    //saras
+    .forgot-inputs mat-form-field {
+    width: 100%;
+    }
+    .verify-btn{
+    margin: 5px !important;
+    float: right !important;
+    //background: #eff0ff  !important;
+    }
+    /**/
+    .alumini-formheading
+    {
+    font-size: 20px;
+    letter-spacing: 1px;
+    padding-top: 10px;
+    }
+    .headline-input
+    {
+        border: 1px solid gainsboro;
+        background-color: #e5e5e570;
+        height: 35px;
+        // border-radius: 5px;
+        padding:0px 10px;
+    }
+    .posthead-label
+    {
+    color: #262D61;
+    letter-spacing: 0.5px;
+    }
+    .btn-arrowicon
+    {
+    padding-left:5px;
+    }
+    .post-btn
+    {
+    padding-top:15px;
+    }
+    ::placeholder {
+    color: #6c6c6c;
+    padding-left:0px;
+    font-family: 'Raleway'; 
+    letter-spacing: 0.5px;
+    }
+    .attach-imgicon
+    {
+    color: #2fdee742;
+    float: right;
+    transform: rotate(40deg);
+    }
+    .attachimg-btn
+    {
+    border: none;
+    background-color: #e5e5e570;
+    height: 35px;
+    border-radius: 5px;
+    width:100%;
+    }
+    .attachimg-btn span
+    {
+    float:left;
+    font-family: 'Raleway'; 
+    color: #6c6c6c;
+    }
+    .form-div
+    {
+    padding-bottom:20px;
+    }
+
+    //prabha
+
+    
+.minifab .mat-mini-fab{
+    background-color: white !important;
+    color: #939393 !important;
+}
+.minifab .material-icons{
+    font-size: 18px;
+}
+.minifab .mat-icon{
+    height: 18px;
+    width: 18px;
+}
+
+.minifab .mat-mini-fab:not([class*=mat-elevation-z]) {
+    //box-shadow: 0 1px 0px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12) !important;
+    box-shadow: 0 0.25px 0px -1px rgba(0, 0, 0, 0.2), 0 1px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 4px 0 rgba(0, 0, 0, 0.12) !important;
+}
+//ajith
+.head-name
+{
+    padding:20px;
+}
+.headline-name
+{
+    width:35%;
+    padding:20px !important;
+}
+// .course-active
+// {
+//     text-align:center;
+// }
+th
+{
+    font-size:14px !important;
+}
+
+.poup-headline
+{
+    font-weight:600;
+}
+.imagepopup
+{
+    margin:0 !important;
+}
+.popup-img
+{
+    width:100%;
+    max-width:100%;
+    height: 235px;
+    max-height:235px;
+}
+.content-hg
+{
+    max-height:113px;
+    overflow: hidden;
+    text-align:justify;
+}
+.tble-coursename
+{
+max-height:16px;
+overflow:hidden;
+}

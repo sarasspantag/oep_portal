@@ -1,0 +1,53 @@
+.mat-toolbar-row, .mat-toolbar-single-row {
+    height: 65px;
+}
+.mat-toolbar.mat-primary {
+    background: #262d61;
+    color: #fff;
+    display:none;
+}
+
+/*Media Quer for Mobile*/
+@media only screen and (max-width:959px)
+{
+    .mat-toolbar.mat-primary {
+        background: #262d61;
+        color: #fff;
+        display:block;
+    }
+    mat-toolbar{
+        background-color: #262D61;
+        color: white;
+        padding: 0 !important;
+    }
+}
+
+
+//ajith
+
+mat-toolbar{
+    background-color: #262D61;
+    color: white;
+    padding: 2%;
+}
+mat-toolbar .logo{
+    max-width:150px !important;
+}
+
+mat-toolbar a{
+    padding: 1%;
+    color: white;
+    text-decoration: none;
+}
+
+mat-toolbar a:hover{
+    color: yellow;
+}
+
+mat-toolbar .logo img{
+    max-width: 140px;
+    padding: 2px;
+}
+mat-toolbar .toolhead{
+    font-size: 12px;
+}

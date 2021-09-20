@@ -1,0 +1,143 @@
+<div fxFlex="82" class="loader-height" *ngIf="divshow">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" 
+  [template]="customLoadingTemplate"></ngx-loading>
+</div>
+<div fxLayout="row" class="breadcrumb-web" *ngIf="!divshow" >
+  <h3 class="breadCrumb-head-web cursor-pointer"  [routerLink]='["/alumini-blog"]'>Alumni Blog >> 
+  <span class="color-font">{{headline}}</span></h3>
+</div>
+
+<div class="aluminidetails-full" fxLayout="column" *ngIf="!divshow" id="login_ctr">
+  <div class="aluminidetails-fullsection" fxLayout="column">
+    <div class="aluminidetails-headandsub">
+        <h2 >{{headline}}</h2>
+      </div>
+     <div class="aluminidetails-img">
+      <img fxFill src="{{image_URL}}{{image}}" alt="" />
+    </div>
+    <div class="aluminidetails-para">
+        <p  [innerHTML]="content1">  
+    </div>
+  </div>
+  
+        <div #myDiv></div>
+
+      <div fxLayout="row" fxLayout.lt-sm="column" fxFill>
+        <div fxLayout="column" fxLayout.lt-sm="column" fxFlex="70" fxFlex.sm="60" class="commandsection-first" fxFill>
+          <div class="form-div">
+            <p class="posthead-label">COMMENTS:</p>
+            <input type="text" class="form-control comment-input" [(ngModel)]="comment" name="comment"
+              placeholder="Write your comment...">
+          </div>
+    
+          <div class="post-btn">
+            <button mat-button class="btn_style pull-right" (click)="saveblogcomments()">Post</button>
+          </div>
+          <div [ngClass]="{cmdsection: shouldShow, full: !shouldShow}">
+
+          <div class="commandsection-full" fxLayout="column" *ngFor="let allcomments of allcomments; let i=index">
+            <div fxLayout="row" class="sectioncommands">
+              <div fxFlex="10"  class="comments-image">
+                <img src="{{image_URL}}{{allcomments.imagepath}}" alt="" />
+              </div>
+              <div fxFlex="90"  class="comments-rightside">
+                <p>{{allcomments.username}}</p>
+              </div>
+            </div>
+    
+            <div fxLayout="row" class="sectioncommands-para">
+              <p>{{allcomments.comments}}</p>
+            </div>
+            <div fxLayout="row" class="sectioncommands">
+              <div fxFlex="10" fxFlex.xs="20">
+                <div fxLayout="row">
+                  <div fxFlex="45" fxFlex.xs="25">
+                    <mat-icon (click)="savebloglike(allcomments.commentid)">thumb_up_alt</mat-icon>
+                  </div>
+                  <div *ngFor="let likescount of likescount; let i=index">
+                    <div fxFlex="75" class="like" *ngIf="likescount.commentid == allcomments.commentid">
+                      <p>{{likescount.like}}</p>
+                    </div>
+    
+                  </div>
+                </div>
+              </div>
+              <div fxFlex="40" fxFlex.xs="50" class="replay">
+                <div fxLayout="row">
+                  <div fxFlex="11">
+                    <mat-icon (click)="showblogreply(i,allcomments.commentid)">reply</mat-icon>
+                  </div>
+                  <div fxFlex="89" class="like">
+                    <p (click)="showblogreply(i,allcomments.commentid)">Reply</p>
+                  </div>
+    
+                </div>
+    
+              </div>
+            </div>
+            <div fxLayout="row" class="sectioncommands" [attr.id]="'undoBtn'+i" *ngIf="showreply===i">
+              <div fxFlex="70" fxflex.xs="100">
+                <div class="form-div">
+                  <p class="posthead-label">REPLY:</p>
+                  <input type="text" class="form-control comment-input" [(ngModel)]="replycontents" name="replycontents"
+                    placeholder="Write your reply...">
+                </div>
+                <div class="post-btn">
+                  <button mat-button class="btn_style pull-right" (click)="saveblogreply(i,allcomments.commentid)">Post</button>
+                </div>
+              </div>
+            </div>
+            <div *ngFor="let reply of replylist; let i=index">
+              <div fxLayout="row" class="bottom-content" *ngIf="reply.commentid == allcomments.commentid">
+                <p class="replay-cmdname">{{reply.username}}:</p><span class="replay-cmd">{{reply.replycontent}} </span>
+              </div>
+            </div>
+    
+          </div>
+        </div>
+        <div *ngIf="shouldShow" class="viewmore-comments" fxLayout="column" fxFlex fxFill>
+          <a (click)="shouldShow = !shouldShow">View more comments</a>
+        </div>
+        </div>
+  
+  
+  
+      <div class="recentpost-section" fxFlex="30" fxFlex.sm="40" fxFlex.lt-sm="100" fxFill>
+      <div class="recentpost-sectionfull" fxFlex="100">
+        <h2 class="recentpost-heading">Recent Posts</h2>
+      </div>
+     
+    
+     
+      <div  *ngFor="let blog of recentpost">
+      <p (click)="getdetails(blog.blogid)" class="recentpost-date cursor-pointer">{{blog.date}} ({{blog.commentcount}}) comments</p>
+      <div fxLayout="row" class="recentpost-sectioncommands">
+        <div fxFlex="30" fxFlex.lt-sm="100" class="recentpost-image">
+            <img class="cursor-pointer" (click)="getdetails(blog.blogid)" src="{{image_URL}}{{blog.image}}" alt="" />
+        </div>
+        <div fxFlex="70" fxFlex.lt-sm="100" class="recentpost-rightside recentpost-para">
+            <p class="post-hg" [innerHTML]="blog.content"> </p>
+            <a  (click)="getdetails(blog.blogid)">Read More</a> 
+          
+        </div>
+      </div> 
+             <img class="recentpost-bottomimg" src="assets/img/recent-postline.PNG" alt="">
+          </div>
+    
+          </div>
+     
+    
+    
+    
+  </div>
+</div>
+
+<ng-template #alertDialog>
+  <div class="infoModal">
+    <div class="header">
+      <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+    </div>
+    <p>{{modalmsg}}</p>
+    <button mat-button class="verify-btn" (click)="closemodal()">close</button>
+  </div>
+</ng-template>

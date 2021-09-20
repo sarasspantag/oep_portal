@@ -1,0 +1,229 @@
+.head
+{
+    height:300px !important;
+}
+.head img
+{
+    height:250px !important;
+}
+.aboutus-heading121 {
+    position: absolute;
+    top: 125px;
+    left: 34%;
+    right: 34%;
+    color:white;
+    font-size:50px;
+    font-weight:600;
+    letter-spacing: 2px;
+    }
+.facultyprofileheading
+{
+text-align:center;
+color: #262d60;
+padding:30px 0px 50px 0px;
+}
+*{
+padding: 0px;
+margin: 0px;
+}
+.content-global-notreEquipe{
+display: flex;
+justify-content: space-around;
+padding-bottom: 70px;
+margin:0 auto;
+width:80%;
+}
+.content-people, .content-people img{
+width: 240px;
+overflow: hidden;
+margin: 20px 0px;
+}
+.content-people{
+height: 335px;
+margin: 0px 20px;
+border: 1px solid #e7e7e7;
+padding:0px;
+}
+.content-people img{
+height:240px;
+margin:0;
+width: 240px;
+}
+.content-text{
+background:rgb(38, 45, 96);
+padding: 20px;
+text-align: center;
+position: relative;
+top:30px;
+transition: 0.5s;
+}
+.arrow-contentup{
+background: white;
+color: #262d60;
+width: 50px;
+height: 50px;
+margin: 0 auto;
+border-radius: 50px;
+position: relative;
+top: -40px;
+display: flex;
+flex-direction: column;
+justify-content: center; 
+font-size: 30px;
+}
+.arrow-contentdown{
+background:#262d60;
+color: yellow;
+width: 50px;
+height: 50px;
+margin: 0 auto;
+border-radius: 50px;
+position: relative;
+top: -40px;
+display: flex;
+flex-direction: column;
+justify-content: center; 
+font-size: 30px;
+}
+.textes{
+position: relative;
+top: -45px;
+text-align:center;
+}
+.textes-up{
+position: relative;
+top: -45px;
+text-align:center;
+}
+.textes-up h3,p
+{
+color:rgb(38, 45, 96);
+padding-bottom:10px;
+padding-top:10px;
+}
+.textes h3,p
+{
+color:rgb(38, 45, 96);
+padding-bottom:5px;
+}
+.arrowuphead
+{
+color:white !important;
+font-size:18px;
+padding-top:10px;
+margin:0;
+}
+.textes a 
+{
+    text-decoration: none !important;
+}
+.arrowuppara
+{
+color:white !important;
+margin:0;
+cursor:pointer;
+}
+.textes h3, h4{
+//margin-bottom: 15px;
+cursor:pointer;
+}
+.textes .description{
+color: #727272;
+position: relative;
+top: 10px;
+}
+.arrowuppara
+{
+//color:white !important;
+//padding:20px 20px 0px 20px;
+//font-size:18px;
+border-top:1px solid yellow;
+}
+.content-people .down-content-text:hover .content-text{
+top: -150px;
+transition: 0.5s;
+}
+.up-arrow
+{
+padding-left:10px;
+font-size:30px;
+cursor:grab;
+}
+/*Responsive*/
+/*Media Query for mobile*/
+@media only screen and(max-width:600px){
+.head
+{
+    height:170px !important;
+}
+.head img
+{
+    height:170px !important;
+}
+.aboutus-heading121 {
+position: absolute;
+top: 75px;
+left: 34%;
+right: 34%;
+color:white;
+font-size:10px;
+font-weight:600;
+letter-spacing: 2px;
+}
+.content-global-notreEquipe{
+display: flex;
+justify-content: space-around;
+padding-bottom: 70px;
+margin:0 auto;
+width:auto;
+}
+.content-people {
+    margin: 0px 20px 20px 0px;
+}
+}
+/*Media Query for tablet*/
+@media only screen and(min-width:600px) and (max-width:959px){
+.aboutus-heading121 {
+position: absolute;
+top: 125px;
+left: 34%;
+right: 34%;
+color:white;
+font-size:18px;
+font-weight:600;
+letter-spacing: 2px;
+}
+.content-people {
+height: 290px;
+margin: 0px 20px 20px 0px;
+border: 1px solid #e7e7e7;
+padding: 0px;
+width: 100%;
+}
+.content-global-notreEquipe{
+display: flex;
+justify-content: space-around;
+padding-bottom: 70px;
+margin:0 auto;
+//width:auto;
+}  
+.content-people img {
+    height: 185px;
+    margin: 0;
+    width: 100%;
+}
+}
+
+@media only screen and(min-width:959px) and (max-width:1200px){
+    .aboutus-heading121{
+        position: absolute;
+        top: 125px;
+        left: 34%;
+        right: 34%;
+        color: white;
+        font-size: 40px;
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+}
+

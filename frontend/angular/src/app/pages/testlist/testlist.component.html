@@ -1,0 +1,74 @@
+<div id="tl_ctr" fxLayoutAlign="center center">
+  <mat-card fxFlex>
+    <mat-card-header  fxLayoutAlign="center center" fxFill fxLayout="column">
+      <mat-card-title >Test List</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center">
+        <div fxLayout="row" fxLayoutAlign="start center" class="content" fxFlex>
+          <div fxFlex="100%" fxFill>  
+            <table mat-table [dataSource]="transactions" fxFill>
+            
+              <ng-container matColumnDef="index">
+                <th mat-header-cell *matHeaderCellDef> # </th>
+                <td mat-cell *matCellDef="let transaction"> {{transaction.index}} </td>
+  
+              </ng-container>
+  
+             
+              <ng-container matColumnDef="testname">
+                <th mat-header-cell *matHeaderCellDef>Test Name</th>
+                <td mat-cell *matCellDef="let transaction"> {{transaction.testname}} </td>  
+              </ng-container>  
+              <ng-container matColumnDef="testdate">
+                <th mat-header-cell *matHeaderCellDef>Date</th>
+                <td mat-cell *matCellDef="let transaction"> {{transaction.testdate}} </td>  
+              </ng-container> 
+              <ng-container matColumnDef="starttime">
+                <th mat-header-cell *matHeaderCellDef>Start Time</th>
+                <td mat-cell *matCellDef="let transaction"> {{transaction.starttime}} </td>  
+              </ng-container> 
+
+              <ng-container matColumnDef="endtime">
+                <th mat-header-cell *matHeaderCellDef>End Time</th>
+                <td mat-cell *matCellDef="let transaction"> {{transaction.endtime}} </td>  
+              </ng-container> 
+
+              <ng-container  matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td  mat-cell *matCellDef="let transaction">                  
+                  <button class="test_start" (click)="next(transaction.questionmasterid)">{{transaction.teststarted}}</button>
+                </td>
+              </ng-container>
+  
+              
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  
+            </table>
+            <mat-paginator [length]="10" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]">
+            </mat-paginator>
+          </div>
+  
+  
+        </div>
+      </mat-card-content>
+  </mat-card>
+
+</div>
+
+
+
+
+<ng-template #alertDialog >
+    <div class="infoModal" fxLayout="column">
+      <div class="header" fxLayoutAlign="start center">
+        <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+      </div>
+      <div fxLayoutAlign="center center">
+        <p>{{modalmsg}}  {{starttime}}</p>
+      </div>
+      <div fxLayoutAlign="center center">
+        <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+      </div>
+      </div>
+    </ng-template>

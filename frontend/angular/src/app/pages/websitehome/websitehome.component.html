@@ -1,0 +1,672 @@
+<div fxFlex="82" class="loader-height" *ngIf="divshow">
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</div>
+
+<div id="whctr" fxLayout="column" *ngIf="!divshow" >
+
+  <!-- =============================================================================== -->
+  <!-- First Row (Slider , Search bar,Calender) Start-->
+  <!-- =============================================================================== -->
+  <div class="r1">
+    <!-----Slider Start----->
+    <div class="home-slider">
+      <owl-carousel-o [options]="testimonialOptions">
+        <ng-template carouselSlide>
+          <div class="myslide" fxLayoutAlign="center stretch">
+            <img src="assets/img/img5.png">
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="myslide" fxLayoutAlign="center stretch">
+            <img src="assets/img/img2.png">
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="myslide" fxLayoutAlign="center stretch">
+            <img src="assets/img/img5.png">
+          </div>
+        </ng-template>
+
+        <ng-template carouselSlide>
+          <div class="myslide" fxLayoutAlign="center stretch">
+            <img src="assets/img/img2.png">
+          </div>
+        </ng-template>
+        <ng-template carouselSlide>
+          <div class="myslide" fxLayoutAlign="center stretch">
+            <img src="assets/img/img5.png">
+          </div>
+        </ng-template>
+      </owl-carousel-o>
+    </div>
+
+    <!-----Slider End----->
+
+    <!-- ==========|||||||||======= -->
+
+    <!-----Search Start----->
+
+    <!-- <div class="searchwebhme">
+      <div fxFlex="1 1 auto" fxFill fxLayoutAlign="end center">
+        <form fxLayoutAlign="end center">
+          <input class="search" placeholder="Search here.." matInput mat-form-field [matAutocomplete]="auto"
+            type="search" [class.has-value]="searchValue">
+          <mat-autocomplete #auto="matAutocomplete" class="heroAutoComplete">
+          </mat-autocomplete>
+          <button mat-icon-button>
+            <mat-icon>close</mat-icon>
+          </button>
+        </form>
+      </div>
+    </div> -->
+    <!-----Search End----->
+    <!-- ==========|||||||||======= -->
+    <!-----Inner slider/calender Start----->
+    <!-- <div class="inslidecal" fxFlex fxLayout="row" fxLayoutAlign="center center"  fxLayoutGap="50px" fxLayoutGap.lt-md="20px"> -->
+    <!-- <div class="latstnews"  fxHide.xs fxFlex fxFill> -->
+    <!-- <div class="latstnews"  fxHide.xs>
+    <div fxLayout="column">
+      <div class="head" fxLayoutAlign="center center">Latest News</div>
+      <div class="ltstimg" fxLayoutGap="10px">
+          <img fxFlex fxLayoutAlign="start center" fxLayoutAlign.lt-md="center center" src="src/assets/img/newsandevents-img1.PNG">
+          <p>Lorem ipsum dolor sit amet,
+              consectetuer adipiscing elit,
+              sed diam nonummy nibh euisquam erat volutpat. Ut wisi enim ad minim
+              veniam, quis nostrud exerci tation ullamcorper
+              suscipit lobortis nisl ut aliquip ex ea commodo
+              consequat</p>
+      </div>
+    </div>  
+  </div> -->
+
+    <div fxHide.xs>
+      <div class="latestnews-slider">
+        <div class="wehohead  headcl" fxLayoutAlign="center center">Latest News</div>
+        <owl-carousel-o [options]="latestnewssliderOptions">
+          <ng-template carouselSlide *ngFor="let news of recentList;let i = index">
+            <div class="latestnewsslide-img">
+              <img src="{{image_URL}}{{news.image}}" alt="" />
+              <div class="latestnewscontent-hg" [innerHTML]="news.content"> </div>
+            </div>
+            <a class="latenewsslider-readmore" (click)="getdetails(news.blogid)">Read more....</a>
+          </ng-template>
+          <!-- <ng-template carouselSlide>
+            <div class="latestnewsslide-img">
+              <img src="src/assets/img/img5.png">
+              <p>Lorem ipsum dolor sit amet,
+                consectetuer adipiscing elit,
+                sed diam nonummy nibh euisquam erat volutpat. Ut wisi enim ad minim
+                veniam, quis nostrud exerci tation ullamcorper
+                suscipit lobortis nisl ut aliquip ex ea commodo
+                consequat</p>
+            </div>
+          </ng-template> -->
+
+        </owl-carousel-o>
+      </div>
+    </div>
+
+
+    <!-- <div fxHide.xs>
+        <div class="latestnews-slider">
+          <div class="wehohead  headcl" fxLayoutAlign="center center">Latest News</div>
+          <owl-carousel-o [options]="latestnewssliderOptions"  *ngFor="let news of recentList;let i = index">
+            <ng-template carouselSlide>
+              <div class="latestnewsslide-img">
+                  <img src="{{image_URL}}{{news.image}}" alt="images" />
+                <p>{{news.content}}</p>
+              </div>
+            </ng-template>
+  
+          </owl-carousel-o>
+        </div> 
+      </div>  -->
+
+
+
+
+
+    <!-- <div class="calen" fxFlex="50" fxFlex.lt-md="65" fxFlex.xs fxFill>       -->
+    <div class="calen" fxFlex="30" fxFlex.sm="40" fxFlex.xs="65" fxLayoutAlign.xs="center center" fxLayout="column"
+      fxLayoutAlign="end center">
+      <div class="wehohead headcl padhead">Events Calender</div>
+      <div class="ejs" fxFlex="25" fxFill fxLayoutAlign.xs="center center" fxLayoutAlign="end center">
+        <ejs-schedule (actionBegin)='onActionBegin($event)' [selectedDate]='selectedDate' [eventSettings]="eventData" (popupOpen)="onPopupOpen($event)">
+          <e-views>
+            <!-- <e-view option='Month' [showWeekNumber]="showWeekNumber" [readonly]="isReadOnly"></e-view> -->
+            <e-view option="MonthAgenda" [showWeekNumber]="showWeekNumber" [readonly]="isReadOnly" ></e-view>
+          </e-views>
+        </ejs-schedule>
+        <!-- <ejs-schedule [selectedDate]='selectedDate' [eventSettings]="eventData"
+                (popupOpen)="onPopupOpen($event)" height='300px' >    
+                </ejs-schedule>  -->
+      </div>
+
+    </div>
+
+    <!-- </div> -->
+
+    <!-----Inner slider/calender End----->
+
+  </div>
+  <!-- ------------------------------------------------------------------------------- -->
+  <!-- First Row (Slider , Search bar,Calender) End-->
+  <!-- ------------------------------------------------------------------------------- -->
+
+  <div class="div2" fxLayout="row" fxLayout.xs="column" fxFlex fxLayoutGap="50px" fxLayoutGap.sm="25px"
+    fxLayoutGap.xs="10px" fxLayoutAlign="start center">
+    <div class="abt-sisdiv1" fxFlexOrder="1" fxFlex="50" fxLayout="column" fxLayoutGap="30px" fxLayoutGap.sm="20px"
+      fxFill>
+      <!-- <div fxLayoutAlign.xs="center center"> -->
+      <!-- <div class="abt-sisdiv" fxLayout="column" fxLayoutGap="10px" fxLayoutAlign.xs="center center"> -->
+      <div class="abt-sisdiv" fxLayout="column" fxLayoutGap="10px" fxLayoutGap.xs="1px">
+        <div class="abt-sis wehohead">About SIS</div>
+        <div class="wwa">Who We Are?</div>
+      </div>
+      <!-- </div> -->
+      <div class="abt-sisnote" fxFlex fxFill>
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut
+        laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+        suscipit lobortis nisl ut aliquip ex ea
+      </div>
+      <!-- <div fxLayoutAlign.xs="center center"> -->
+      <!-- <div fxFlex fxFill fxLayoutAlign.xs="center center"> -->
+      <div fxFlex fxFill>
+        <button mat-button class="exm" [routerLink]='["/aboutus"]'>Read more 
+          </button>
+      </div>
+      <!-- </div> -->
+
+    </div>
+    <!-- <div class="abt-sisimg" fxFlexOrder="2" fxFlex fxLayoutAlign="center center" fxFill> -->
+    <div class="abt-sisimg" fxFlexOrder="2" fxFlex fxFill fxLayoutAlign="center center">
+      <img fxLayoutAlign="center center" src="assets/img/abt-img.PNG" alt="">
+    </div>
+  </div>
+
+  <div class="r3 ourfacdiv">
+    <div class="facudivmobile-full">
+      <div fxFlex fxFill class="our-facudivmobile" fxLayout="column">
+        <div class="ourfachead wehohead" fxFlex fxFill>Our Faculty</div>
+        <div class="wap" fxFlex fxFill>We Are Professional?</div>
+      </div>
+    </div>
+    <div fxFlex fxFill fxLayout="row" fxLayoutAlign="center center" fxLayoutGap.xs="1px" fxLayoutGap="10px" fxLayoutAlign.xs="end center" >
+
+      <div fxFlex fxFill class="facultyhead our-facudiv" fxLayout="column">
+        <div class="ourfachead wehohead" fxFlex fxFill>Our Faculty</div>
+        <div class="wap" fxFlex fxFill>We Are Professional?</div>
+      </div>
+
+
+      <div fxFlex="75" class="facultyimg ourfaculty-slider" fxFill>
+        <owl-carousel-o [options]="ourfacultysliderOptions" fxLayoutGap="10px">
+
+          <ng-template carouselSlide *ngFor="let news of FacultyList;let i = index">
+            <div fxLayout="column" fxLayoutGap="15px" fxLayoutAlign="center center" class="facultyslider-image">
+              <div >
+                <img class="cursor-pointer" (click)="navigatefacultydetails(news.facultyid)" src="{{image_URL}}{{news.image_url}}" alt="" />
+                <hr class="facultslider-hr">
+              </div>
+            </div>
+            <div fxLayout="column" class="home-facultyslider">
+              <h2 class="facname cursor-pointer" (click)="navigatefacultydetails(news.facultyid)">{{news.facultyname}}</h2>
+              <p class="facpo cursor-pointer" (click)="navigatefacultydetails(news.facultyid)">{{news.occupation}}</p>
+            </div>
+          </ng-template>
+
+        </owl-carousel-o>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="div4" fxLayout="column" fxLayoutGap="50px">
+    <div class="our-galdiv1" fxLayout="row">
+      <div fxLayoutAlign.xs="center center">
+        <div class="our-galdiv" fxLayout="column" fxLayoutGap="10px" fxLayoutGap.xs="1px"
+          fxLayoutAlign.xs="center center">
+          <div class="our-gal wehohead">Our Gallery</div>
+          <div class="wwd">What We Do?</div>
+        </div>
+      </div>
+      <div fxFlex fxFill fxLayoutAlign="end center">
+        <button mat-button class="exm" [routerLink]='["/gallery"]'>View gallery
+          </button>
+      </div>
+      <!-- <div fxFlex fxLayoutAlign="end center">View Gallery</div> -->
+
+    </div>
+    <!--     
+    <div class="div4-img-sec" fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="10px" 
+            fxLayoutGap.sm="20px" fxLayoutAlign="center center">
+      <div fxFlex fxFill fxLayout="row" fxLayoutGap="10px"  fxLayoutAlign.lt-md="end center">
+        <div fxFlex  fxFill *ngFor="let news of GalleryList;let i = index" fxLayoutAlign.lt-md="end center">
+          <img fxLayoutAlign="center center"  fxLayoutAlign.lt-md="end center" 
+          src="{{image_URL}}{{news.imagepath}}" alt="images" (click)="showview(news.imagepath)">
+        </div>
+      </div>    
+    </div> -->
+    <div class="gallery-imagesection" fxLayout="column">
+      <div fxLayout="row" fxLayoutGap="10px" fxLayout.lt-sm="row wrap">
+        <div class="gallery-image" *ngFor="let news of GalleryList;let i = index" fxFlex="20"
+        fxFlex.xs="46" fxflex-lt-xs="100" fxFill>
+          <img class="gal-img" fxLayoutAlign.lt-sm="center center" src="{{image_URL}}{{news.imagepath}}" alt=""
+          (click)="showview(news.imagepath,news.imagedesc)">
+          <div class="icons" (click)="showview(news.imagepath,news.imagedesc)">
+            <mat-icon>search</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="testimonial-fullsection" fxLayout="column">
+    <div fxLayout="row" fxLayout.lt-md="column">
+      <div fxFlex fxFill>
+        <h2 class="testimonial-heading">Testimonials</h2>
+        <div class="testimonial-slider">
+          <owl-carousel-o [options]="testimonialsliderOptions">
+            <ng-template carouselSlide>
+              <div class="padright" fxLayout="column">
+                <div class="ex1" fxLayoutAlign="start center">
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipi Ut wisi enim ad
+                    minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                    lobortis nisl ut aliquip ex ea commodo consequat ullamcorper
+                    suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                </div>
+                <div fxLayoutAlign="start center" class="arrow-down"></div>
+
+              </div>
+              <div class="testimonialslide-img" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center center">
+                <img src="assets/img/facultyimg1.JPG">
+                <div class="testiomialprofile-name">
+                  <h2>Mathew Hogg</h2>
+                  <p>Civil Engineer</p>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template carouselSlide>
+              <div class="padright" fxLayout="column">
+                <div class="ex1" fxLayoutAlign="start center">
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipi Ut wisi enim ad
+                    minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                    lobortis nisl ut aliquip ex ea commodo consequat ullamcorper
+                    suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                </div>
+                <div class="arrow-down" fxLayoutAlign="start center"></div>
+
+              </div>
+              <div class="testimonialslide-img" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center center">
+                <img src="assets/img/facultyimg2.JPG">
+                <div class="testiomialprofile-name">
+                  <h2>Mathew Hogg</h2>
+                  <p>Site Engineer</p>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template carouselSlide>
+              <div class="padright" fxLayout="column">
+                <div class="ex1" fxLayoutAlign="start center">
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipi Ut wisi enim ad
+                    minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                    lobortis nisl ut aliquip ex ea commodo consequat ullamcorper
+                    suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                </div>
+                <div class="arrow-down" fxLayoutAlign="start center"></div>
+
+              </div>
+              <div class="testimonialslide-img" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center center">
+                <img src="assets/img/img5.png">
+                <div class="testiomialprofile-name">
+                  <h2>Mathew Hogg</h2>
+                  <p>Civil Engineer</p>
+                </div>
+              </div>
+            </ng-template>
+
+            <ng-template carouselSlide>
+              <div class="padright" fxLayout="column">
+                <div class="ex1" fxLayoutAlign="start center">
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipi Ut wisi enim ad
+                    minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                    lobortis nisl ut aliquip ex ea commodo consequat ullamcorper
+                    suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                </div>
+                <div class="arrow-down" fxLayoutAlign="start center"></div>
+
+              </div>
+              <div class="testimonialslide-img" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center center">
+                <img src="assets/img/img2.png">
+                <div class="testiomialprofile-name">
+                  <h2>Mathew Hogg</h2>
+                  <p>Site Engineer</p>
+                </div>
+              </div>
+            </ng-template>
+            <ng-template carouselSlide>
+              <div class="padright" fxLayout="column">
+                <div class="ex1" fxLayoutAlign="start center">
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipi Ut wisi enim ad
+                    minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                    lobortis nisl ut aliquip ex ea commodo consequat ullamcorper
+                    suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                </div>
+                <div class="arrow-down" fxLayoutAlign="start center"></div>
+
+              </div>
+              <div class="testimonialslide-img" fxLayoutAlign="start center" fxLayoutAlign.lt-md="center center">
+                <img src="assets/img/img5.png">
+                <div class="testiomialprofile-name">
+                  <h2>Mathew Hogg</h2>
+                  <p>Site Engineer</p>
+                </div>
+              </div>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- <div class="r5" fxLayout="column" fxLayoutGap="10px">
+    <div fxFlex fxFill>Testimonials</div>
+    <div class="testimonial-slider" fxLayout="column">
+        <owl-carousel-o [options]="testimonialsliderOptions">
+            <ng-template fxLayout="column" carouselSlide>
+                <div fxLayout="column">
+                  <div class="ex1">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipi Ut wisi enim ad
+                      minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                      lobortis nisl ut aliquip ex ea commodo consequat ullamcorper
+                      suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                  </div>
+                  <div class="arrow-down"></div>
+    
+                </div>
+                <div class="testimonialslide-img" fxLayoutAlign="center center">
+                  <img src="src/assets/img/facultyimg1.jpg">
+                  <div class="testiomialprofile-name">
+                    <h2>Mathew Hogg</h2>
+                    <p>Civil Engineer</p>
+                  </div>
+                </div>
+              </ng-template>
+              <ng-template carouselSlide>
+                  <div fxLayout="column">
+                    <div class="ex1">
+                      <p>Lorem ipsum dolor sit amet, consectetuer adipi Ut wisi enim ad
+                        minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                        lobortis nisl ut aliquip ex ea commodo consequat ullamcorper
+                        suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                    </div>
+                    <div class="arrow-down"></div>
+      
+                  </div>
+                  <div class="testimonialslide-img" fxLayoutAlign="center center">
+                    <img src="src/assets/img/facultyimg2.jpg">
+                    <div class="testiomialprofile-name">
+                      <h2>Mathew Hogg</h2>
+                      <p>Site Engineer</p>
+                    </div>
+                  </div>
+                </ng-template>
+                <ng-template carouselSlide>
+                    <div fxLayout="column">
+                      <div class="ex1">
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipi Ut wisi enim ad
+                          minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                          lobortis nisl ut aliquip ex ea commodo consequat ullamcorper
+                          suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                      </div>
+                      <div class="arrow-down"></div>
+        
+                    </div>
+                    <div class="testimonialslide-img" fxLayoutAlign="center center">
+                      <img src="src/assets/img/img5.png">
+                      <div class="testiomialprofile-name">
+                        <h2>Mathew Hogg</h2>
+                        <p>Civil Engineer</p>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template carouselSlide>
+                      <div fxLayout="column">
+                        <div class="ex1">
+                          <p>Lorem ipsum dolor sit amet, consectetuer adipi Ut wisi enim ad
+                            minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                            lobortis nisl ut aliquip ex ea commodo consequat ullamcorper
+                            suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                        </div>
+                        <div class="arrow-down"></div>
+          
+                      </div>
+                      <div class="testimonialslide-img" fxLayoutAlign="center center">
+                        <img src="src/assets/img/img2.png">
+                        <div class="testiomialprofile-name">
+                          <h2>Mathew Hogg</h2>
+                          <p>Site Engineer</p>
+                        </div>
+                      </div>
+                    </ng-template>
+                    <ng-template carouselSlide>
+                        <div fxLayout="column">
+                          <div class="ex1">
+                            <p>Lorem ipsum dolor sit amet, consectetuer adipi Ut wisi enim ad
+                              minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                              lobortis nisl ut aliquip ex ea commodo consequat ullamcorper
+                              suscipit lobortis nisl ut aliquip ex ea commodo consequat. </p>
+                          </div>
+                          <div class="arrow-down"></div>
+            
+                        </div>
+                        <div class="testimonialslide-img" fxLayoutAlign="center center">
+                          <img src="src/assets/img/img5.png">
+                          <div class="testiomialprofile-name">
+                            <h2>Mathew Hogg</h2>
+                            <p>Site Engineer</p>
+                          </div>
+                        </div>
+                      </ng-template>
+          </owl-carousel-o>
+      
+     
+    </div>
+
+  </div> -->
+  <div class="r6">
+    <div style="width: 100%;position: relative;">
+      <iframe width="100%" height="440"
+        src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=tamilnadu+(Title)&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed"
+        frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+      </iframe>
+      <div
+        style="position: absolute;width: 80%;bottom: 0;left:0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;">
+        <small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by
+          <a href="http://www.googlemapsgenerator.com/fr/">Googlemapsgenerator.com/fr/</a> & <a
+            href="https://energiawiatru.eu/">groen gas nederland</a></small>
+      </div>
+    </div>
+    <div class="addre" fxLayout="column">
+      <div fxLayout="row">
+        <div class="address-full" fxFlex="100" fxFill>
+          <div fxLayout="row" fxLayout.lt-md="row" class="address-icon">
+            <div fxFlex="15" class="address-leftside">
+              <mat-icon class="email-icon"> email</mat-icon>
+            </div>
+            <div fxFlex="80" class="address-rightside">
+              <h4>Email:</h4>
+              <h5>info@lntecc.com</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div class="address-full" fxFlex="100" fxFill>
+          <div fxLayout="row" fxLayout.lt-md="row" class="address-icon">
+            <div fxFlex="15" class="address-leftside">
+              <mat-icon class="email-icon">stay_current_portrait</mat-icon>
+
+            </div>
+            <div fxFlex="80" class="address-rightside">
+              <h4>Tel:</h4>
+              <h5>+91-44-22526000,</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div class="address-full" fxFlex="100" fxFill>
+          <div fxLayout="row" fxLayout.lt-md="row" class="address-icon">
+            <div fxFlex="15" class="address-leftside">
+              <mat-icon class="email-icon">location_on</mat-icon>
+            </div>
+            <div fxFlex="80" class="address-rightside">
+              <h4>Address:</h4>
+              <h5>Mount Poonamallee Road, Manapakkam, P.B.No.979,
+                Chennai – 600 089.</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="addre"  fxLayout="column" fxLayoutGap="10px">
+          <div fxLayout="row">
+            <div fxFlex fxFill>
+                <mat-icon class="email-icon"> email</mat-icon>
+            </div>
+            <div fxLayout="column" fxFlex="80" fxFill>
+              <div>Email:</div>
+              <div>info@lntecc.com</div>
+            </div>
+          </div>
+          <div fxLayout="row">
+            <div>
+                <mat-icon class="email-icon">telephone</mat-icon>
+            </div>
+            <div fxLayout="column" fxFlex="80" fxFill>
+              <div>Tel:</div>
+              <div>+91-44-22526000,</div>
+            </div>
+          </div>
+        </div> -->
+
+  </div>
+  <ng-template #viewDialog>
+    <div class="cls_btn" fxFill fxLayoutAlign="end center">
+      <!-- <button class="popup-close" mat-icon-button (click)="closemodal()">
+        <mat-icon>close</mat-icon>
+      </button> -->
+      <div fxLayout="row" class="cls_btn" fxFill >
+        <div fxFlex="80" fxFill fxLayoutAlign="start center" class="heading">View project details</div>
+        <div fxFlex fxLayoutAlign="end center" fxFill>
+            <button mat-icon-button (click)="closemodal()">
+                <mat-icon>close</mat-icon>
+              </button> 
+        </div>
+      </div>
+    </div>
+    <div fxLayout="column" class="popup-image" fxLayoutGap="15px">
+      <img src="{{image_URL}}{{imagepath}}" alt="">
+      <div class="desc">
+        <p>{{desc}}</p>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #secondDialog >
+    <div class="dash-viewpopup">
+    <div fxLayout="row" fxFlex fxFill>
+      <div fxFlex="90" class="header">Course Details </div>
+      <div fxFlex="10" class="header"><mat-icon (click)=closemodal()>close</mat-icon> </div>
+    </div>   
+     <div fxLayout="column" fxFlex="98" fxFill class="course-details-space" fxLayoutGap="15px">
+      <table class="viwetablepopup">
+        <thead>
+        <th>Course</th>
+        <th>Details</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Course Name</td>
+          <td>{{scheduleevent}}</td>
+        </tr>
+        <!-- <tr>
+          <td>Description</td>
+          <td>{{description}}</td>
+        </tr> -->
+        <tr>
+          <td>Description</td>
+          <td><p  [className]="condition ? 'showFullDiv' : 'showParticalDiv'">{{description}}</p>
+          <p *ngIf="ContentButton" class="read-more"><a (click)="readmore()" class="button">Read More</a></p></td>
+        </tr>
+        <tr>
+          <td>Duration</td>
+          <td>{{duration}}</td>
+        </tr>
+        <tr>
+          <td>Time</td>
+          <td>{{time}}</td>
+        </tr>
+        <tr>
+          <td>No Of participants</td>
+          <td>{{paticipants}}</td>
+        </tr>
+        <tr>
+          <td>Available Seats</td>
+          <td>{{seatsavailable}}</td>
+        </tr>
+      
+      </tbody>
+      </table>
+     </div> 
+
+  <div  class="regstr-btn" fxLayoutAlign="center center">  
+    <button *ngIf="regshow" mat-button  class="mat-btn verify-btn"  (click)="courseregister()">Register</button>
+    <button  mat-button  class="mat-btn verify-btn"  (click)="closemodal()">Close</button>
+  </div>
+  
+</div>
+  </ng-template>
+  <ng-template #testscheduleDialog >
+    
+    <!-- <div class="header">Course Details </div> -->
+    <div fxLayout="row" fxFlex fxFill>
+      <div fxFlex="90" class="header">Test schedule Details </div>
+      <div fxFlex="10" class="header"><mat-icon (click)=closemodal()>close</mat-icon> </div>
+    </div>
+    <div class="view-popup">
+    <div fxLayout="column" fxFlex="98" fxFill class="course-details-space" fxLayoutGap="15px">
+      <table class="viwetablepopup">
+        <thead>
+        <th>Test schedule</th>
+        <th>Details</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Test name</td>
+          <td>{{scheduleevent}}</td>
+        </tr>
+      
+        <tr>
+          <td>Test date</td>
+          <td>{{testdate}}</td>
+        </tr>
+        <tr>
+          <td>Start Time</td>
+          <td>{{starttesttime}}</td>
+        </tr>
+        <tr>
+          <td>End Time</td>
+          <td>{{endtesttime}}</td>
+        </tr>
+      </tbody>
+      </table>
+     </div> 
+  
+</div>
+</ng-template>
+</div>

@@ -1,0 +1,83 @@
+<div fxFlex="82" class="loader-height" *ngIf="divshow">
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+     </div>
+<div fxLayout="column" *ngIf="!divshow"> 
+   <div class="head" fxFlex fxFill>
+      <img fxFill src="assets/img/newsandevents-headerimg.png" alt="" />
+      <div class="aboutus-heading121" fxLayoutAlign="center center">News & Events</div>
+   </div>
+   <!--latest news div start-->
+   <div class="newsandevents-fullsection" fxLayout="column">
+      <!--latest news & events section-->
+      <div fxLayout="row" fxLayout.lt-sm="column">
+         <div class="latest-full" fxFlex="60" fxflex-lt-sm="100" fxFill>
+            <div class="newsandeventsdiv">
+            <h2 class="latestnewsheading">Latest News & Events</h2>
+            <div fxFlex="100" fxflex-lt-sm="100" class="latestnewssection">
+               <!--latest news & events section-->    
+                            
+       <ng-container *ngFor="let news of data;let i = index">
+         <div fxLayout="row" fxLayout.lt-sm="column"  
+         class="latestesnews-section">
+             <div fxFlex="40" fxflex-lt-sm="100" fxFlex.lt-md="50" class="nwesandeventsimage">
+                   <img class="cursor-pointer" (click)="getdetails(news.blogid)" src="{{image_URL}}{{news.image}}" alt="" />
+             </div>
+                    
+             <div fxFlex="60" fxflex-lt-sm="100" fxFlex.lt-md="50" fxFill class="latestnews-rightside">
+                <p class="cursor-pointer" (click)="getdetails(news.blogid)" class="eventdate">{{news.date}}</p>
+                <div class="content">
+                     <h4 class="cursor-pointer" (click)="getdetails(news.blogid)">{{news.headline}}</h4>
+                      <p class="content-hg" [innerHTML]="news.content">  </p>
+                        <button class="exm" mat-flat-button (click)="getdetails(news.blogid)">Read more </button>
+                     </div>
+                     </div>
+          </div>
+   </ng-container>
+</div>
+
+
+                 <mat-paginator [length]="data.length" [pageSize]="size" [pageIndex]="page"
+                  [pageSizeOptions]="[7]" (page)="getData($event)">
+                 </mat-paginator>
+            </div>
+         </div>
+
+
+
+         <!--archive section-->
+         <div class="archive-section" fxFlex="30" fxflex-lt-sm="100" fxFill fxFlex.lt-md="40" >
+            <div class="archive-sectionfull" fxFlex="100">
+
+               <div class="archive-datesection">
+                  <h2>Archive</h2>
+                  <div *ngFor="let news of recentList;let i = index">
+                  <p  (click)="get(news.monthvalue,news.yearvalue)"><span>>></span>{{news.monthname}}</p>
+                  <br> </div>              
+                  <img src="assets/img/recent-postline.PNG" alt="" />
+               </div>
+
+ 
+               <h3 class="lastmonthheading">Last Month Posts</h3>
+
+
+               <div fxLayout="row" class="lastmonthpost-section"  *ngFor="let news of List;let i = index">
+                  <div fxFlex="25" fxflex-lt-sm="100" fxFlex.lt-md="30" class="lastmonthpost-image">
+                        <img class="cursor-pointer" (click)="getdetails(news.blogid)" src="{{image_URL}}{{news.image}}" alt="" />
+                  </div>
+                  <div fxFlex="75" fxflex-lt-sm="100" fxFlex.lt-md="70" class="lastmonthpost-rightside recentpost-para">
+                        <p class="post-hg" [innerHTML]="news.content">  </p>
+                        <a (click)="getdetails(news.blogid)">Read More</a>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+
+
+
+
+
+
+      </div>
+   </div>
+</div>

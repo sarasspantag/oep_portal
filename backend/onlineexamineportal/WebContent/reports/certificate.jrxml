@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="certi2" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="c70f6cea-f8d3-4e4e-b9df-889e617f3327">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="logo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="rand_no" class="java.lang.String"/>
+	<parameter name="president_sign" class="java.lang.String"/>
+	<parameter name="organiser_sign" class="java.lang.String"/>
+	<parameter name="comp_logo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT a.`part_id`,`username`,CONCAT(`course_name`,' ',`schedule_name`)batch,
+CONCAT(FORMAT((`total_mark`/`full_mark`)*100,2),' %')percentage
+FROM `part_certificate_dtls`a JOIN `test_participants`b ON a.`part_id`=b.`part_id`
+JOIN `participants`c ON c.`participant_id` = a.`part_id`
+JOIN `test_schedule` d ON d.`id`=a.`ts_id` AND d.`id`=b.`ts_id` JOIN `course_scheduling` e
+ON e.`cs_id` =  d.`batch` JOIN `course_master` f ON f.`course_id` = e.`program_name` WHERE a.`random_no` =  $P{rand_no}]]>
+	</queryString>
+	<field name="part_id" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="username" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="batch" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="percentage" class="java.lang.String"/>
+	<background>
+		<band height="555" splitType="Stretch">
+			<image>
+				<reportElement x="-28" y="-21" width="849" height="576" forecolor="#99FF00" uuid="1081c6c2-9748-46da-bc79-e057d46af318"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="273" y="0" width="496" height="136" uuid="88571646-266d-4b08-9ad8-380e2649efc7"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Arial" size="48" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Course Completed Certificate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="511" y="136" width="258" height="20" forecolor="#CCCCFF" uuid="7e85ebb0-52cf-495b-9b7e-57748bdb0645"/>
+				<textElement textAlignment="Right" verticalAlignment="Bottom">
+					<font fontName="Courier New"/>
+				</textElement>
+				<text><![CDATA[This certificate is proudly presented to]]></text>
+			</staticText>
+			<line>
+				<reportElement x="196" y="215" width="573" height="1" forecolor="#99FF00" uuid="ccf4af8d-d2a1-4a55-a237-5e2a1043b124"/>
+			</line>
+			<line>
+				<reportElement x="320" y="301" width="118" height="1" forecolor="#99FF00" uuid="a7905095-bd48-4436-a55a-44d768f01709"/>
+			</line>
+			<line>
+				<reportElement x="551" y="300" width="218" height="1" forecolor="#99FF00" uuid="2a0d79a0-e9a3-40a9-9f08-31f1010fcce0"/>
+			</line>
+			<staticText>
+				<reportElement x="196" y="281" width="124" height="20" uuid="0d77a639-b2f6-4264-9a15-c9c33e135d61"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Courier New" size="16"/>
+				</textElement>
+				<text><![CDATA[Studied course in]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="438" y="281" width="103" height="20" uuid="546e0c6c-0d7f-41a6-a980-6b7cc2fdf73a"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Courier New" size="16"/>
+				</textElement>
+				<text><![CDATA[was scored]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="378" y="182" width="391" height="34" uuid="aad15409-8800-42b2-b050-65cf461b3ed5"/>
+				<textElement>
+					<font fontName="Arial" size="20" pdfFontName="Courier" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="331" y="273" width="93" height="27" uuid="97ff33ca-950e-4a05-b614-6e70189fefca"/>
+				<textElement>
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{batch}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="286" y="222" width="483" height="20" forecolor="#CCCCFF" uuid="029bbc40-b1d2-43f1-9418-c8de48283a89"/>
+				<textElement>
+					<font fontName="Courier New" size="12"/>
+				</textElement>
+				<text><![CDATA[LOREM IPSUM DOLOR SIT AMET, CONSECTETUR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="196" y="315" width="573" height="77" forecolor="#CCCCFF" uuid="9e2e3a01-fbff-4ccc-b72b-01702e4f9db3"/>
+				<textElement>
+					<font fontName="Courier New" size="12"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="509" width="100" height="20" uuid="f6e3a5ba-7cef-4bf3-8a46-8bfffb3ef2a0"/>
+				<textElement>
+					<font fontName="Arial" size="12" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Aravind]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="593" y="509" width="100" height="20" uuid="f25b3400-c898-4770-b38e-a7c718817e40"/>
+				<textElement>
+					<font fontName="Arial" size="12" isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[Amir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="529" width="100" height="20" uuid="d5975fe6-3bec-4e78-8744-f076bf3bb571"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[President]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="593" y="529" width="100" height="20" uuid="54fb42fb-ce81-4b5e-9c98-a3e049c737b0"/>
+				<textElement>
+					<font fontName="Arial"/>
+				</textElement>
+				<text><![CDATA[Event Organiser]]></text>
+			</staticText>
+			<line>
+				<reportElement x="221" y="495" width="157" height="1" uuid="545e4c21-bca9-44ed-905f-32a84dbe8588"/>
+			</line>
+			<line>
+				<reportElement x="551" y="496" width="169" height="1" uuid="2c88600b-1d1b-44d5-b243-27142c236595"/>
+			</line>
+			<textField>
+				<reportElement x="593" y="273" width="119" height="27" uuid="00a461f4-d856-4c6d-943b-eedf26a35704"/>
+				<textElement>
+					<font fontName="Arial" size="18"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{percentage}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="258" y="433" width="100" height="50" uuid="70e8f0c8-8ab5-4cb3-9323-9171f9855660"/>
+				<imageExpression><![CDATA[$P{president_sign}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="573" y="433" width="107" height="50" uuid="60959f75-f902-41d3-a5a8-d67f7f8f766a"/>
+				<imageExpression><![CDATA[$P{organiser_sign}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="10" y="15" width="93" height="71" uuid="493b24dd-5771-45c5-a91e-b39da0e3b941"/>
+				<imageExpression><![CDATA[$P{comp_logo}]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

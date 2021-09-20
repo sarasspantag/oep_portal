@@ -1,0 +1,59 @@
+
+  <div class="homectr ctrbrk" fxFlex fxFill fxLayout="row" fxLayout.xs="column"
+  fxLayoutGap="20px" fxLayoutGap.xs="0px">
+     <div class="dash"  fxFlex="80" fxFlex.sm="40" fxLayoutAlign="start center">Dashboard</div>
+     <div fxFlex="10" fxFlex.sm="20" class="changepass"  fxLayoutAlign="end center">
+         <button mat-icon-button></button>
+         <a class="cursor-pointer"  (click)="openmodaldialog()" matDialogClose>Change Password</a>
+     </div>
+     <div fxFlex="10" fxFlex.sm="20" fxLayoutAlign="end center">
+         <button mat-icon-button><mat-icon>notifications</mat-icon></button>
+         <a class="cursor-pointer" (click)="logout()">Logout</a>
+     </div>
+     <div>
+       
+     </div>
+ </div>
+
+<ng-template #secondDialog >
+
+   <div class="infoModal">
+       <div class="header" fxLayoutAlign="center center">
+     <h4>Change Password</h4>
+   </div>
+  
+ <div  fxLayout="column" class="content">
+     <span class="error-msg">{{errorMsg}}</span>
+     <mat-form-field>
+         <input matInput   type="password" placeholder="Enter old password" id="password" [(ngModel)]="password"  >
+       </mat-form-field>
+ 
+       <mat-form-field>
+           <input matInput placeholder="Enter new password" type="password" id="newpassword" [(ngModel)]="newpassword"  >
+         </mat-form-field>
+ 
+       <mat-form-field>
+         <input matInput  type="password" placeholder="Confirm new password" id="confirmpassword" [(ngModel)]="confirmpassword"  >
+       </mat-form-field>
+ </div>
+ <button mat-button  class="verify-btn" (click)="savechangepassword()">Save</button>
+ <button mat-button  class="verify-btn" (click)="closemodal()">close</button>
+</div>    
+
+ 
+</ng-template>
+
+
+<ng-template #alertDialog >
+   <div class="infoModal" fxLayout="column">
+     <div class="header" fxLayoutAlign="start center">
+       <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+     </div>
+     <div fxLayoutAlign="center center">
+       <p>{{modalmsg}}</p>
+     </div>
+     <div fxLayoutAlign="center center">
+       <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+     </div>
+     </div>
+   </ng-template>

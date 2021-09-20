@@ -1,0 +1,131 @@
+<div fxFlex="82" class="loader-height" *ngIf="divshow">
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" 
+      [template]="customLoadingTemplate"></ngx-loading>
+    </div>
+<div fxLayout="row" *ngIf="!divshow">
+      <h3 class="breadCrumb-head"><a [routerLink]='["/faculty-list"]'>Faculty Profile</a> >>>  {{firstname}}  </h3>
+</div>
+<div class="facultyprofileabout" fxLayout="column">
+      <div fxLayout="row" fxLayout.lt-sm="column">
+            <div fxFlex="20" fxFlex.lt-sm="100" fxFill>
+                  <div class="facultyabout-image">
+                        <img src="{{configurl}}{{image}}" alt="">
+                  </div>
+            </div>
+            <div fxFlex="80" fxFlex.lt-sm="100" class="facultyprofile-details">
+                  <h3><span><i class="fa fa-user" aria-hidden="true"></i></span>ABOUT</h3>
+                  <div fxLayout="row" class="facultyabout">
+                        <div fxFlex="100" fxLayout.lt-sm="column">
+                              <div fxFlex="40" fxFlex.lt-sm="100" fxFill>
+                                    <ul>
+                                          <li><span>First name:</span>&nbsp;&nbsp;&nbsp;{{firstname}}</li>
+                                          <li><span>Last name:</span>&nbsp; &nbsp; &nbsp;&nbsp;{{lastname}}</li>
+                                          <li><span>Profession:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{profession}}</li>
+                                          <li><span>Employee ID:</span>&nbsp;&nbsp;{{employeeid}}</li>
+                                    </ul>
+                              </div>
+                              <div fxFlex="60" fxFlex.lt-sm="100">
+                                    <ul>
+                                          <li><span>Birthday:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{dob}}</li>
+                                          <li><span>Department:</span>&nbsp;&nbsp;Construction</li>
+                                          <li><span>Email:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{email}}
+                                          </li>
+                                          <li><span>Phone:</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{contactno}}
+                                          </li>
+                                    </ul>
+                              </div>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</div>
+<!--experience and education-->
+<div class="facultyprofileabout-downcontent" fxLayout="column">
+      <div fxLayout="row" fxLayout.lt-sm="column">
+            <div fxFlex="100" class="facultyprofileabout-contentpara" fxFill>
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt
+                        ut laoreet dolore magna
+                        aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper
+                        suscipit lobortis nisl ut aliquip ex ea
+                        commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+                        consequat, vel illum dolore eu
+                        feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent.
+                  </p>
+                  <img src="assets/img/line-1.PNG" alt="">
+            </div>
+      </div>
+      <div fxLayout="row" class="faculty-experience" fxLayout.lt-sm="column">
+            <div fxFlex="50" class="exp-steper" fxFill>
+                  <h2><i class="fa fa-building-o"></i>EXPERIENCE</h2>
+                  <mat-vertical-stepper [linear]="isLinear" #stepper>
+                        <mat-step [stepControl]="firstFormGroup"  *ngFor="let experience of experiencelist">
+                              <form [formGroup]="firstFormGroup">
+                                    <ng-template matStepLabel>{{experience.designation}}. {{experience.period}}</ng-template>
+                              </form>
+                        </mat-step>
+                       
+                  </mat-vertical-stepper>
+            </div>
+            <div class="exp-steper" fxFlex="50" fxFill>
+                  <h2><i class="fa fa-trophy" aria-hidden="true"></i>EDUCATION</h2>
+                  <mat-vertical-stepper [linear]="isLinear" #stepper>
+                        <mat-step [stepControl]="firstFormGroup" *ngFor="let education of educationlist">
+                              <form [formGroup]="firstFormGroup">
+                                    <ng-template matStepLabel>{{education.course}}.{{education.period}}</ng-template>
+                              </form>
+                        </mat-step>
+                      
+                  </mat-vertical-stepper>
+            </div>
+      </div>
+      <img class="line-img" src="assets/img/line-1.PNG" alt="">
+      <!--activity and skills-->
+      <div fxLayout="row" fxLayout.lt-sm="column">
+            <div fxFlex="50" class="faculty-activityskills" fxFill>
+                  <h2><i class="fa fa-globe" aria-hidden="true"></i>ACTIVITY</h2>
+                  <ul>
+                        <li>Someone has give you a surprise<p> ~ 12 Minutes Ago</p>
+                        </li>
+                        <li>Change your user profile details<p> ~ 1 Hour 20 Minutes Ago</p>
+                        </li>
+                        <li>Your setting is updated <p> ~ 12 Days Ago </p>
+                        </li>
+                        <li>Added new article <p>~ 19 Days Ago</p>
+                        </li>
+                        <li>Change Profile Pic <p>~ 20 Days Ago</p>
+                        </li>
+                        <li>Your setting is updated <p>~ 12 Days Ago</p>
+                        </li>
+                  </ul>
+                  <div class="faculty-button">
+                        <button class="fp-btn">See All Activities >> </button>
+                  </div>
+            </div>
+            <div fxFlex="50" fxFill>
+                  <div class="faculty-progress">
+                        <h2><i class="fa fa-flask"></i>SKILLS</h2>
+                        <div class="progress-bar progressbar-1">
+                              <mat-progress-bar class="pb1" mode="determinate" value="80"></mat-progress-bar>
+                        </div>
+                        <div class="progress-bar progressbar-2">
+                              <mat-progress-bar class="pb1" mode="determinate" value="30"></mat-progress-bar>
+                        </div>
+                        <div class="progress-bar progressbar-3">
+                              <mat-progress-bar class="pb1" mode="determinate" value="50"></mat-progress-bar>
+                        </div>
+                        <div class="progress-bar progressbar-4">
+                              <mat-progress-bar class="pb1" mode="determinate" value="70"></mat-progress-bar>
+                        </div>
+                        <div class="progress-bar progressbar-5">
+                              <mat-progress-bar class="pb1" mode="determinate" value="20"></mat-progress-bar>
+                        </div>
+                        <div class="progress-bar progressbar-6">
+                              <mat-progress-bar class="pb1" mode="determinate" value="60"></mat-progress-bar>
+                        </div>
+                        <div class="progress-bar progressbar-7">
+                              <mat-progress-bar class="pb1" mode="determinate" value="40"></mat-progress-bar>
+                        </div>
+                  </div>
+            </div>
+      </div>
+</div>

@@ -1,0 +1,119 @@
+#cmm_ctr{
+    padding: 25px 0px;
+}
+mat-card-header{
+    background-color: #262D61;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;    
+}
+mat-card-title{
+    margin-top: 16px;
+}
+.faculty-img{
+//     height:180px;
+// width:30%;
+height: 160px;
+width: 160px;
+padding: 0px 20px;
+}
+mat-card{
+    border-radius: 20px;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+.facultyprofile-textarea
+{
+    height:82px;
+}
+.add-span
+{
+   margin:0;
+   padding-top:5px;
+   padding-left:10px;
+}
+.add-experience
+{
+    border-bottom:1px solid #bebebe;
+    padding-bottom: 10px;
+}
+.exp-top
+{
+    border-top:1px solid #bebebe;  
+}
+.uploadfile-btn
+{
+padding:30px 30px 30px 0px;
+}
+mat-icon
+{
+    cursor: pointer;
+}
+.skills-fullsection , .education-fullsection , .experience-fullsection
+{
+    padding-bottom:20px;
+}
+
+
+
+.facultyprof-input input
+{
+border:none;
+background-color: #dedede61;
+width:97%;
+height: 35px;
+border-radius:5px;
+padding-left: 10px;
+font-size:15px;
+margin: 10px 0px 20px 0px;
+}
+.facultyprof-input span{
+    font-size:12px !important;
+    color: #262d61 !important;
+}
+.facultyprof-slect select{
+    border:none;
+    background-color: #dedede61;
+    width:100%;
+    height: 35px !important;
+    border-radius:5px;
+    padding-left: 10px;
+    font-size:15px;
+    margin: 10px 0px 20px 0px;
+}
+.facultyprof-slect span{
+    font-size:12px !important;
+    color: #262d61 !important;
+}
+
+.facultyprof-date input{
+    border:none;
+    background-color: #dedede61;
+    width:97%;
+    height: 35px !important;
+    border-radius:5px;
+    padding-left: 10px;
+    font-size:15px;
+    margin: 10px 0px 20px 0px;
+}
+.facultyprof-date span{
+    font-size:12px !important;
+    color: #262d61 !important;
+}
+
+.facultyprof-input textarea{
+    border:none;
+    background-color: #dedede61;
+    width: 98%;
+    height: 114px !important;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    margin: 10px 0px 20px 0px;
+    padding-top: 10px;
+}
+.addplus-icon mat-icon{
+border: 1px solid grey;
+    color: grey;
+}

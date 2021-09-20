@@ -1,0 +1,235 @@
+.facultyabout-image img
+{
+height:280px ; 
+width: 280px;
+}
+.facultyabout h2
+{
+font-size:24px;
+padding-top:20px;
+padding-bottom:20px;
+padding-left: 50px;
+}
+.facultyprofileabout
+{
+margin-top:20px !important;
+margin-bottom:20px !important;
+margin:0 auto;
+width:90%;
+border:1px dotted grey;
+}
+.facultyprofile-details .fa-user
+{
+padding-right:20px;
+}
+.facultyabout ul li
+{
+list-style-type: none;
+padding-bottom:20px;
+font-size:18px;
+word-wrap: break-word;
+}
+.facultyabout
+{
+padding-left:130px;
+}
+.facultyicons
+{
+float:right;
+padding:0px 10px 10px 0px;
+}
+.facultyicons i
+{
+padding-right: 20px;
+color: #262d60;
+font-size: 23px;
+}
+.facultyprofile-details h3
+{
+padding-left:165px;
+}
+/**/
+.facultyprofileabout-downcontent
+{
+margin-top:20px !important;
+margin-bottom:20px !important;
+margin:0 auto;
+width:90%;   
+border:1px solid  #262d60;
+}
+.facultyprofileabout-contentpara p
+{
+color: black !important;
+text-align: justify;
+padding:35px 35px 20px 35px;
+font-weight:500 !important;
+line-height: 1.7;
+margin: 0;
+font-size: 16px;
+}
+.facultyprofileabout-contentpara img
+{
+width: 96%;
+padding-left: 35px;
+}
+.faculty-experience
+{
+padding:20px 20px 0px 20px;
+}
+.faculty-experience h2
+{
+padding-left:40px;
+padding-bottom:30px;
+}
+.faculty-experience h2 i
+{
+padding-right:20px;
+}
+.faculty-experience img 
+{
+width:100%;
+}
+.faculty-experience ul li
+{
+list-style-type: none;
+padding-bottom:15px;
+font-size:18px;
+}
+.faculty-activityskills
+{
+padding:20px 20px 0px 20px;
+}
+.faculty-activityskills h2
+{
+padding-left:40px;
+padding-bottom:30px;
+}
+.faculty-activityskills h2 i
+{
+padding-right:20px;
+}
+.faculty-activityskills img 
+{
+width:100%;
+}
+.faculty-activityskills p
+{
+color:black !important;
+padding-top:10px;
+}
+.faculty-activityskills ul
+{
+border-right:6px solid #97b7ff;
+}
+.faculty-activityskills ul li
+{
+list-style-type: none;
+padding-top:10px;
+padding-bottom:10px;
+font-size:18px;
+border-bottom:1px solid black;
+}
+.line-img
+{
+width: 96%;
+padding-left: 35px;
+}
+.faculty-button
+{
+padding-left:30px;
+padding-bottom:20px;
+}
+.fp-btn
+{
+border:none;
+width:100%;
+height:40px;
+background-color: #e7e7e7;
+color: #b0b0b0;
+}
+.faculty-progress
+{
+padding:20px;
+}
+.faculty-progress h2
+{
+padding-left:40px;
+padding-bottom:30px;
+}
+.fa-flask
+{
+padding-right:20px;
+}
+.progress-bar
+{
+padding-top: 35px;
+padding-bottom: 49px;
+}
+.pb1
+{
+height:14px !important;
+border-radius:25px;
+}
+::ng-deep .mat-progress-bar-buffer {
+background: #E4E8EB;
+}
+::ng-deep .mat-progress-bar {
+border-radius: 2px;
+}
+.progressbar-1 ::ng-deep .mat-progress-bar-fill::after {
+background-color: #31AFE2;
+}
+.progressbar-2 ::ng-deep .mat-progress-bar-fill::after {
+background-color:#E47DB2;
+}
+.progressbar-3 ::ng-deep .mat-progress-bar-fill::after {
+background-color:#BE9F80;
+}
+.progressbar-4 ::ng-deep .mat-progress-bar-fill::after {
+background-color:#78ADD6;
+}
+.progressbar-5 ::ng-deep .mat-progress-bar-fill::after {
+background-color:#F4A441;
+}
+.progressbar-6 ::ng-deep .mat-progress-bar-fill::after {
+background-color:#6F4C2C;
+}
+.progressbar-7 ::ng-deep .mat-progress-bar-fill::after {
+background-color:#1EB067;
+}
+@media only screen and(max-width:600px){
+.facultyprofile-details h3
+{
+padding-left:10px; 
+}
+.facultyabout
+{
+padding-left:10px;
+}  
+.facultyabout ul
+{
+padding:0px;
+}
+.facultyabout ul li
+{
+font-size:14px;
+}
+.facultyabout-image img
+{
+width:100%;
+height: auto !important;
+}
+.facultyprofileabout-contentpara img
+{
+display:none;
+}
+.line-img
+{
+display:none;
+}
+}
+@media only screen and(min-width:600px) and (max-width:959px){   
+    .facultyabout ul li{
+        font-size: 14px;
+    }
+}

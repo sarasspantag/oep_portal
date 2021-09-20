@@ -1,0 +1,39 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+      <button class="dashmenu-icon" mat-icon-button (click)="sidenav.toggle()" fxShow="true">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="menu-spacer"></span>
+      <div fxFlex="100" fxFill>
+      <app-header1></app-header1>
+  </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+  <mat-sidenav-container fxFlexFill class="example-container">
+    <mat-sidenav #sidenav mode="side">
+      <mat-nav-list>
+          <div class="user" fxLayoutlign="center center">Welcome {{user}}</div> 
+        <!-- <a (click)="sidenav.toggle()" href="" mat-list-item>Close</a> -->
+       
+         <nav>
+            <ul class="nav">
+                <li *ngFor="let mainmenu of menuList">
+                    <a [routerLink]="mainmenu.modulepath">
+                        <img class="menu-icon" src="{{mainmenu.icon}}" />
+                        <div class="menu-name">{{mainmenu.modulename}}</div>
+                    </a>
+                    <ul *ngIf="mainmenu.submenuList.length">
+                        <li *ngFor="let submenu of mainmenu.submenuList" [routerLink]="submenu.modulepath">
+                            <a>{{submenu.modulename}}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>   
+             <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+

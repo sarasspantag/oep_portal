@@ -1,0 +1,392 @@
+<div fxLayout="row" >
+    <h3 class="breadCrumb-head">Training Course Management >> <span class="color-font">Course Scheduling</span></h3>
+  </div>
+  <div id="test_sch_ctr" fxLayoutAlign="center center" *ngIf="checkrole == true" >
+    <mat-card fxFlex="70" fxFlex.xs="90" fxFill>
+
+
+    <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+    <mat-card-title fxLayoutAlign="center center">Course Schedule</mat-card-title>
+    </mat-card-header> 
+
+
+    <mat-card-content fxLayoutAlign="center center"  >
+     
+    <form id="course_schedule" fxLayout="column" fxFlex="90" fxFill fxLayoutGap="25px"
+     [formGroup]="course_schedule_Form">
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="25px">
+      <div>
+   
+        <mat-form-field class="select-form"> 
+        <mat-label>Select course</mat-label>
+        <mat-select formControlName="courseid" [(ngModel)]="courseid"  required>
+          <mat-option *ngFor="let course of CourseList;let i = index" [value]="course.courseid" 
+          (click)="getcoursedetails(course.courseid)"  (click)="getFacultyList(course.courseid)">
+          {{course.coursename}}
+          </mat-option>  
+        </mat-select>
+        </mat-form-field>  
+        
+        <div *ngIf="submitted && f.courseid.errors" class="invalid-feedback">
+          <div *ngIf="f.courseid.errors.required"> select required course</div>
+        </div>
+  
+      </div>
+  
+  
+  
+      <div>
+        <mat-form-field (click)="pickedDate.open()" class="select-form">
+          <input [min]="minFromDate" [max]="maxToDate" name="startdate" matInput [matDatepicker]="pickedDate" [formControl]="serializedDate"
+           (dateChange)="startDatePicked($event)" placeholder="Start Date" id="matSelectedDate" >
+          <mat-datepicker-toggle matSuffix [for]="pickedDate"></mat-datepicker-toggle>
+          <mat-datepicker disabled="false" #pickedDate [startAt]="someDate"></mat-datepicker>
+        </mat-form-field>
+        </div> 
+  
+  
+        <div>
+          <mat-form-field  (click)="pickedDate1.open()" class="select-form">
+            <input [min]="minFromDate" [max]="maxToDate" name="enddate" matInput [matDatepicker]="pickedDate1" [formControl]="enddat"
+             (dateChange)="endDatePicked($event)" placeholder="End date">
+            <mat-datepicker-toggle matSuffix [for]="pickedDate1"></mat-datepicker-toggle>
+            <mat-datepicker #pickedDate1></mat-datepicker>
+          </mat-form-field>  
+        </div>   
+  
+  
+      </div> 
+  
+  
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="25px">
+      <div fxFlex="50">
+        <div fxLayout="row" fxFlex fxFill fxLayoutGap.xs="10px">
+        <div fxFlex="26">
+          <p class="posthead-label">Start Time:</p>
+        </div>
+        <div fxFlex="20" class="starthour">
+          <input type="number" autocomplete="off" class="form-control headline-input" 
+          formControlName="starthour" [ngClass]="{'error': submitted && f.starthour.errors }"
+          name="starthour" placeholder="HH"  [(ngModel)]="starthour"  required min="0" step="1" 
+          (keypress)="numberOnly($event)">
+        </div>
+        <div *ngIf="submitted && f.starthour.errors" class="invalid-feedback">
+          <div *ngIf="f.starthour.errors.required"> starthour required</div>
+        </div>
+        <div fxFlex="5" class="dot">
+          :
+        </div>
+        <div fxFlex="20" class="startminute">
+          <input type="number" autocomplete="off" class="form-control headline-input"
+          formControlName="startminute" [ngClass]="{'error': submitted && f.startminute.errors }"
+           name="startminute" placeholder="MM" [(ngModel)]="startminute" required min="0" step="1" (keypress)="numberOnly($event)">
+        </div>
+        <div *ngIf="submitted && f.startminute.errors" class="invalid-feedback">
+          <div *ngIf="f.startminute.errors.required"> startminute required</div>
+        </div>
+        <div fxFlex="5" class="dot">
+          :
+        </div>
+        <div fxFlex="24">
+          <select class="ampmselect" [(ngModel)]="startformat"   
+          formControlName="startformat" [ngClass]="{'error': submitted && f.startformat.errors }"name="startformat">
+          <option selected value="am">AM</option>
+          <option value="pm">PM</option>
+          </select> 
+        </div>
+        <div *ngIf="submitted && f.startformat.errors" class="invalid-feedback">
+          <div *ngIf="f.startformat.errors.required"> startformat required</div>
+        </div>
+        </div>
+      </div>
+  
+       <div fxFlex="50">
+        <div fxLayout="row" fxLayoutGap.xs="10px">
+        <div fxFlex="25">
+          <p class="posthead-label">End Time:</p>
+        </div>
+        <div fxFlex="20" class="endhour">
+          <input type="number" autocomplete="off" class="form-control headline-input"
+          formControlName="endhour" [ngClass]="{'error': submitted && f.endhour.errors }" 
+          name="endhour" placeholder="HH" [(ngModel)]="endhour"  required min="0" step="1" (keypress)="numberOnly($event)">
+        </div>
+        <div *ngIf="submitted && f.endhour.errors" class="invalid-feedback">
+          <div *ngIf="f.endhour.errors.required"> endhour required</div>
+        </div>
+        <div fxFlex="5" class="dot">
+          :
+        </div>
+        <div fxFlex="20" class="endminute">
+          <input type="number" autocomplete="off" class="form-control headline-input"
+          formControlName="endminute" [ngClass]="{'error': submitted && f.endminute.errors }"
+           name="endminute" placeholder="MM" [(ngModel)]="endminute"  required min="0" step="1" (keypress)="numberOnly($event)">
+        </div>
+        <div *ngIf="submitted && f.endminute.errors" class="invalid-feedback">
+          <div *ngIf="f.endminute.errors.required"> endminute required</div>
+        </div>
+        <div fxFlex="5" class="dot">
+          :
+        </div>
+        <div fxFlex="25">
+          <select class="ampmselect" [(ngModel)]="endformat"   name="endformat"
+          formControlName="endformat" [ngClass]="{'error': submitted && f.endformat.errors }">
+          <option selected vvalue="am">AM</option>
+          <option value="pm">PM</option>
+          </select>
+        </div>
+        <div *ngIf="submitted && f.endformat.errors" class="invalid-feedback">
+          <div *ngIf="f.endformat.errors.required">endformat  required</div>
+        </div>
+        </div>
+      </div>
+      </div>
+  
+    
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="25px">
+      <div>
+        <mat-form-field class="select-form">
+          <mat-label>No of Participants allowed</mat-label>
+          <input matInput type="number" name="par_allow" [(ngModel)]="totalparticipants" required min="0" 
+          step="1" (keypress)="numberOnly($event)"  formControlName="totalparticipants" [ngClass]="{'error': submitted && f.totalparticipants.errors }">
+        </mat-form-field>
+        <div *ngIf="submitted && f.totalparticipants.errors" class="invalid-feedback">
+          <div *ngIf="f.totalparticipants.errors.required"> totalparticipants required</div>
+        </div>
+      </div>
+        <div>
+        <!-- <mat-form-field>
+          <mat-label>Applicable IC</mat-label>
+          <mat-select name="applicableic" [(ngModel)]="applicableic"
+          formControlName="ApplicableIc" [ngClass]="{'error': submitted && f.ApplicableIc.errors }">
+          <mat-option *ngFor="let Applicable of ApplicableIc" [value]="Applicable.value">
+            {{Applicable.viewValue}}
+          </mat-option>
+          </mat-select>
+        </mat-form-field>  -->
+        <div *ngIf="submitted && f.ApplicableIc.errors" class="invalid-feedback">
+          <div *ngIf="f.ApplicableIc.errors.required">Applicable ic required</div>
+        </div>
+      </div>  
+      <div>
+      <mat-form-field class="select-form">
+        <mat-label>Faculty Name</mat-label>
+         <mat-select formControlName="facultyid"  [(ngModel)]="facultyid" required >
+          <mat-option *ngFor="let course of facultyList;let i = index" [value]="course.facultyid" >
+          {{course.username}}
+          </mat-option>
+        </mat-select>
+        </mat-form-field>     
+        
+        <div *ngIf="submitted && f.facultyid.errors" class="invalid-feedback">
+          <div *ngIf="f.facultyid.errors.required"> select faculty </div>
+        </div>
+
+      </div>  
+      </div>
+   
+  
+  <div fxLayout="column" fxLayoutGap="15px">  
+  </div>
+  
+
+    <mat-card-actions *ngIf="checkrole == true" fxFlex fxLayoutAlign="start center" fxFill>
+      <div fxLayoutAlign="start center" class="course-toggle">Schedule Active Status
+      <mat-slide-toggle [(ngModel)]="checked"  [color]="color" (change)="changed()"></mat-slide-toggle>
+      </div>
+    </mat-card-actions>
+      
+  
+    <mat-card-actions fxLayoutAlign="center center" fxLayoutGap="10px" fxFill>
+      <button class="exm" mat-flat-button (click)="savecourseschedule()" [disabled]="isLoading">
+      <i class="fa fa-loadingsave" [ngClass]="{'fa-spin fa-spinner': isLoading, '': !isLoading}"></i>
+      Save</button>
+      <button class="exm" mat-flat-button (click)="clearfields()">Clear</button>
+    </mat-card-actions> 
+  </form> 
+</mat-card-content>
+</mat-card>
+  </div>
+  
+ 
+
+
+<div id="login_ctr" fxLayoutAlign="center center">
+  <mat-card fxFlex="80" fxFlex.xs="90">
+    <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+      <mat-card-title>Course Schedule</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center">
+      
+      <div fxLayout="row" fxLayoutAlign="start center" class="content" fxFlex>
+        <div fxFlex = "100%" fxFill>
+
+            <table mat-table [dataSource]="dataSource"  fxFill>
+                
+                <ng-container matColumnDef="profile" >
+                  <th mat-header-cell *matHeaderCellDef > # </th>
+                  <td mat-cell *matCellDef="let transaction"> {{transaction.index}} </td>
+               
+                </ng-container>
+              
+
+               
+                <ng-container matColumnDef="fromdate">
+                  <th mat-header-cell *matHeaderCellDef>  Name </th>
+                  <td class="tble-head" mat-cell *matCellDef="let transaction"> <p class="tble-coursename">{{transaction.programname}}</p>  </td>
+                
+                </ng-container>
+                <ng-container matColumnDef="todate" fxHide.lt-md>
+                  <th mat-header-cell *matHeaderCellDef fxHide.lt-md> Start date </th>
+                  <td mat-cell *matCellDef="let transaction" fxHide.lt-md> {{transaction.start_date}} </td>
+                
+                </ng-container> 
+
+                <ng-container matColumnDef="Incharge" fxHide.lt-sm>
+                    <th mat-header-cell *matHeaderCellDef fxHide.lt-sm> Incharge </th>
+                    <td mat-cell *matCellDef="let transaction" fxHide.lt-sm> {{transaction.Incharge}} </td>
+                  
+                  </ng-container> 
+
+                <ng-container matColumnDef="status" fxHide.lt-md>
+                  <th mat-header-cell *matHeaderCellDef fxHide.lt-md> Schedule active status </th>
+                  <td mat-cell *matCellDef="let transaction" fxHide.lt-md> {{transaction.status}} </td>
+                
+                </ng-container>
+
+                <ng-container matColumnDef="register" fxHide.lt-md>
+                  <th mat-header-cell *matHeaderCellDef fxHide.lt-md> Register </th>
+                  <td mat-cell *matCellDef="let transaction" fxHide.lt-md> 
+                 <button mat-button color="primary" class="reg-btn" 
+                (click)="courseregister(transaction.scheduleid,transaction.programname)">register </button></td>
+              </ng-container>
+
+
+                <ng-container matColumnDef="action">
+                  <th mat-header-cell *matHeaderCellDef class="tble-headaction"> Action </th>
+                  <td class="minifab" mat-cell *matCellDef="let transaction" fxLayoutGap="10px">
+                    <div fxLayoutAlign="center center" fxLayoutGap="10px">
+                    <button mat-mini-fab (click)="showview(transaction.scheduleid)">
+                      <mat-icon>visibility</mat-icon>
+                    </button>
+                    <button *ngIf="checkrole == true" mat-mini-fab (click)="getScheduledetails(transaction.scheduleid)">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                    <button *ngIf="checkrole == true" mat-mini-fab (click)="delete(transaction.scheduleid)">
+                      <mat-icon>delete</mat-icon>
+                    </button>
+                  </div>
+                  </td>              
+                </ng-container>
+             
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+               
+              </table>
+              <mat-paginator [pageSizeOptions]="[5, 10, 20]" ></mat-paginator>
+        </div>
+      
+      
+      </div> 
+    </mat-card-content>
+    
+  </mat-card>
+    </div> 
+
+    
+    <ng-template #alertDialog >
+        <div class="infoModal" fxLayout="column">
+          <div class="header" fxLayoutAlign="start center">
+            <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+          </div>
+          <div fxLayoutAlign="center center">
+            <p>{{modalmsg}}</p>
+          </div>
+          <div fxLayoutAlign="center center">
+            <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+          </div>
+          </div>
+        </ng-template>
+
+
+
+    <ng-template #deleteDialog>
+      <div class="diag_ctr" fxLayout="column">
+        <div class="cls_btn" fxFill fxLayoutAlign="end center">
+          <button mat-icon-button (click)="closemodal()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <div class="heading" fxFill fxLayoutAlign="center center">
+          {{modalmsg}}
+        </div>
+        <div class="btn_div" fxLayout="row" fxFill fxLayoutAlign="center center" fxLayoutGap="10px">
+          <button mat-button class="verify-btn yes" (click)="savecourseschedule()">YES</button>
+          <button mat-button class="verify-btn no" (click)="closemodal()">NO</button>
+        </div>
+      </div>
+    </ng-template>
+    
+    
+    
+ 
+    <ng-template #viewDialog>
+      <div class="view_ctr" fxLayout="column">
+        <div fxLayout="row" class="cls_btn" fxFill >
+          <div fxFlex="80" fxFill fxLayoutAlign="start center" class="heading">Schedule Details</div>
+          <div fxFlex fxLayoutAlign="end center" fxFill>
+              <button mat-icon-button (click)="closemodal()">
+                  <mat-icon>close</mat-icon>
+                </button> 
+          </div>
+         
+        </div>
+        <div fxLayout="column" fxLayoutGap="15px" class="heading" fxFill>
+          <table class="viwetablepopup">
+              <thead>
+              <th>Course</th>
+              <th>Details</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Course name</td>
+                <td>{{coursedesc}}</td>
+              </tr>
+              <tr>
+                <td>Total participants</td>
+                <td>{{totalparticipants}}</td>
+              </tr>
+              <tr>
+                <td>Faculty incharge </td>
+                <td>{{facultyname}}</td>
+              </tr>
+              <tr>
+                <td>Start date </td>
+                <td>{{startdate1}}</td>
+              </tr>
+              <tr>
+                  <td>End date </td>
+                  <td>{{enddate1}}</td>
+                </tr>
+                <tr>
+                  <td>Start time</td>
+                  <td>{{starttime}}</td>
+               
+                  </tr>
+                
+              <tr>
+                  <td>End time</td>
+                  <td>{{endtime}}</td>										
+              </tr>
+                  <tr>
+                      <td>No of seats available</td>
+                      <td>{{availableseats}}</td>
+                    </tr>
+                    <tr>
+                        <td>Course selected By</td>
+                        <td>{{partname}}</td>
+                      </tr>
+            </tbody>
+            </table>
+        </div>
+      </div>
+    </ng-template>

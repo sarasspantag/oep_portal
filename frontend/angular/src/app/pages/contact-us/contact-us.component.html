@@ -1,0 +1,83 @@
+<div fxLayout="column">
+  <div class="head" fxFlex fxFill> 
+    <img fxFill src="assets/img/contact-headerimg.png" alt="" />
+    <div class="aboutus-heading121" fxLayoutAlign="center center">Contact Us</div>
+  </div>
+  <!--contact us details-->
+  <div class="newsandevents-fullsection" fxLayout="column">
+    <div fxLayout="row" fxLayout.lt-sm="column">
+      <div class="latest-full" fxFlex="50" fxFlex.lt-sm="100" fxFill>
+        <div class="contact-details">
+          <h2>Contact Details</h2>
+          <img src="assets/img/line-3.PNG" alt="">
+          <h2><span><i class="fa fa-envelope email-icon" aria-hidden="true"></i></span>Email:</h2>
+          <h4>info@lntecc.com</h4>
+        </div>
+        <div class="contact-details">
+          <h2><span><i class="fa fa-mobile mobile-icon" aria-hidden="true"></i></span>Tel:</h2>
+          <h4>+91-44-22526000, 22528000</h4>
+        </div>
+        <div class="contact-details map-icon">
+          <h2><span><i class="fa fa-map-marker location-icon" aria-hidden="true"></i></span>Address:</h2>
+          <h4>Mount Poonamallee Road, Manapakkam, P.B.No.979,
+            Chennai – 600 089.</h4>
+        </div>
+      </div>
+
+      <form id="signup" fxLayout="column" fxFlex="75" fxFill>
+      <div class="latest-full" fxFlex="50" fxFlex.lt-sm="100" fxFill>
+        <div class="contact-details">
+          <h2>Get in Touch</h2>
+          <img src="assets/img/line-3.PNG" alt="">
+          <div class="form-group name-label">
+            <span class="input-group-text user-icon"><i class="fa fa-user"></i></span>
+            <input type="text" class="form-control your-name" name="username" [(ngModel)]="username" placeholder="Your Name">
+          </div>
+          <div class="form-group name-label">
+            <span class="input-group-text user-icon"><i class="fa fa-envelope"></i></span>
+            <input type="text" class="form-control your-name" name="email" [(ngModel)]="email" placeholder="Email:">
+          </div>
+          <div class="form-group name-label">
+            <span class="input-group-text user-icon"><i class="fa fa-mobile form-mobileicon"></i></span>
+            <input type="text" class="form-control your-name" name="mobile"  [(ngModel)]="mobile" placeholder="Mobile:">
+          </div>
+          <div class="form-group name-label">
+            <span class="input-group-text user-icon"><i class="fa fa fa-comments-o "></i></span>
+            <input type="text" class="form-control your-name" name="content"  [(ngModel)]="content" placeholder="Your Message:">
+          </div>
+          <div class="signin-button">
+            <button class="exm" mat-flat-button (click)="submit()">Submit </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    </div>
+  </div>
+  <!--map section start-->
+  <div style="width: 100%;position: relative;">
+    <iframe width="100%" height="440"
+      src="https://maps.google.com/maps?width=700&amp;height=440&amp;hl=en&amp;q=tamilnadu+(Title)&amp;ie=UTF8&amp;t=&amp;z=10&amp;iwloc=B&amp;output=embed"
+      frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+    </iframe>
+    <div
+      style="position: absolute;width: 80%;bottom: 0;left:0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;">
+      <small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by
+        <a href="http://www.googlemapsgenerator.com/fr/">Googlemapsgenerator.com/fr/</a> & <a
+          href="https://energiawiatru.eu/">groen gas nederland</a></small>
+    </div>
+  </div>
+</div>
+
+<ng-template #alertDialog >
+  <div class="infoModal" fxLayout="column">
+    <div class="header" fxLayoutAlign="start center">
+      <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+    </div>
+    <div fxLayoutAlign="center center">
+      <p>{{modalmsg}}</p>
+    </div>
+    <div fxLayoutAlign="center center">
+      <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+    </div>
+    </div>
+  </ng-template>

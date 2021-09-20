@@ -1,0 +1,40 @@
+<div id="course_reg" fxLayoutAlign="center center">
+    <mat-card fxFlex="70" >
+      
+      <mat-card-header fxLayoutAlign="center center" fxFill fxLayout="column">
+        
+        <mat-card-title fxLayoutAlign="center center">Import Participants</mat-card-title>
+      </mat-card-header>
+      <mat-card-content fxLayoutAlign="center center"  fxLayout="column" fxLayputGap="20">
+											
+        <app-uploadfile></app-uploadfile> 
+
+              <div fxLayout="row" class="pad" fxLayoutAlign="center center" fxLayoutGap= "10px" fxFill>
+                  <button class="exm " mat-flat-button (click)="sampleformatregisterparticipants()">Download Sample Format</button>
+                  <button class="exm " mat-flat-button (click)="importexcelschedule()">Import Excel</button>
+              </div>
+
+      </mat-card-content>
+      
+    </mat-card>
+  </div>
+  
+
+  <ng-template #alertDialog >
+      <div>
+        <table class="success-table">
+          <tr>
+            <th>Status</th>
+            <th>Message</th>
+          </tr>
+          <tr *ngFor="let responseValue of responseValue; let i = index">
+            <td>{{responseValue.uploadstatusdesc}}</td>
+            <td>{{responseValue.out_result_msg}}</td>
+          </tr>
+        </table>
+      </div>
+      <div fxLayoutAlign="center center">
+        <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+      </div>
+  
+    </ng-template>

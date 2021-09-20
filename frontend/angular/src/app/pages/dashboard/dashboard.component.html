@@ -1,0 +1,422 @@
+<div class="dashboardctr" fxLayout="column" fxFlex  fxLayoutGap="5px">
+  <div class="dashdiv" fxLayout="column"  *ngIf="isadmin">
+    <div fxLayout="row " fxLayout.xs="column">
+      <div class="divpad" fxFlex="33" fxFill>
+        <div class="ctndiv col1" fxFlex fxLayout="row">
+          <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>assignment</mat-icon></div>
+          <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+            <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">{{newtaskcount}}</div>
+                <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+            </div>
+            <div fxFlex fxFill>New Task</div>
+          </div>
+        </div>
+      </div> 
+      <div class="divpad" fxFlex="33" fxFill>
+          <div class="ctndiv col2" fxFlex fxLayout="row">
+              <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>book</mat-icon></div>
+              <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+                <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">{{completedcount}}</div>
+                    <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+                </div>
+                <div fxFlex fxFill>Tests Completed</div>
+              </div>
+            </div>          
+      </div>
+      <div class="divpad" fxFlex="33" fxFill>
+          <div class="ctndiv col3" fxFlex fxLayout="row">
+              <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>cancel_presentation</mat-icon></div>
+              <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+                <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">{{cancelledcount}}</div>
+                    <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+                </div>
+                <div fxFlex fxFill>Test cancelled</div>
+              </div>
+            </div>           
+      </div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column">
+        <div class="divpad" fxFlex="33" fxFill>
+            <div class="ctndiv col4" fxFlex fxLayout="row">
+                <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>add_box</mat-icon></div>
+                <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+                  <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">{{scheduledcount}}</div>
+                      <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+                  </div>
+                  <div fxFlex fxFill>New Classes Scheduled</div>
+                </div>
+              </div>
+        </div>
+        <div class="divpad" fxFlex="33" fxFill>
+            <div class="ctndiv col5" fxFlex fxLayout="row">
+                <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>group_add</mat-icon></div>
+                <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+                  <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">{{participantcount}}</div>
+                      <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+                  </div>
+                  <div fxFlex fxFill>New Participants Added</div>
+                </div>
+              </div>
+            
+        </div>
+        <div class="divpad" fxFlex="33" fxFill>
+            <div class="ctndiv col6" fxFlex fxLayout="row">
+                <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>flag</mat-icon></div>
+                <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+                  <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">{{resultannouncedcount}}</div>
+                      <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+                  </div>
+                  <div fxFlex fxFill>Result Announced</div>
+                </div>
+              </div>            
+        </div>
+
+
+
+       
+    </div>     
+  </div>
+
+  <div class="dashdiv" fxLayout="column"  *ngIf="isfaculty">
+    <div fxLayout="row" fxLayout.xs="column">
+     
+      <div class="divpad" fxFlex="33" fxFill>
+          <div class="ctndiv col2" fxFlex fxLayout="row">
+              <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>book</mat-icon></div>
+              <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+                <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">{{completedcount}}</div>
+                    <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+                </div>
+                <div fxFlex fxFill>Tests Completed</div>
+              </div>
+            </div>          
+      </div>
+      <div class="divpad" fxFlex="33" fxFill>
+          <div class="ctndiv col3" fxFlex fxLayout="row">
+              <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>cancel_presentation</mat-icon></div>
+              <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+                <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">{{cancelledcount}}</div>
+                    <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+                </div>
+                <div fxFlex fxFill>Test cancelled</div>
+              </div>
+            </div>           
+      </div>
+
+      <div class="divpad" fxFlex="33" fxFill>
+        <div class="ctndiv col4" fxFlex fxLayout="row">
+            <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>add_box</mat-icon></div>
+            <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+              <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">{{scheduledcount}}</div>
+                  <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+              </div>
+              <div fxFlex fxFill>New Classes Scheduled</div>
+            </div>
+          </div>
+    </div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column">
+       
+       
+        <div class="divpad" fxFlex="33" fxFill>
+            <div class="ctndiv col6" fxFlex fxLayout="row">
+                <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>flag</mat-icon></div>
+                <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+                  <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">23</div>
+                      <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+                  </div>
+                  <div fxFlex fxFill>Result Announced</div>
+                </div>
+              </div>            
+        </div>
+
+
+
+       
+    </div>     
+  </div>
+
+  <div class="dashdiv" fxLayout="column"  *ngIf="isparticpant">
+    <div fxLayout="row" fxLayout.xs="column">
+     
+      <div class="divpad" fxFlex="33" fxFill>
+          <div class="ctndiv col2" fxFlex fxLayout="row">
+              <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>book</mat-icon></div>
+              <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+                <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">{{completedcount}}</div>
+                    <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+                </div>
+                <div fxFlex fxFill>Tests Completed</div>
+              </div>
+            </div>          
+      </div>
+      
+    
+        <div class="divpad" fxFlex="33" fxFill>
+            <div class="ctndiv col4" fxFlex fxLayout="row">
+                <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>add_box</mat-icon></div>
+                <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+                  <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">{{scheduledcount}}</div>
+                      <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+                  </div>
+                  <div fxFlex fxFill>New Classes Scheduled</div>
+                </div>
+              </div>
+        </div>
+        
+        <div class="divpad" fxFlex="33" fxFill>
+            <div class="ctndiv col6" fxFlex fxLayout="row">
+                <div class="higltr" fxFlex="30" fxFill fxLayoutAlign="center center"><mat-icon>flag</mat-icon></div>
+                <div class="higltrctn" fxFlex="70" fxFill fxLayout="column" fxLayoutAlign="center center">            
+                  <div fxLayout="row" fxFlex fxFill class="ctn"><div fxFlex="90">23</div>
+                      <mat-icon fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+                  </div>
+                  <div fxFlex fxFill>Result Announced</div>
+                </div>
+              </div>            
+        </div>
+
+
+
+       
+    </div>     
+  </div>
+
+  <ng-template #secondDialog >
+    
+      <!-- <div class="header">Course Details </div> -->
+      <div fxLayout="row" fxFlex fxFill>
+        <div fxFlex="90" class="header">Course Details </div>
+        <div fxFlex="10" class="header"><mat-icon (click)=closemodal()>close</mat-icon> </div>
+      </div>
+      <div class="view-popup">
+      <div fxLayout="column" fxFlex="98" fxFill class="course-details-space" fxLayoutGap="15px">
+        <table class="viwetablepopup">
+          <thead>
+          <th>Course</th>
+          <th>Details</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Course name</td>
+            <td>{{scheduleevent}}</td>
+          </tr>
+          <tr>
+            <td>Description</td>
+            <td><p  [className]="condition ? 'showFullDiv' : 'showParticalDiv'">{{description}}</p>
+            <p *ngIf="ContentButton" class="read-more"><a (click)="readmore()" class="button">Read More</a></p></td>
+          </tr>
+          <tr>
+            <td>Duration</td>
+            <td>{{duration}}</td>
+          </tr>
+          <tr>
+            <td>Time</td>
+            <td>{{time}}</td>
+          </tr>
+          <tr>
+            <td>No of participants</td>
+            <td>{{paticipants}}</td>
+          </tr>
+          <tr>
+            <td>Available seats</td>
+            <td>{{seatsavailable}}</td>
+          </tr>
+        
+        </tbody>
+        </table>
+       </div> 
+     
+       
+    
+
+<div *ngIf="regshow" class="regstr-btn" fxLayoutAlign="center center">  <button mat-button  class="mat-btn verify-btn"  (click)="courseregister()">Register</button></div>
+</div>
+  </ng-template>
+
+  
+      <div class="" fxLayout="column">
+        <div fxLayout="row" fxLayout.xs="column" class="calender-todolist" fxLayoutGap="100px">
+          <div class="divpad" fxFlex="50" fxFill>
+            <ejs-schedule [selectedDate]='selectedDate' [eventSettings]="eventData" (popupOpen)="onPopupOpen($event)">
+              <e-views>
+                <!-- <e-view option='Month' [showWeekNumber]="showWeekNumber" [readonly]="isReadOnly"></e-view> -->
+                <e-view option="MonthAgenda" [showWeekNumber]="showWeekNumber" [readonly]="isReadOnly"></e-view>
+              </e-views>
+            </ejs-schedule>
+          </div>
+          <mat-card class="todo-listcard" fxFlex="50">
+            <div fxLayout="row"  fxLayoutGap="10px" fxLayoutAlign="end center">
+              <div fxLayot="row" fxFlex="5">
+                <mat-icon class="todo-topicons" fxFlex fxLayoutAlign="end center">autorenew</mat-icon>
+              </div>
+              <div fxLayot="row" fxFlex="5">
+                <mat-icon fxFlex class="todo-topicons" fxLayoutAlign="end center">brightness_5</mat-icon>
+              </div>
+              <div fxLayot="row" fxFlex="5">
+                <mat-icon fxFlex class="todo-topicons" fxLayoutAlign="end center">close</mat-icon>
+              </div>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end center">
+              <div fxLayot="row" fxFlex="10">
+                <mat-icon fxFlex fxLayoutAlign="end ">check_circle</mat-icon>
+              </div>
+              <div fxLayot="row" class="todolist-heading" fxFlex="90">
+                <h2>Todo List</h2>
+              </div>
+            </div>
+            <div fxLayout="column">
+              <span class="errormsg">{{errormsg}}</span>
+              <div class="input-container">
+                <input class="input-field" type="text"  name="content" placeholder="Type here"
+                [(ngModel)]="content" required>
+                <i class="fa fa-plus icon" (click)="save()"></i>
+              </div>
+            </div>
+
+
+          <div  *ngFor="let course of todoList; let i=index">
+            <div fxLayout="column" class="todocheckbox-full" >
+              <div fxLayout="column" class="todo-checkbox">
+                <mat-checkbox (click)=set(course.id)>{{course.content}}</mat-checkbox>
+              </div>         
+            </div>
+          </div>
+
+
+
+            <div fxLayout="row">             
+              <div fxLayout="row" fxFlex="50" fxLayoutAlign="end">
+                <mat-icon class="delete-icon"  (click)="delete()">delete</mat-icon>
+              </div>
+            </div>
+        
+          </mat-card>
+        </div> 
+      </div>
+
+
+
+      <div class="dashboard-activitytab">
+        <mat-tab-group class="cmd-tab">
+          <mat-tab label="Recent activities">
+            <div fxLayout="column" class="cmdsection-full">
+          
+        <div fxLayout="row" class="cmd-rowsection"  *ngFor="let course of ReviewList; let i=index">
+                <div fxLayout="row" class="cmd-img" fxFlex="10">
+                     <img src="assets/img/facultyimg2.JPG" alt="cmd-img"/>
+                </div>
+      
+                <div fxLayout="column" fxFlex="80"> 
+                     <div class="comments-para">
+                          <p>{{course.description}}</p>
+                          <p>- {{course.listdata}}...</p>
+                     </div> 
+                     
+                </div>
+
+
+        </div>
+
+          </div>
+          </mat-tab>
+         
+         
+          <mat-tab label="Recent reviews">
+              <div fxLayout="column" class="cmdsection-full">
+                  <div fxLayout="row" class="cmd-rowsection">
+              <div fxLayout="row" class="cmd-img" fxFlex="10">
+          <img src="assets/img/facultyimg2.JPG" alt="cmd-img"/>
+              </div>
+              <div fxLayout="column" fxFlex="80">
+                <div class="comments-para">
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.</p>
+              <p>- 12 Minutes Ago...</p>
+            </div>
+              </div>
+                  </div>
+                </div>
+          </mat-tab>
+    
+        </mat-tab-group>
+    
+      </div>
+ 
+  
+</div>
+<ng-template #alertDialog >
+  <div class="infoModal" fxLayout="column">
+    <div class="header" fxLayoutAlign="start center">
+      <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+    </div>
+    <div fxLayoutAlign="center center">
+      <p>{{modalmsg}}</p>
+    </div>
+    <div fxLayoutAlign="center center">
+      <button fxLayoutAlign="center center" mat-button  class="verify-btn" (click)= "closemodal()" >Close</button>
+    </div>
+    </div> 
+  </ng-template>
+
+  
+  <ng-template #deleteDialog>
+    <div class="diag_ctr" fxLayout="column">
+    <div fxLayout="row" class="cls_btn" fxFill >
+          <div fxFlex="80" fxFill fxLayoutAlign="center center" class="heading">Todo-List </div>
+          <div fxFlex fxLayoutAlign="end center" fxFill>
+              <button mat-icon-button (click)="closemodal()">
+                  <mat-icon>close</mat-icon>
+                </button> 
+          </div>
+          </div>
+      <div fxLayoutAlign="center center">
+          <p>{{modalmsg}}</p>
+        </div>
+     
+        <div class="btn_div" fxLayout="row" fxFill fxLayoutAlign="center center" fxLayoutGap="10px">
+          <button mat-button class="verify-btn " (click)="save()">YES</button>
+          <button mat-button class="verify-btn " (click)="closemodal()">NO</button>
+        </div>
+    </div>
+  </ng-template> 
+
+  <ng-template #testscheduleDialog >
+    
+    <!-- <div class="header">Course Details </div> -->
+    <div fxLayout="row" fxFlex fxFill>
+      <div fxFlex="90" class="header">Test schedule Details </div>
+      <div fxFlex="10" class="header"><mat-icon (click)=closemodal()>close</mat-icon> </div>
+    </div>
+    <div class="view-popup">
+    <div fxLayout="column" fxFlex="98" fxFill class="course-details-space" fxLayoutGap="15px">
+      <table class="viwetablepopup">
+        <thead>
+        <th>Test schedule</th>
+        <th>Details</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Test name</td>
+          <td>{{scheduleevent}}</td>
+        </tr>
+      
+        <tr>
+          <td>Test date</td>
+          <td>{{testdate}}</td>
+        </tr>
+        <tr>
+          <td>Start Time</td>
+          <td>{{starttesttime}}</td>
+        </tr>
+        <tr>
+          <td>End Time</td>
+          <td>{{endtesttime}}</td>
+        </tr>
+      
+      
+      </tbody>
+      </table>
+     </div> 
+  
+</div>
+</ng-template>

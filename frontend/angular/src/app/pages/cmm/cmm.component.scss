@@ -1,0 +1,129 @@
+#cmm_ctr{
+    padding: 25px 0px;
+}
+mat-card-header{
+    background-color: #262D61;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;    
+}
+mat-card-title{
+    margin-top: 16px;
+}
+mat-card{
+    border-radius: 20px;
+    padding-top: 0 !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+.minifab .mat-mini-fab{
+    background-color: white !important;
+    color: #939393 !important;
+}
+.minifab .material-icons{
+    font-size: 18px;
+}
+.minifab .mat-icon{
+    height: 18px;
+    width: 18px;
+}
+
+.minifab .mat-mini-fab:not([class*=mat-elevation-z]) {
+    //box-shadow: 0 1px 0px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12) !important;
+    box-shadow: 0 0.25px 0px -1px rgba(0, 0, 0, 0.2), 0 1px 0px 0 rgba(0, 0, 0, 0.14), 0 1px 4px 0 rgba(0, 0, 0, 0.12) !important;
+}
+
+#cmmsub_ctr{
+    padding-bottom: 15px;
+}
+.viwetablepopup
+{
+    border-left: 1px solid #b6b6b6;  
+    border-top: 1px solid #b6b6b6;  
+    border-right: 1px solid #b6b6b6;  
+}
+.viwetablepopup thead
+{
+text-align:left;
+
+}
+.viwetablepopup th
+{
+    border-bottom: 1px solid #b6b6b6;
+    padding:10px;
+}
+.viwetablepopup td
+{
+    border-bottom: 1px solid #b6b6b6;
+    padding:10px;
+}
+.viwetablepopup tr td:first-child {
+    color: rgba(0,0,0,.54);
+    // font-weight:600;
+    border-right: 1px solid #b6b6b6;
+    width:50%;
+}
+.viwetablepopup th:first-child {
+    border-right: 1px solid #b6b6b6;   
+    width:50%;
+}
+.viwetablepopup td p{
+    margin:0;
+    position: relative;
+    // max-height:77px;
+    // overflow:hidden;
+}
+ .read-more { 
+    // position: absolute; 
+    // bottom: 0; 
+    // left: 0;
+    // width: 100%; 
+    text-align: right; 
+    cursor: pointer;
+    // margin: 0; padding: 30px 0; 
+      
+    /* "transparent" only works here because == rgba(0,0,0,0) */
+    // background-image: linear-gradient(to bottom, transparent, black);
+  }
+  .showParticalDiv
+  {
+    max-height:77px;
+    overflow:hidden;    
+  }
+  .showFullDiv
+  {
+      height:auto ;
+  }
+  .tble-coursename
+  {
+      max-height:16px;
+      overflow:hidden;
+  }
+  .tble-head
+  {
+    width: 240px;
+  }
+  .viewpopup-content{
+    max-height: 340px !important;
+    }
+    #course{
+        padding-top: 20px;
+    }
+
+    @media only screen and(max-width:600px){
+        .tble-head
+        {
+          width: 140px;
+        }
+    }
+    @media only screen and(min-width:600px) and (max-width:959px){
+        .tble-head
+        {
+          width: 180px;
+        }   
+    }
+    .invalid-feedback{
+        color:red;
+        margin-top:-10px;
+        margin-bottom: 10px;
+    }

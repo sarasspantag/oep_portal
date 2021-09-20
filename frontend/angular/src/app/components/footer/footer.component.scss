@@ -1,0 +1,68 @@
+.fooctr{
+    font-size: 12px;
+}
+.footerctr{
+    padding: 20px;
+}
+.footerctr a{
+    text-decoration: none;
+    color: white;
+}
+.footerctr a:hover{
+    color: yellow;
+}
+div .firro{
+    background-color: #262D61;
+    color: white;
+    padding-left: 260px;
+    padding-right: 50px;  
+}
+div .firro2{
+    background-color: yellow;
+    color: black;
+    padding-left: 100px;
+    padding-right: 100px;   
+    padding-top: 10px;
+    padding-bottom: 10px; 
+}
+div .logo{
+    max-width:150px !important;
+}
+div .logo img{
+    max-width: 140px;
+    padding: 2px;
+}
+.foop{
+    line-height: 2.2;
+    text-align: justify;
+}
+
+@media only screen and (max-width:600px){
+    div .firro2 {        
+       padding: 10px ;
+    }    
+    div .firro{        
+        padding: 10px ;
+     }
+    div  .footerctr{
+        padding: 10px;
+    }    
+}
+
+@media only screen and (min-width:600px) and (max-width:959px){
+    div .firro{
+        background-color: #262D61;
+        color: white;
+        padding-left: 80px;
+        padding-right:0px;
+    }
+}
+
+@media only screen and (min-width:959px) and (max-width:1200px){
+    div .firro{
+        background-color: #262D61;
+        color: white;
+        padding-left: 130px;
+        padding-right:0px;
+    }
+}

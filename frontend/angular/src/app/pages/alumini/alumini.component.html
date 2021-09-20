@@ -1,0 +1,87 @@
+<div fxFlex="82" class="loader-height" *ngIf="divshow">
+      <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</div>
+<div fxLayout="column" *ngIf="!divshow">
+ 
+
+      <div class="head" fxFlex fxFill>
+         <img fxFill src="assets/img/alumini-headerimg.png" alt="" />
+ 
+         <div class="aboutus-heading121" fxLayoutAlign="center center">Alumni Blog</div>
+      </div> 
+   
+   
+      <div class="alumini-fullsection" fxLayout="column">
+         <div fxLayout="row" fxLayout.lt-sm="column">
+            <div class="aluminifull" fxFlex="60" fxFlex.lt-sm="100" fxFill>
+               <div class="aluminifirst-full">
+               <div class="heading-subhead">
+                  <h2 (click)="getdetails(blogid)" class="cursor-pointer">{{headline}}</h2>
+               </div>
+               <img (click)="getdetails(blogid)" class="cursor-pointer" src="{{image_URL}}{{image}}">
+               <p  [innerHTML]="content1">  </p>
+            </div>
+                  <button class="exm"  mat-flat-button (click)="getdetails(blogid)">Read more </button>
+            </div>
+         
+         
+            <div class="recentpost-section" fxFlex="30" fxFlex.lt-md="40" fxFlex.lt-sm="100" fxFill>
+               <div class="recentpost-sectionfull" fxFlex="100">
+                  <h2 class="recentpost-heading">Recent Posts</h2>
+               </div>
+           <div *ngFor="let blog of recentpost" class="recentpost-contents">
+               <p class="recentpost-date" class="cursor-pointer" (click)="getdetails(blog.blogid)" >{{blog.date}} ({{blog.commentcount}}) comments</p>
+               <div fxLayout="row" class="recentpost-sectioncommands">
+                  <div fxFlex="25" class="recentpost-image" >
+                     <img class="cursor-pointer" (click)="getdetails(blog.blogid)" src="{{image_URL}}{{blog.image}}" alt="" />
+                  </div>
+                  <div fxFlex="75" class="recentpost-rightside recentpost-para">
+                        <p class="post-hg" [innerHTML]="blog.content"></p>   
+                        <a class="post-hg cursor-pointer" (click)="getdetails(blog.blogid)">Read More</a> 
+                   
+                  </div>
+               </div>
+            </div> 
+         </div>
+
+
+         </div> 
+      </div> 
+     
+     
+      
+        <div class="alumini-fullsection" fxLayout="column">
+            <img class="gallerytop-border" src="assets/img/gallery-topline.PNG" alt="">
+            <div fxLayout="row wrap" fxLayout.xs="column">
+                  <div class="aluminigallery-full" fxFlex="30" fxFlex.sm="33" fxFlex.lt-sm="100" fxFill
+                   *ngFor="let blog of data ;let i = index">
+                        <h4 class="cursor-pointer" (click)="getdetails(blog.blogid)">{{blog.headline}}</h4>
+                        <img class="cursor-pointer" (click)="getdetails(blog.blogid)" src="{{image_URL}}{{blog.image}}" alt=""
+                           (click)="showview('assets/img/newsandeventsimg.JPG')">
+                        <p class="content-hg" [innerHTML]="blog.content">  </p>
+                        <button class="exm" mat-flat-button (click)="getdetails(blog.blogid)">Read more</button>
+                  </div> 
+            </div>
+         </div>
+
+        <div fxLayout="column" fxLayoutAlign="center center">
+         <mat-paginator [length]="data.length" [pageSize]="size" [pageIndex]="page"
+         [pageSizeOptions]="[6]" (page)="getData($event)">
+        </mat-paginator></div>    
+        
+        
+      <ng-template #viewDialog>
+         <div fxLayout="column" fxLayoutGap="15px">
+            <img src="assets/img/newsandeventsimg.JPG" alt="">
+         </div>
+         <div class="cls_btn" fxFill fxLayoutAlign="end center">
+            <button mat-icon-button (click)="closemodal()">
+               <mat-icon>close</mat-icon>
+            </button>
+         </div>
+      </ng-template>
+   
+   
+   
+   
+   </div>

@@ -1,0 +1,11 @@
+<div>
+  <div class="header">
+    <h4 class="otp-style">One Time Password</h4>
+  </div>
+  <p [style.color]="msgcolor" class="responsemsg">{{responsemsg}}</p>
+  <mat-form-field>
+    <input matInput placeholder="Enter verification code" id="otp" [(ngModel)]="otp"  >
+  </mat-form-field>
+ 
+</div>
+<button mat-button  class="verify-btn" (click)="registerverifycustomer()">Verify</button>

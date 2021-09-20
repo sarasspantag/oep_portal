@@ -1,0 +1,97 @@
+<div fxFlex="82" class="loader-height" *ngIf="loadershow">
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }" [template]="customLoadingTemplate"></ngx-loading>
+</div>
+<div class="certificate" *ngIf="!loadershow">
+<div fxLayout="row" >
+  <h3 class="breadCrumb-head">Issue Course Certificate</h3>
+</div>
+<div id="qbm_ctr" fxLayoutAlign="center center" >
+  <mat-card fxFlex="65" fxFill fxFlex.xs="90" fxFlex.lt-md="90">
+    <mat-card-header fxLayoutAlign="center center">
+      <mat-card-title fxLayoutAlign="center center">Issue Course Completion Certificate</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayoutAlign="center center" *ngIf="checkrole == true"> 
+      <form fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="center center" fxLayout.xs="column">
+          <div>
+           <!-- <a href="http://localhost:8080/onlineexamine/forms/OEP_ImageView?index=0" target="_blank" download>link</a> -->
+            <mat-form-field> 
+              <mat-label>Batch</mat-label>
+              <mat-select  [(ngModel)]="batch" [ngModelOptions]="{standalone: true}" required>
+                <mat-option *ngFor="let course of batchList;let i = index" [value]="course.batch"
+                (click)="getTestscheduleList(course.batch)"> 
+                  {{course.batchname}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>        
+             
+          </div>  
+          <div>
+             <mat-form-field>
+              <mat-label>Test Schedule Name</mat-label>
+              <mat-select  [(ngModel)]="partid" [ngModelOptions]="{standalone: true}" required>
+                <mat-option *ngFor="let course of tsList;let i = index" [value]="course.tsid"
+                (click)="getParticipantList(course.tsid)"> 
+                  {{course.testscheduleid}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>        
+          </div>
+          
+        </div>
+        <div *ngIf="check" class="table-heading" fxLayoutAlign="center center" fxLayout="row" fxFlex>
+         Participant Details
+        </div>
+        <div *ngIf="check" fxLayout="row" fxLayoutGap="10px" fxFlex="10">
+        
+          <table fxFlex class="update-tbl" cellspacing="0" cellpadding="3">
+           <tr class="table-header" fxFill>
+             <td  class="wd-sno">S.No</td>
+             <td  class="wd">Participants</td>
+             <td  class="wd1" fxHide.xs>Mark</td>
+             <td  class="questiontd" fxHide.xs>Result</td>
+             <td  class="questiontd-action">Action</td>
+            
+           </tr>
+           <tr class="table-content" *ngFor="let item of partList;let i = index">
+             <td class="content-sno">{{item.index}}</td>
+             <td>{{item.username}}</td>
+             <td fxHide.xs>{{item.mark}}</td>
+             <td fxHide.xs>{{item.result}}</td>
+             <td> 
+               <button  mat-mini-fab >
+                <mat-icon class="visibility-icon"  (click)="getBatchdetails(item.batch,item.partid)" >visibility</mat-icon>
+                </button>
+                <button  mat-mini-fab >
+                <mat-icon class="download-icon" (click)="download(item.batch,item.partid)" >arrow_downward</mat-icon>
+                </button>
+                <button  mat-mini-fab >
+                <mat-icon class="mail-icon"  (click)="sendmail(item.batch,item.partid)" >mail</mat-icon>
+                </button>
+
+              </td>
+           </tr>
+  
+          </table>
+        </div>
+
+      </form>
+      </mat-card-content>
+  </mat-card>
+
+</div>
+</div>
+
+<ng-template #alertDialog>
+  <div class="infoModal">
+    <div class="header" fxLayoutAlign="center center">
+      <h4 class="otp-style" [style.color]="msgcolor"> {{modaltitle}} </h4>
+    </div>
+    <p>{{msg}}</p>
+    <div  fxLayoutAlign="center center">
+    <button mat-button class="verify-btn" fxLayoutAlign="center center" (click)="closemodal()">close</button>
+  </div>
+</div>
+</ng-template>
+
+

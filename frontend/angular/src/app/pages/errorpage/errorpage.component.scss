@@ -1,0 +1,43 @@
+.container {
+  position: relative;
+  height: 600px;
+  width: 750px;
+  margin: auto;
+}
+.errorpage
+{
+  height: 500px;
+  background-color: #a4a47957;
+}
+// .container svg {
+//   height: 100%;
+// }
+p, a {
+    margin: 0;
+    position: absolute;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #032C3F;
+    font-size: 24px;
+  }
+ .textA {
+    // top: 169px;
+    // left: 257px;
+    transform: rotate(-3deg);
+  }
+  .textB {
+    font-weight: 700;
+    font-size: 115px;
+    // top: 209px;
+    // left: 273px;
+    transform: rotate(-2deg);
+    padding-top:180px;
+  }
+  .textC {
+    // top: 370px;
+    // left: 428px;
+    font-size: 30px;
+    transform: rotate(1deg);
+    padding-top: 400px;
+    padding-left: 100px;
+  }
